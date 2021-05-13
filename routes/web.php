@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+
+//Backend
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
@@ -23,3 +26,7 @@ Route::get('/login','LoginController@getLogin');
 Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
+
+//Admin
+Route::get('/admin','AdminController@admin_login');
+Route::get('/dashboard','AdminController@show_dashboard');
