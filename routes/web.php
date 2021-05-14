@@ -30,3 +30,5 @@ Route::get('/logout','LoginController@Logout')->name('logout');
 //Admin
 Route::get('/admin','AdminController@admin_login');
 Route::get('/dashboard','AdminController@show_dashboard');
+Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
+Route::get('/logout','AdminController@logout'); //logout

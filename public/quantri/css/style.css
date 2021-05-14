@@ -24,6 +24,7 @@ body a{
 	-ms-transition: 0.5s all ease;
 	text-decoration:none;
 }
+
 h1,h2,h3,h4,h5,h6{
 	margin:0;			   
 }
@@ -37,6 +38,7 @@ ul,label{
 body a:hover{
 	text-decoration:none;
 }
+
 	/*sidebar navigation*/
 #sidebar {
     width:240px;
@@ -272,6 +274,7 @@ ul.top-menu {
     margin-right:15px;
     margin-top: 0;
 }
+
 ul.top-menu > li > a {
     color: #fff;
     font-size: 16px;
@@ -3143,4 +3146,12 @@ div#graph1, div#graph4, div#graph5, div#graph6, div#graph7, div#graph8, div#grap
 .chart_agile_bottom {
     padding: 0;
 }
+}
+
+p.text-alert {
+    color: red;
+    font-weight: bold;
+    width: 100%;
+    font-size: 17px;
+    text-align: center;
 }
