@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
@@ -23,3 +23,8 @@ Route::get('/login','LoginController@getLogin');
 Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
+//get all product
+Route::get('/', 'ProductController@getAllProduct');
+//get all product by catalog
+Route::get('/{id}', 'ProductController@getAllProductByCatalog');
+

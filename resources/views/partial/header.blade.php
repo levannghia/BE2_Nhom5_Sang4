@@ -152,12 +152,8 @@
                                                                         <div class="mega_items">
                                                                             <h3><a href="#">Accessories</a></h3>
                                                                             <ul>
-                                                                                <li><a href="#">Cocktai</a></li>
-                                                                                <li><a href="#">day</a></li>
-                                                                                <li><a href="#">Evening</a></li>
-                                                                                <li><a href="#">Sundresses</a></li>
-                                                                                <li><a href="#">Belts</a></li>
-                                                                                <li><a href="#">Sweets</a></li>
+                                                                                <li><a href="1">Hàng gia dụng</a></li>
+                                                                                <li><a href="2">Hải sản</a></li>
                                                                             </ul>
                                                                         </div>
                                                                         <div class="mega_items">
