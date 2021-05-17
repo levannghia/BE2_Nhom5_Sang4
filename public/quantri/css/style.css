@@ -3155,3 +3155,17 @@ p.text-alert {
     font-size: 17px;
     text-align: center;
 }
+
+span.fa-thumbs-styling.fa.fa-thumbs-down {
+    font-size: 23px;
+    color: red;
+}
+
+span.fa-thumbs-styling.fa.fa-thumbs-up {
+    font-size: 23px;
+    color: green;
+}
+
+a.active.styling-edit {
+    font-size: 19px;
+}

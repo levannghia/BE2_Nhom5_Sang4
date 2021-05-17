@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="admin_layout.php" class="logo">
+    <a href="{{URL::to('/dashboard')}}" class="logo">
         Admin
     </a>
     <div class="sidebar-toggle-box">
@@ -272,8 +272,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Danh mục sản phẩm</span>
                     </a>
                     <ul class="sub">
-						<li><a href="typography.html">Thêm Danh mục</a></li>
-						<li><a href="glyphicon.html">Liêt kê Danh mục</a></li>
+						<li><a href="{{URL::to('/add-category-product')}}">Thêm Danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('/all-category-product')}}">Liêt kê Danh mục sản phẩm</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Sản phẩm</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
+						<li><a href="{{URL::to('/all-product')}}">Liêt kê sản phẩm</a></li>
                     </ul>
                 </li>
             </ul>            </div>
@@ -289,7 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- footer -->
 		  <div class="footer">
 			<div class="wthree-copyright">
-			  <p>© 2017 Visitors. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+			  <p>All rights reserved | Design by W3layouts</a></p>
 			</div>
 		  </div>
   <!-- / footer -->

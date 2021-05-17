@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class Role extends Model
 {
-    protected $primaryKey = 'cart_id';
+    protected $primaryKey = 'role_id';
 }
