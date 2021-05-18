@@ -13,14 +13,25 @@ session_start();
 
 class ProductController extends Controller
 {
+    public function AuthLogin() {
+        $admin_id = Session::get('id');
+        if($admin_id) {
+            return Redirect::to('dashboard');
+        }
+        else {
+            return Redirect::to('admin')->send();
+        }
+    }
     //hiển thị trang thêm sp
     public function add_product() {
+        $this->AuthLogin();
         $cate_product = DB::table('categories')->orderby('category_id', 'desc')->get();
         return view('admin.product.add_product')->with('cate_product', $cate_product);
     }
 
     //liệt kê sp
     public function all_product() {
+        $this->AuthLogin();
         $product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->orderby('products.product_id', 'desc')->get();
         $all_product = view('admin.product.all_product', ['product' => $product]);
         return view('admin_layout', ['admin.product.all_product' => $all_product]);
@@ -28,6 +39,7 @@ class ProductController extends Controller
 
     //chỉnh sửa sp
     public function edit_product($product_id) {
+        $this->AuthLogin();
         $cate_product = DB::table('categories')->orderby('category_id', 'desc')->get();
         $product = DB::table('products')->where('product_id', $product_id)->get();
         $edit_product = view('admin.product.edit_product', ['product' => $product])->with('cate_product', $cate_product);
@@ -38,6 +50,7 @@ class ProductController extends Controller
     ///Các hàm xử lý
     //xử lý thêm sp
     public function save_product(Request $request) {
+        $this->AuthLogin();
         $data = array();
         $data['product_name']= $request->product_name;
         $data['product_description']= $request->product_desc;
@@ -65,6 +78,7 @@ class ProductController extends Controller
 
     //xử lý chức năng sửa
     public function update_product(Request $request, $product_id) {
+        $this->AuthLogin();
         $data = array();
         $data['product_name']= $request->product_name;
         $data['product_description']= $request->product_desc;
@@ -90,6 +104,7 @@ class ProductController extends Controller
 
     //xử lý chức năng xóa
     public function delete_product($product_id) {
+        $this->AuthLogin();
         DB::table('products')->where('product_id', $product_id)->delete();
         Session::put('message', 'Sản phẩm đã bị xóa');
         return Redirect::to('all-product');

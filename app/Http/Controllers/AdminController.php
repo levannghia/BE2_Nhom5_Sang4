@@ -11,11 +11,23 @@ session_start();
 
 class AdminController extends Controller
 {
+    public function AuthLogin() {
+        $admin_id = Session::get('id');
+        if($admin_id) {
+            return Redirect::to('dashboard');
+        }
+        else {
+            return Redirect::to('admin')->send();
+        }
+    }
+
+
     public function admin_login() {
         return view('admin_login');
     }
 
     public function show_dashboard() {
+        $this->AuthLogin();
         return view('admin.dashboard');
     }
 
@@ -27,18 +39,19 @@ class AdminController extends Controller
         if ($result) {
             Session::put('name',$result->name);
             Session::put('id',$result->id);
-            return Redirect::to('/dashboard');
+            return Redirect::to('dashboard');
         }
         else {
             Session::put('message', 'Email hoặc mật khẩu bị sai, làm ơn nhập lại');
-            return Redirect::to('/admin');
+            return Redirect::to('admin');
         }
         
     }
 
     public function logout() {
+        $this->AuthLogin();
         Session::put('name',null);
         Session::put('id',null);
-        return Redirect::to('/admin');
+        return Redirect::to('admin');
     }
 }

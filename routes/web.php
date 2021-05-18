@@ -12,13 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('index');
-});
-
-
-//Backend
+///Frontend
+Route::get('/', 'HomeController@index');
+Route::get('/trang-chu', 'HomeController@index');
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
@@ -27,6 +23,8 @@ Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
 
+
+///Backend
 //Admin
 Route::get('/admin','AdminController@admin_login');
 Route::get('/dashboard','AdminController@show_dashboard');

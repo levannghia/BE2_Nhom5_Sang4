@@ -12,13 +12,25 @@ session_start();
 
 class CategoryProductController extends Controller
 {
+    public function AuthLogin() {
+        $admin_id = Session::get('id');
+        if($admin_id) {
+            return Redirect::to('dashboard');
+        }
+        else {
+            return Redirect::to('admin')->send();
+        }
+    }
+
     //hiển thị trang thêm danh mục
     public function add_category_product() {
+        $this->AuthLogin();
         return view('admin.category.add_category_product');
     }
 
     //liệt kê danh mục
     public function all_category_product() {
+        $this->AuthLogin();
         $category = Category::all();
         $all_category = view('admin.category.all_category_product', ['category' => $category]);
         return view('admin_layout', ['admin.category.all_category_product' => $all_category]);
@@ -26,6 +38,7 @@ class CategoryProductController extends Controller
 
     //chỉnh sửa danh mục
     public function edit_category_product($category_id) {
+        $this->AuthLogin();
         $category = DB::table('categories')->where('category_id', $category_id)->get();
         $edit_category = view('admin.category.edit_category_product', ['category' => $category]);
         return view('admin_layout', ['admin.category.edit_category_product' => $edit_category]);
@@ -34,12 +47,14 @@ class CategoryProductController extends Controller
     //cập nhật trạng thái danh mục
     //ẩn danh mục
     public function active_category_product($category_id) {
+        $this->AuthLogin();
         DB::table('categories')->where('category_id', $category_id)->update(['category_status'=>'Hiện']);
         Session::put('message', 'Danh mục đã hiện');
         return Redirect::to('all-category-product');
     }
     //hiện danh mục
     public function unactive_category_product($category_id) {
+        $this->AuthLogin();
         DB::table('categories')->where('category_id', $category_id)->update(['category_status'=>'Ẩn']);
         Session::put('message', 'Danh mục đã ẩn');
         return Redirect::to('all-category-product');
@@ -48,6 +63,7 @@ class CategoryProductController extends Controller
     ///Các hàm xử lý
     //xử lý thêm danh mục
     public function save_category_product(Request $request) {
+        $this->AuthLogin();
         $data = array();
         $data['category_name']= $request->category_name;
         $data['category_description']= $request->category_desc;
@@ -60,6 +76,7 @@ class CategoryProductController extends Controller
 
     //xử lý chức năng sửa
     public function update_category_product(Request $request, $category_id) {
+        $this->AuthLogin();
         $data = array();
         $data['category_name']= $request->category_name;
         $data['category_description']= $request->category_desc;
@@ -71,6 +88,7 @@ class CategoryProductController extends Controller
 
     //xử lý chức năng sửa
     public function delete_category_product($category_id) {
+        $this->AuthLogin();
         DB::table('categories')->where('category_id', $category_id)->delete();
         Session::put('message', 'Đã xóa danh mục');
         return Redirect::to('all-category-product');
