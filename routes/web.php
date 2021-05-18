@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
-Route::get('/login','LoginController@getLogin');
+Route::get('/dangnhap','LoginController@getLogin');
 Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
+//verifycation email
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'LoginController@index')->name('home');
