@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 ///Frontend
 Route::get('/', 'HomeController@index');
 Route::get('/trang-chu', 'HomeController@index');
+
+//danh mục sp - home
+Route::get('/danh-muc-san-pham/cate={category_id}', 'CategoryProductController@show_category_home');
+
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login

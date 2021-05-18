@@ -16,7 +16,7 @@
                     }
                     @endphp
                     <div class="position-center">
-                        <form role="form" action="{{URL::to('/update-category-product/id='.$cate->id)}}" method="post">
+                        <form role="form" action="{{URL::to('/update-category-product/id='.$cate->category_id)}}" method="post">
                             {{ csrf_field() }}
                             
                         <div class="form-group">
