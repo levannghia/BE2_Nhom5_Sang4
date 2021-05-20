@@ -28,3 +28,4 @@ Route::get('/logout','LoginController@Logout')->name('logout');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'LoginController@index')->name('home');
+Route::resource('/product','ProductController');
