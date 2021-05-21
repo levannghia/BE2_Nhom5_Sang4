@@ -11,8 +11,9 @@
                          <div class="col-lg-6 col-md-6">
                              <div class="switcher">
                                  <ul>
-                                     <li class="languages"><a href="#"><img src="{{ asset('\img\logo\fontlogo.jpg') }}"
-                                                 alt=""> English <i class="fa fa-angle-down"></i></a>
+                                     <li class="languages"><a href="#"><img
+                                                 src="{{ asset('\img\logo\fontlogo.jpg') }}" alt=""> English <i
+                                                 class="fa fa-angle-down"></i></a>
                                          <ul class="dropdown_languages">
                                              <li><a href="#"><img src="{{ asset('\img\logo\fontlogo.jpg') }}" alt="">
                                                      English</a></li>
@@ -28,10 +29,16 @@
                                          </ul>
                                      </li>
                                      @if (Auth::check())
-                                         <li class="languages"><a href="#"><i class="fa fa-user"></i>
-                                                 {{ Auth::user()->name }}</a>
-
-                                         </li>
+                                     <div class="btn-group">
+                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                           Hello: {{ Auth::user()->name }}
+                                        </button>
+                                        <div class="dropdown-menu">
+                                          <a class="dropdown-item" href="{{ route('profile') }}">My profile</a>
+                                          <a class="dropdown-item" href="{{ route('changepassword') }}">Change password</a>
+                                          <a class="dropdown-item" href="#">Delete the account</a>
+                                        </div>
+                                      </div>
                                      @endif
                                  </ul>
                              </div>

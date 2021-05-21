@@ -50,7 +50,7 @@ class LoginController extends Controller
         $user->password = Hash::make($request->password);
         $user->address = $request->address;
         $user->telephone = $request->phone;
-        $user->role = 1;
+        $user->role = 0;
         $user->save();
         return redirect()->route('login')->with('thanhcong','Account successfully created');
     }

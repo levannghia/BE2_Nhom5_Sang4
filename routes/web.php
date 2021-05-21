@@ -29,3 +29,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'LoginController@index')->name('home');
 Route::resource('/product','ProductController');
+//profile
+Route::get('/profile','ProfileController@index')->name('profile');
+//edit profile
+Route::put('/profile/edit','ProfileController@editProfile')->name('edit-profile');
+//change password
+Route::get('/change-password','ProfileController@getChangePassword')->name('changepassword');
+Route::post('/change-password','ProfileController@saveChangePassword');

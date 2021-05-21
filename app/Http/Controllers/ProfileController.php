@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\RequestPassword;
+use App\Http\Requests\User\EditProfileRequest;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
+class ProfileController extends Controller
+{
+    public function index()
+    {
+        return view('profile');
+    }
+    public function editProfile(EditProfileRequest $request)
+    {
+        $this->validate($request, [
+            'name.required' => 'please enter this field',
+            'address.required' => 'please enter this field',
+            'telephone.required' => 'please enter this field',
+        ]);
+        $user = auth()->user();
+        $user->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'telephone' => $request->phone,
+        ]);
+        return redirect()->back()->with('thanhcong', 'User update successful');
+    }
+    public function getChangePassword()
+    {
+        return view('changepassword');
+    }
+    public function saveChangePassword(RequestPassword $request)
+    {
+        if (Auth::Check()) {
+            $requestData = $request->All();
+            $currentPassword = Auth::User()->password;
+            if (Hash::check($requestData['oldpassword'], $currentPassword)) {
+                $userId = Auth::User()->id;
+                $user = User::find($userId);
+                $user->password = Hash::make($requestData['newpassword']);;
+                $user->save();
+                return back()->with('thanhcong', 'Your password has been updated successfully.');
+            } else {
+                return back()->withErrors(['Sorry, your current password was not recognised. Please try again.']);
+            }
+        }
+    }
+}

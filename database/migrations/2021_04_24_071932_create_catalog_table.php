@@ -13,10 +13,11 @@ class CreateCatalogTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogs', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
+            $table->string('category_name');
+            $table->string('category_description');
+            $table->string('category_status');
             $table->timestamps();
         });
     }
