@@ -32,10 +32,10 @@ class RequestPassword extends FormRequest
     public function messages()
     {
         return [
-            'oldpassword.required'=>'please enter this field',
-            'newpassword.required'=>'please enter this field',
+            'oldpassword.required'=>'please enter the password field',
+            'newpassword.required'=>'please enter the new password field',
             'newpassword.min'=>'Password must be at least 8 characters',
-            'confirmpassword.required'=>'please enter this field',
+            'confirmpassword.required'=>'please enter the confirm password field',
             'confirmpassword.same'=>'Confirmation password is not correct',
         ];
     }

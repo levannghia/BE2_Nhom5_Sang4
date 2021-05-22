@@ -17,10 +17,13 @@ class ProfileController extends Controller
     }
     public function editProfile(EditProfileRequest $request)
     {
-        $this->validate($request, [
-            'name.required' => 'please enter this field',
-            'address.required' => 'please enter this field',
-            'telephone.required' => 'please enter this field',
+        $this->validate($request, 
+        [
+            'phone' => 'digits:10|numeric'
+        ],[
+            
+            'phone.degits' => 'The phone must be 10 digits',
+            'phone.numeric' => 'Phone must be numeric and contain no other characters',
         ]);
         $user = auth()->user();
         $user->update([
@@ -48,6 +51,14 @@ class ProfileController extends Controller
             } else {
                 return back()->withErrors(['Sorry, your current password was not recognised. Please try again.']);
             }
+        }
+    }
+    public function postDestroy()
+    {
+        $user = User::find(Auth::user()->id);
+        Auth::logout();
+        if ($user->delete()) {
+            return redirect()->route('login')->with('global', 'Your account has been deleted!');
         }
     }
 }

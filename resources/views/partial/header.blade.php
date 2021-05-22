@@ -36,7 +36,10 @@
                                         <div class="dropdown-menu">
                                           <a class="dropdown-item" href="{{ route('profile') }}">My profile</a>
                                           <a class="dropdown-item" href="{{ route('changepassword') }}">Change password</a>
-                                          <a class="dropdown-item" href="#">Delete the account</a>
+                                        <form action="{{ route('delete-account') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this account?')">
+                                            @csrf
+                                            <button type="submit" name="deleteAccount" class="btn btn-danger">Delete the account</button>
+                                        </form>
                                         </div>
                                       </div>
                                      @endif

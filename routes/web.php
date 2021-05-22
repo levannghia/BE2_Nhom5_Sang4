@@ -36,3 +36,5 @@ Route::put('/profile/edit','ProfileController@editProfile')->name('edit-profile'
 //change password
 Route::get('/change-password','ProfileController@getChangePassword')->name('changepassword');
 Route::post('/change-password','ProfileController@saveChangePassword');
+//delete account
+Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
