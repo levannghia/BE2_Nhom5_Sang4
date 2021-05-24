@@ -23,9 +23,14 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    
     public function index()
     {
         return view('index');
+    }
+    public function admin()
+    {
+        return view('admin');
     }
     public function getLogin()
     {

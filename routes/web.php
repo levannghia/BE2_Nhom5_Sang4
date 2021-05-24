@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// })->name('home');
+ Route::get('/', function () {
+     return view('index');
+ })->name('home');
 // //SignUp
 // Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 // //login
@@ -25,8 +25,9 @@ use Illuminate\Support\Facades\Auth;
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
 //verifycation email
+//Route::get('/', 'LoginController@index');
 Auth::routes(['verify' => true]);
-Route::get('/', 'LoginController@index');
+
 Route::get('/home', 'LoginController@index')->name('home');
 Route::resource('/product','ProductController');
 //profile
@@ -38,3 +39,5 @@ Route::get('/change-password','ProfileController@getChangePassword')->name('chan
 Route::post('/change-password','ProfileController@saveChangePassword');
 //delete account
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
+//test chuc nang phan quyen
+Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
