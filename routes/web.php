@@ -14,19 +14,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-//SignUp
-Route::post('/sign-up','LoginController@postSignUp')->name('signup');
-//login
-Route::get('/dangnhap','LoginController@getLogin');
-Route::post('/login','LoginController@postSignIn')->name('login');
+// Route::get('/', function () {
+//     return view('index');
+// })->name('home');
+// //SignUp
+// Route::post('/sign-up','LoginController@postSignUp')->name('signup');
+// //login
+// Route::get('/dangnhap','LoginController@getLogin');
+// Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
 //verifycation email
 Auth::routes(['verify' => true]);
-
+Route::get('/', 'LoginController@index');
 Route::get('/home', 'LoginController@index')->name('home');
 Route::resource('/product','ProductController');
 //profile
