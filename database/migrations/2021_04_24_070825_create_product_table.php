@@ -20,7 +20,7 @@ class CreateProductTable extends Migration
             $table->longText('description');
             $table->integer('price');
             $table->integer('rating');
-            $table->string('image');
+            $table->string('product_image');
             $table->string('catalogid');
             $table->timestamps();
             $table->foreign('catalogid')->references('id')->on('catalogs');

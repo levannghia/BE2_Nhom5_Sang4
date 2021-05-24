@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth','verified']);
+    }
+     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('index');
+    }
     public function getLogin()
     {
         return view('login');
@@ -41,7 +59,7 @@ class LoginController extends Controller
     {
         $xacThuc = array('email'=>$request->email,'password'=>$request->password);
         if(Auth::attempt($xacThuc)){
-            return redirect()->back()->with(['flag'=>'success','message'=>'Logged in successfully']);
+            return redirect()->route('home')->with(['flag'=>'success','message'=>'Logged in successfully']);
         }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Login failed']);
