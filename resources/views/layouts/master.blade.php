@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Coron - Fashion eCommerce Bootstrap4 Template</title>
+        <title>@yield('title')</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="{{ asset('') }}">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('img\favicon.png')}}">
 		
@@ -16,10 +17,13 @@
         <link rel="stylesheet" href="{{asset('css\style.css')}}">
         <link rel="stylesheet" href="{{asset('css\responsive.css')}}">
         <script src="{{asset('js\vendor\modernizr-2.8.3.min.js')}}"></script>
+        
     </head>
     <body>
         @include('partial.header')
         @yield('content')
         @include('partial.footer')
+        @include('partial.model-product')
+        @yield('javascript')
     </body>
 </blade.php>

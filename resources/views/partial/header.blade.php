@@ -74,54 +74,43 @@
                                          <button type="submit"><i class="fa fa-search"></i></button>
                                      </form>
                                  </div>
+                                 @if(Session::has('CART'))
+                                 @php $cart = Session::get('CART'); @endphp
                                  <div class="shopping_cart">
-                                     <a href="#"><i class="fa fa-shopping-cart"></i> 2Items - $209.44 <i
-                                             class="fa fa-angle-down"></i></a>
-
+                                     <a href="javascript:;">
+                                         <i class="fa fa-shopping-cart"></i> {{ $cart->totalQty ?? '' }}Items - ${{ number_format($cart->totalPrice) ?? '' }} <i
+                                             class="fa fa-angle-down"></i>
+                                        </a>
                                      <!--mini cart-->
                                      <div class="mini_cart">
+                                        @foreach ($cart->items as $cartItem)
                                          <div class="cart_item">
                                              <div class="cart_img">
-                                                 <a href="#"><img src="{{ asset('img\cart\cart.jpg') }}" alt=""></a>
+                                                 <a href="#"><img src="img\cart\cart.jpg" alt=""></a>
                                              </div>
                                              <div class="cart_info">
-                                                 <a href="#">lorem ipsum dolor</a>
-                                                 <span class="cart_price">$115.00</span>
-                                                 <span class="quantity">Qty: 1</span>
+                                                 <a href="#">{{ $cartItem['item']->product_name }}</a>
+                                                 <span>${{ number_format($cartItem['item']->product_price) }}</span>
+                                                 <span class="quantity">Qty: {{ $cartItem['quantity'] }}</span>
+                                                 <span class="cart_price">= ${{ number_format($cartItem['price']) }}</span>
                                              </div>
                                              <div class="cart_remove">
-                                                 <a title="Remove this item" href="#"><i
+                                                 <a title="Remove this item" href="cart-remove.html/{{ $cartItem['item']->product_id }}"><i
                                                          class="fa fa-times-circle"></i></a>
                                              </div>
                                          </div>
-                                         <div class="cart_item">
-                                             <div class="cart_img">
-                                                 <a href="#"><img src="{{ asset('img\cart\cart2.jpg') }}" alt=""></a>
-                                             </div>
-                                             <div class="cart_info">
-                                                 <a href="#">Quisque ornare dui</a>
-                                                 <span class="cart_price">$105.00</span>
-                                                 <span class="quantity">Qty: 1</span>
-                                             </div>
-                                             <div class="cart_remove">
-                                                 <a title="Remove this item" href="#"><i
-                                                         class="fa fa-times-circle"></i></a>
-                                             </div>
-                                         </div>
-                                         <div class="shipping_price">
-                                             <span> Shipping </span>
-                                             <span> $7.00 </span>
-                                         </div>
+                                        @endforeach
                                          <div class="total_price">
                                              <span> total </span>
-                                             <span class="prices"> $227.00 </span>
+                                             <span class="prices"> ${{ number_format($cart->totalPrice) ?? '' }} </span>
                                          </div>
                                          <div class="cart_button">
                                              <a href="checkout.html"> Check out</a>
                                          </div>
                                      </div>
                                      <!--mini cart end-->
-                                 </div>
+                                </div>
+                                @endif
 
                              </div>
                          </div>
@@ -139,7 +128,7 @@
                                                  <div class="mega_menu jewelry">
                                                      <div class="mega_items jewelry">
                                                          <ul>
-                                                             <li><a href="index.html">Home 1</a></li>
+                                                             <li><a href="">Home 1</a></li>
                                                              <li><a href="index-2.html">Home 2</a></li>
                                                          </ul>
                                                      </div>
