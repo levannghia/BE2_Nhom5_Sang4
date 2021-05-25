@@ -23,8 +23,14 @@ Route::get('/login','LoginController@getLogin');
 Route::post('/login','LoginController@postSignIn')->name('login');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
-//get all product
-Route::get('/', 'ProductController@getAllProduct');
-//get all product by catalog
-Route::get('/{id}', 'ProductController@getAllProductByCatalog');
 
+///Home
+//get all product
+Route::get('/', 'HomeController@index');
+Route::get('/trang-chu', 'HomeController@index');
+//danh mục sản phẩm
+Route::get('/danh-muc-san-pham/category_id={id}', 'CategoryController@show_category_home');
+
+///Search product
+//tìm kiếm sản phẩm
+Route::post('/search-product', 'SearchController@searchProduct');
