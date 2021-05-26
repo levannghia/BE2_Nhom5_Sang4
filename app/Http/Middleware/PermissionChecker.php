@@ -20,6 +20,6 @@ class PermissionChecker
         if(in_array(Auth::user()->getRole(),$mangRole)){
             return $next($request);
         }
-        return redirect()->route('403');
+        return redirect()->route('404');
     }
 }

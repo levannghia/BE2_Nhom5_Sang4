@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
  Route::get('/', function () {
      return view('index');
  })->name('home');
+ Route::get('/404', function () {
+    return view('404');
+})->name('404');
 // //SignUp
 // Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 // //login
