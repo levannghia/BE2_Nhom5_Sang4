@@ -11,7 +11,7 @@ use App\Category;
 use App\Product;
 session_start();
 
-class ProductController extends Controller
+class AdminProductController extends Controller
 {
     public function AuthLogin() {
         $admin_id = Session::get('id');

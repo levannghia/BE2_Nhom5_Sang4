@@ -10,29 +10,8 @@
                                 <div class="header_top">
                                    <div class="row align-items-center">
                                         <div class="col-lg-6 col-md-6">
-                                           <div class="switcher">
-                                                <ul>
-                                                    <li class="languages"><a href="#"><img src="{{asset('\img\logo\fontlogo.jpg')}}" alt=""> English <i class="fa fa-angle-down"></i></a>
-                                                        <ul class="dropdown_languages">
-                                                            <li><a href="#"><img src="{{asset('\img\logo\fontlogo.jpg')}}" alt=""> English</a></li>
-                                                            <li><a href="#"><img src="{{asset('\img\logo\fontlogo2.jp')}}g" alt=""> French </a></li>
-                                                        </ul>   
-                                                    </li> 
-
-                                                    <li class="currency"><a href="#"> Currency : $ <i class="fa fa-angle-down"></i></a>
-                                                        <ul class="dropdown_currency">
-                                                            <li><a href="#"> Dollar (USD)</a></li>
-                                                            <li><a href="#"> Euro (EUR)  </a></li>
-                                                        </ul> 
-                                                    </li> 
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
                                             <div class="header_links">
                                                 <ul>
-                                                    <li><a href="contact.html" title="Contact">Contact</a></li>
-                                                    <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                                     <li><a href="my-account.html" title="My account">My account</a></li>
                                                     <li><a href="cart.html" title="My cart">My cart</a></li>
                                                     <li><a href="{{ url('login') }}" title="Login">Login</a></li>
@@ -49,7 +28,7 @@
                                        <!--logo start-->
                                         <div class="col-lg-3 col-md-3">
                                             <div class="logo">
-                                                <a href="index.html"><img src="{{asset('img\logo\logo.jpg.png')}}" alt=""></a>
+                                                <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('img\logo\logo.jpg.png')}}" alt=""></a>
                                             </div>
                                         </div>
                                         <!--logo end-->
@@ -120,14 +99,14 @@
                                                     <nav>
                                                         <ul>
                                                             <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
-                                                            <li><a href="shop.html">sản phẩm mới</a>
-                                                                <div class="mega_menu jewelry">
+                                                            <li><a href="shop.html">tất cả sản phẩm</a>
+                                                                {{-- <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
                                                                         <ul>
                                                                             <li><a href="shop-list.html">shop list</a></li>
                                                                         </ul>
                                                                     </div>
-                                                                </div>  
+                                                                </div>   --}}
                                                             </li>
                                                             <li><a href="#">tin tức</a></li>
                                                             <li><a href="#">Giỏ hàng</a></li>

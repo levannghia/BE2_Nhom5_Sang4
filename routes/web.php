@@ -17,7 +17,21 @@ Route::get('/', 'HomeController@index');
 Route::get('/trang-chu', 'HomeController@index');
 
 //danh mục sp - home
-Route::get('/danh-muc-san-pham/cate={category_id}', 'CategoryProductController@show_category_home');
+Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
+
+//xem chi tiet sp
+Route::get('/chi-tiet-san-pham/id={product_id}', 'HomeController@detail_product');
+
+//them gio hang
+Route::post('/save-cart','CartController@save_cart');
+Route::get('/cart', 'CartController@show_cart');
+//Xóa giỏ hàng
+Route::get('/delete-cart/{rowId}', 'CartController@delete_cart');
+//Update số lượng
+Route::post('/update-cart-qty','CartController@update_cart_qty');
+
+//thanh toán
+
 
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
@@ -37,31 +51,39 @@ Route::get('/logout','AdminController@logout'); //logout
 
 //Category product
 //thêm
-Route::get('/add-category-product','CategoryProductController@add_category_product');
+Route::get('/add-category-product','AdminCategoryController@add_category_product');
 //sửa
-Route::get('/edit-category/id={category_id}', 'CategoryProductController@edit_category_product');
+Route::get('/edit-category/id={category_id}', 'AdminCategoryController@edit_category_product');
 //xóa
-Route::get('/delete-category/id={category_id}', 'CategoryProductController@delete_category_product');
+Route::get('/delete-category/id={category_id}', 'AdminCategoryController@delete_category_product');
 //hiển thị
-Route::get('/all-category-product','CategoryProductController@all_category_product');
+Route::get('/all-category-product','AdminCategoryController@all_category_product');
 //xử lý func thêm
-Route::post('/save-category-product','CategoryProductController@save_category_product');
+Route::post('/save-category-product','AdminCategoryController@save_category_product');
 //xử lý func sửa
-Route::post('/update-category-product/id={category_id}','CategoryProductController@update_category_product');
+Route::post('/update-category-product/id={category_id}','AdminCategoryController@update_category_product');
 
-Route::get('/active-category/id={category_id}', 'CategoryProductController@active_category_product');
-Route::get('/unactive-category/id={category_id}', 'CategoryProductController@unactive_category_product');
+Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_category_product');
+Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
 ///Product
 //thêm
-Route::get('/add-product','ProductController@add_product');
+Route::get('/add-product','AdminProductController@add_product');
 //sửa
-Route::get('/edit-product/id={product_id}', 'ProductController@edit_product');
+Route::get('/edit-product/id={product_id}', 'AdminProductController@edit_product');
 //xóa
-Route::get('/delete-product/id={product_id}', 'ProductController@delete_product');
+Route::get('/delete-product/id={product_id}', 'AdminProductController@delete_product');
 //hiển thị
-Route::get('/all-product','ProductController@all_product');
+Route::get('/all-product','AdminProductController@all_product');
 //xử lý func thêm
-Route::post('/save-product','ProductController@save_product');
+Route::post('/save-product','AdminProductController@save_product');
 //xử lý func sửa
-Route::post('/update-product/id={product_id}','ProductController@update_product');
+Route::post('/update-product/id={product_id}','AdminProductController@update_product');
+
+
+//Order
+Route::get('/all-order','AdminOrderController@all_order');
+
+//User
+Route::get('/all-user','AdminUserController@all_user');
+Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');

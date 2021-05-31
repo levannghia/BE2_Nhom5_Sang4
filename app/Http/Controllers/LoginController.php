@@ -11,7 +11,7 @@ class LoginController extends Controller
 {
     public function getLogin()
     {
-        return view('login');
+        return view('pages.login');
     }
     public function postSignUp(Request $request)
     {

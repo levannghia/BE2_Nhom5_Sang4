@@ -260,7 +260,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="{{URL::to('/dashboard')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Tổng Quan</span>
                     </a>
@@ -286,6 +286,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
 						<li><a href="{{URL::to('/all-product')}}">Liêt kê sản phẩm</a></li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{URL::to('/all-user')}}">
+                        <i class="fa fa-book"></i>
+                        <span>Người dùng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{URL::to('/all-order')}}">
+                        <i class="fa fa-book"></i>
+                        <span>Đơn hàng</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{URL::to('/all-product')}}">
+                        <i class="fa fa-book"></i>
+                        <span>Bình luận</span>
+                    </a>
                 </li>
             </ul>            </div>
         <!-- sidebar menu end-->

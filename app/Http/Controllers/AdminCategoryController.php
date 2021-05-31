@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Redirect;
 use App\Category;
 session_start();
 
-class CategoryProductController extends Controller
+class AdminCategoryController extends Controller
 {
+    //start function Admin page
     public function AuthLogin() {
         $admin_id = Session::get('id');
         if($admin_id) {
@@ -96,6 +97,7 @@ class CategoryProductController extends Controller
 
     //end function Admin page
 
+    //start function Home page
     public function show_category_home($category_id) {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         $category_by_id = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.category_id', $category_id)->get();

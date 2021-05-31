@@ -75,7 +75,7 @@
                         <div class="single_product">
                             
                             <div class="product_thumb">
-                               <a href="single-product.html"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
+                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
                                <div class="img_icone">
                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                </div>
@@ -105,10 +105,5 @@
     </div>  
 </div>
 <!--pos home section end-->
-</div>
-<!--pos page inner end-->
-</div>
-</div>
-<!--pos page end-->
 @endsection
 @include('layouts.master')

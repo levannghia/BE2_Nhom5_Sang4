@@ -694,18 +694,6 @@
                                                                 <td> Handbag  fringilla <strong> × 2</strong></td>
                                                                 <td> $165.00</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>  Handbag  justo	 <strong> × 2</strong></td>
-                                                                <td> $50.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>  Handbag elit	<strong> × 2</strong></td>
-                                                                <td> $50.00</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td> Handbag Rutrum	 <strong> × 1</strong></td>
-                                                                <td> $50.00</td>
-                                                            </tr>
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
@@ -726,11 +714,11 @@
                                                 <div class="payment_method">
                                                    <div class="panel-default">
                                                         <input id="payment" name="check_method" type="radio" data-target="createp_account">
-                                                        <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Create an account?</label>
+                                                        <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh toán COD</label>
 
                                                         <div id="method" class="collapse one" data-parent="#accordion">
                                                             <div class="card-body1">
-                                                               <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
+                                                               <p>Vui lòng điền đủ thông tin vận chuyển.</p>
                                                             </div>
                                                         </div>
                                                     </div> 
@@ -740,12 +728,22 @@
 
                                                         <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                                             <div class="card-body1">
-                                                               <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p> 
+                                                               <p>Trả bằng PayPal</p> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-default">
+                                                        <input id="payment_defult" name="check_method" type="radio" data-target="createp_account">
+                                                        <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thẻ ghi nợ <img src="assets\img\visha\papyel.png" alt=""></label>
+
+                                                        <div id="collapsedefult" class="collapse one" data-parent="#accordion">
+                                                            <div class="card-body1">
+                                                               <p>Trả bằng thẻ ghi nợ</p> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="order_button">
-                                                        <button type="submit">Proceed to PayPal</button> 
+                                                        <button type="submit">Xác nhận</button> 
                                                     </div>    
                                                 </div> 
                                             </form>         
