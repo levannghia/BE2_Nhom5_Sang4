@@ -1,11 +1,19 @@
-﻿@section('content')
+﻿@section('title')
+    All product
+@endsection
+@section('content')
+<style>
+    .product_ratting .active {
+        color: #00BBA6 !important;
+    }
+</style>
      <!--breadcrumbs area start-->
      <div class="breadcrumbs_area">
         <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
+                            <li><a href="{{route('home')}}">home</a></li>
                             <li><i class="fa fa-angle-right"></i></li>
                             <li>shop</li>
                         </ul>
@@ -101,7 +109,7 @@
                         </div>
                         <div class="cart_item">
                            <div class="cart_img">
-                               <a href="#"><img src="assets\img\cart\cart2.jpg" alt=""></a>
+                               <a href="#"><img src="{{asset('\img\cart\cart2.jpg')}}" alt=""></a>
                            </div>
                             <div class="cart_info">
                                 <a href="#">Quisque ornare dui</a>
@@ -158,7 +166,7 @@
                         </div>
                         <div class="special_product_inner mb-20">
                             <div class="special_p_thumb">
-                                <a href="single-product.html"><img src="assets\img\cart\cart3.jpg" alt=""></a>
+                                <a href="single-product.html"><img src="{{asset('\img\cart\cart3.jpg')}}" alt=""></a>
                             </div>
                             <div class="small_p_desc">
                                 <div class="product_ratting">
@@ -179,7 +187,7 @@
                         </div>
                         <div class="special_product_inner">
                             <div class="special_p_thumb">
-                                <a href="single-product.html"><img src="assets\img\cart\cart18.jpg" alt=""></a>
+                                <a href="single-product.html"><img src="{{asset('\img\cart\cart18.jpg')}}" alt=""></a>
                             </div>
                             <div class="small_p_desc">
                                 <div class="product_ratting">
@@ -256,7 +264,7 @@
                                     <div class="col-lg-4 col-md-6">
                                         <div class="single_product">
                                             <div class="product_thumb">
-                                               <a href="single-product.html"><img src="{{ asset('img/product/'.$item->product_image) }}" alt=""></a> 
+                                               <a href="{{route('product-detail',['product_id'=>$item->product_id])}}"><img src="{{ asset('img/product/'.$item->product_image) }}" alt=""></a> 
                                                <div class="img_icone">
                                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                                </div>
@@ -271,7 +279,7 @@
                                             <div class="product_info">
                                                 <ul>
                                                     <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                    <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">View Detail</a></li>
+                                                    <li><a href="{{route('product-detail',['product_id'=>$item->product_id])}}" title="Quick view">View Detail</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -280,14 +288,14 @@
                                 </div>  
                             </div>
                             <div class="tab-pane fade" id="list" role="tabpanel">
-                                @foreach ($products as $item)
+                                @foreach ($products as $item)                             
                                 <div class="product_list_item mb-35">
                                     <div class="row align-items-center">
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <div class="product_thumb">
-                                               <a href="single-product.html"><img src="{{ asset('img/product/'.$item->product_image) }}" alt=""></a> 
+                                               <a href="{{route('product-detail',['product_id'=>$item->product_id])}}"><img src="{{ asset('img/product/'.$item->product_image) }}" alt=""></a> 
                                                <div class="hot_img">
-                                                   <img src="assets\img\cart\span-hot.png" alt="">
+                                                   <img src="{{asset('img\cart\span-hot.png')}}" alt="">
                                                </div>
                                             </div>
                                         </div>
@@ -295,15 +303,13 @@
                                             <div class="list_product_content">
                                                <div class="product_ratting">
                                                    <ul>
-                                                       <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                       <li><a href="#"><i class="fa fa-star"></i></a></li>
+                                                       @for ($i = 1; $i <= 5; $i++)
+                                                       <li><a href="#"><i class="fa fa-star {{$i <= $item->product_rating ? 'active' : ''}}" style="color: #999;"></i></a></li>
+                                                       @endfor
                                                    </ul>
                                                </div>
                                                 <div class="list_title">
-                                                    <h3><a href="single-product.html">{{ $item->product_name }}</a></h3>
+                                                    <h3><a href="{{route('product-detail',['product_id'=>$item->product_id])}}">{{ $item->product_name }}</a></h3>
                                                 </div>
                                                 <p class="design">{{$item->product_description}}</p>
 
@@ -312,8 +318,8 @@
                                                     <label for="select">Select to compare</label>
                                                 </p>
                                                 <div class="content_price">
-                                                    <span>$118.00</span>
-                                                    <span class="old-price">{{ $item->product_price }}</span>
+                                                    <span>{{ $item->product_price }}</span>
+                                                    <span class="old-price">$18.00</span>
                                                 </div>
                                                 <div class="add_links">
                                                     <ul>

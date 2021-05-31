@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Product;
+use App\Review;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(2);
+        $products = Product::paginate(3);
         return view('shop')->with('products',$products);
     }
 
@@ -36,14 +38,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->productname = $request->productname;
-        $product->price = $request->price;
-        $product->producttype = $request->producttype;
-        $product->description = $request->description;
-        $product->catalogid = $request->catalogid;
-        $product->save();
-        return redirect()->route('Product.create');
+       
     }
 
     /**
@@ -89,5 +84,17 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+    public function detailProduct($product_id)
+    {
+        $products = Product::find($product_id);
+        $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
+        $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
+        $viewData = [        
+            'reviews' => $reviews,
+            'comments' => $comments,
+            'products' => $products,
+        ];
+        return view('single-product', $viewData);
     }
 }

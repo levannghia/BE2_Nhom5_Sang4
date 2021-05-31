@@ -1,4 +1,7 @@
-﻿@section('content')
+﻿@section('title')
+    Home
+@endsection
+@section('content')
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">

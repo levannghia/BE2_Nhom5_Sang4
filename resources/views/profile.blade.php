@@ -1,4 +1,7 @@
-﻿@section('content')
+﻿@section('title')
+    Profile
+@endsection
+@section('content')
 
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">

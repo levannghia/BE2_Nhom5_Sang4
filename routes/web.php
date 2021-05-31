@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Auth;
  Route::get('/404', function () {
     return view('404');
 })->name('404');
+Route::get('/single-product', function () {
+    return view('single-product');
+});
 // //SignUp
 // Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 // //login
@@ -44,3 +47,9 @@ Route::post('/change-password','ProfileController@saveChangePassword');
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
 //test chuc nang phan quyen
 Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
+//chuc nang review
+Route::post('/review/id={product_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
+//chuc nang comment
+Route::post('/comment/id={product_id}','CommentController@saveComment')->name('save.comment');
+//chi tiet san pham
+Route::get('/single-product/id={product_id}','ProductController@detailProduct')->name('product-detail');

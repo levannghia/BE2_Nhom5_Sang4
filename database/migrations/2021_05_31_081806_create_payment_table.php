@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCatalogTable extends Migration
+class CreatePaymentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateCatalogTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('category_name');
-            $table->string('category_description');
-            $table->string('category_status');
+        Schema::create('payment', function (Blueprint $table) {
+            $table->increments('payment_id');
+            $table->string('payment_method');
+            $table->integer('payment_status');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateCatalogTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catalogs');
+        Schema::dropIfExists('payment');
     }
 }
