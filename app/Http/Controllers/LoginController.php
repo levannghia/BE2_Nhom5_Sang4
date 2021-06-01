@@ -34,7 +34,7 @@ class LoginController extends Controller
     }
     public function getLogin()
     {
-        return view('login');
+        return view('pages.login');
     }
     public function postSignUp(Request $request)
     {
@@ -64,7 +64,7 @@ class LoginController extends Controller
     {
         $xacThuc = array('email'=>$request->email,'password'=>$request->password);
         if(Auth::attempt($xacThuc)){
-            return redirect()->route('home')->with(['flag'=>'success','message'=>'Logged in successfully']);
+            return redirect()->route('/trang-chu')->with(['flag'=>'success','message'=>'Logged in successfully']);
         }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Login failed']);

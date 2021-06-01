@@ -95,6 +95,6 @@ class ProductController extends Controller
             'comments' => $comments,
             'products' => $products,
         ];
-        return view('single-product', $viewData);
+        return view('detail_product', $viewData);
     }
 }

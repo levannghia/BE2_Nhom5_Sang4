@@ -13,29 +13,27 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+///Frontend
+Route::get('/', 'HomeController@index');
+Route::get('/trang-chu', 'HomeController@index');
 
- Route::get('/', function () {
-     return view('index');
- })->name('home');
- Route::get('/404', function () {
-    return view('404');
-})->name('404');
-Route::get('/single-product', function () {
-    return view('single-product');
-});
-// //SignUp
-// Route::post('/sign-up','LoginController@postSignUp')->name('signup');
-// //login
-// Route::get('/dangnhap','LoginController@getLogin');
-// Route::post('/login','LoginController@postSignIn')->name('login');
-//logout
-Route::get('/logout','LoginController@Logout')->name('logout');
-//verifycation email
-//Route::get('/', 'LoginController@index');
-Auth::routes(['verify' => true]);
+//danh mục sp - home
+Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
 
-Route::get('/home', 'LoginController@index')->name('home');
-Route::resource('/product','ProductController');
+//xem chi tiet sp
+Route::get('/chi-tiet-san-pham/id={product_id}', 'HomeController@detail_product');
+
+//them gio hang
+Route::post('/save-cart','CartController@save_cart');
+Route::get('/cart', 'CartController@show_cart');
+//Xóa giỏ hàng
+Route::get('/delete-cart/{rowId}', 'CartController@delete_cart');
+//Update số lượng
+Route::post('/update-cart-qty','CartController@update_cart_qty');
+
+//thanh toán
+
+
 //profile
 Route::get('/profile','ProfileController@index')->name('profile');
 //edit profile
@@ -51,5 +49,58 @@ Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:ad
 Route::post('/review/id={product_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
 //chuc nang comment
 Route::post('/comment/id={product_id}','CommentController@saveComment')->name('save.comment');
-//chi tiet san pham
-Route::get('/single-product/id={product_id}','ProductController@detailProduct')->name('product-detail');
+//SignUp
+Route::post('/sign-up','LoginController@postSignUp')->name('signup');
+//login
+Route::get('/login','LoginController@getLogin');
+Route::post('/login','LoginController@postSignIn')->name('login');
+//logout
+Route::get('/logout','LoginController@Logout')->name('logout');
+//verifycation email
+Auth::routes(['verify' => true]);
+
+///Backend
+//Admin
+Route::get('/admin','AdminController@admin_login');
+Route::get('/dashboard','AdminController@show_dashboard');
+Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
+Route::get('/admin-logout','AdminController@logout'); //logout
+
+//Category product
+//thêm
+Route::get('/add-category-product','AdminCategoryController@add_category_product');
+//sửa
+Route::get('/edit-category/id={category_id}', 'AdminCategoryController@edit_category_product');
+//xóa
+Route::get('/delete-category/id={category_id}', 'AdminCategoryController@delete_category_product');
+//hiển thị
+Route::get('/all-category-product','AdminCategoryController@all_category_product');
+//xử lý func thêm
+Route::post('/save-category-product','AdminCategoryController@save_category_product');
+//xử lý func sửa
+Route::post('/update-category-product/id={category_id}','AdminCategoryController@update_category_product');
+
+Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_category_product');
+Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
+
+///Product
+//thêm
+Route::get('/add-product','AdminProductController@add_product');
+//sửa
+Route::get('/edit-product/id={product_id}', 'AdminProductController@edit_product');
+//xóa
+Route::get('/delete-product/id={product_id}', 'AdminProductController@delete_product');
+//hiển thị
+Route::get('/all-product','AdminProductController@all_product');
+//xử lý func thêm
+Route::post('/save-product','AdminProductController@save_product');
+//xử lý func sửa
+Route::post('/update-product/id={product_id}','AdminProductController@update_product');
+
+
+//Order
+Route::get('/all-order','AdminOrderController@all_order');
+
+//User
+Route::get('/all-user','AdminUserController@all_user');
+Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');

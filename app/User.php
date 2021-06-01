@@ -41,4 +41,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $per = array_flip(config('permission'));
         return $per[$this->role];
     }
+    
+    public function transaction() {
+        return $this->hasMany('App\Transaction', 'user_id','id');
+    }
 }
