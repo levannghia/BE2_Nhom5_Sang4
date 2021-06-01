@@ -110,6 +110,9 @@
                                     <li>
                                     <a data-toggle="tab" href="#comments" role="tab" aria-controls="conmments" aria-selected="false">Bình luận</a>
                                     </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Đánh giá</a>
+                                        </li>
                                 </ul>
                             </div>
                             <div class="tab-content">
@@ -136,7 +139,7 @@
                                     @endif
                                     <div class="product_d_table product_review_form">
                                         <form action="{{ asset('/comment/id='.$pro_detail->product_id) }}" method="POST">
-                                            {{ csrf_field() }}
+                                            @csrf
                                             <h2>Add a comment </h2>
                                             <div class="row">
                                                 <div class="col-12">
@@ -146,7 +149,7 @@
                                                 @if (Auth::check())
                                                     <div class="col-lg-6 col-md-6">
                                                         <label for="author">Name</label>
-                                                        <input id="author" name="name" type="text"
+                                                        <input id="name" name="name" type="text"
                                                             value="{{ Auth::user()->name }}">
         
                                                     </div>
@@ -158,7 +161,7 @@
                                                 @else
                                                     <div class="col-lg-6 col-md-6">
                                                         <label for="author">Name</label>
-                                                        <input id="author" name="name" type="text">
+                                                        <input id="name" name="name" type="text">
         
                                                     </div>
                                                     <div class="col-lg-6 col-md-6">
@@ -171,6 +174,84 @@
                                         </form>
                                     </div>
         
+                                </div>
+
+                                <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                    @if (isset($reviews))
+                                        @foreach ($reviews as $review)
+                                            <div class="product_info_inner">
+                                                <div class="product_ratting mb-10">
+                                                    <ul>
+                                                        @if ($review->rating)
+                                                            @php
+                                                                $ra = $review->rating;
+                                                            @endphp
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <li><a href="#"><i
+                                                                            class="fa fa-star {{ $i <= $ra ? 'active' : '' }}"
+                                                                            style="color: #999;"></i></a></li>
+                                                            @endfor
+                                                        @endif
+                                                    </ul>
+                                                    <strong>{{ isset($review->user->name) ? $review->user->name : '[N\A]' }}</strong>
+                                                    <p>{{ $review->created_at }}</p>
+                                                </div>
+                                                <div class="product_demo">
+                                                    @if ($ra == 1)
+                                                        <strong>Không thích</strong>
+                                                    @elseif ($ra == 2)
+                                                        <strong>Tạm được</strong>
+                                                    @elseif ($ra == 3)
+                                                        <strong>Bình thường</strong>
+                                                    @elseif ($ra == 4)
+                                                        <strong>Rất tốt</strong>
+                                                    @else
+                                                        <strong>Tuyệt vời</strong>
+                                                    @endif
+        
+                                                    <p>{{ $review->comment }}</p>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <li>{{ $reviews->links() }}</li>
+                                    @endif
+        
+                                    <div class="product_review_form">
+                                        <form action="{{ asset('/review/id='.$pro_detail->product_id) }}" method="POST">
+                                            @csrf
+                                            <h2>Add a review </h2>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="review_comment">Your review </label>
+                                                    <div style="display; flex; margin-top:15px">
+                                                        @php
+                                                            $listRatingText = [
+                                                                1 => 'Không thích',
+                                                                2 => 'Tạm được',
+                                                                3 => 'Bình thường',
+                                                                4 => 'Rất tốt',
+                                                                5 => 'Tuyệt vời',
+                                                            ];
+                                                        @endphp
+                                                        <span style="margin: 0 15px cursor:pointer" class="list_star">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <i class="fa fa-star" data-key="{{ $i }}"></i>
+                                                            @endfor
+                                                        </span>
+                                                        @php
+                                                            $i = 10;
+                                                        @endphp
+                                                        <span class="list_text"></span>
+                                                        <input type="hidden" name="rating" value="{{ $i }}"
+                                                            class="number_rating">
+                                                    </div>
+                                                    <textarea name="comment" id="review_comment"></textarea>
+                                                </div>
+        
+                                            </div>
+                                            <button type="submit">submit</button>
+                                        </form>
+                                    </div>
                                 </div>
                                 @endforeach
                             </div>
