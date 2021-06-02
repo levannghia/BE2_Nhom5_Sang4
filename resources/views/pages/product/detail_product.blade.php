@@ -1,4 +1,7 @@
-﻿@section('content')
+﻿@section('title')
+    Chi tiết sản phẩm
+@endsection
+@section('content')
     <style>
         .list_star i:hover {
             cursor: pointer;

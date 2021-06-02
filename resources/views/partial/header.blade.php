@@ -54,7 +54,7 @@
                         <!--logo start-->
                         <div class="col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('img\logo\logo.jpg.png')}}" alt=""></a>
+                                <a href="{{URL::to('/')}}"><img src="{{asset('img\logo\logo.jpg.png')}}" alt=""></a>
                             </div>
                         </div>
                         <!--logo end-->
@@ -81,8 +81,8 @@
                         <div class="main_menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
-                                    <li><a href="shop.html">tất cả sản phẩm</a>
+                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
+                                    <li><a href="{{url('/product')}}">tất cả sản phẩm</a>
                                         {{-- <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">
                                                 <ul>
@@ -100,7 +100,7 @@
                         <div class="mobile-menu d-lg-none">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
+                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
                                     <li><a href="shop.html">sản phẩm mới</a>
                                         <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">

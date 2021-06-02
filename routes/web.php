@@ -84,6 +84,7 @@ Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
 ///Product
+Route::resource('/product','ProductController');
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
 //sửa
