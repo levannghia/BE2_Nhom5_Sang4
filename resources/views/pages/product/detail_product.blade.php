@@ -144,8 +144,8 @@
                                             @if (isset($pro_detail->product_rating))
                                                 @for ($i = 1; $i <= 5; $i++)
                                                     <li><a href="#"><i
-                                                        class="fa fa-star {{ $i <= $pro_detail->product_rating ? 'active' : '' }}"
-                                                        style="color: #999;"></i></a></li>
+                                                            class="fa fa-star {{ $i <= $pro_detail->product_rating ? 'active' : '' }}"
+                                                            style="color: #999;"></i></a></li>
                                                 @endfor
                                             @endif
                                         </ul>

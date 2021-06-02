@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="{{route('profile')}}">home</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
                         <li>Profile</li>
                     </ul>
