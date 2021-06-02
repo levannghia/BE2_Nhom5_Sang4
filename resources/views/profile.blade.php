@@ -21,14 +21,8 @@
     <!--breadcrumbs area end-->
 
     <!-- customer login start -->
-    <div class="customer_login">
-        <div class="row">
-
-            <!--register area start-->
-            <div class="col-lg-5 col-md-5">
-                <div class="account_form register">
-                    <h2>My Profile</h2>
-                    @if (count($errors)>0)
+    <section class="main_content_area">
+        @if (count($errors)>0)
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $err)
                                 {{$err}}
@@ -38,6 +32,67 @@
                     @if (Session::has('thanhcong'))
                         <div class="alert alert-success">{{Session::get('thanhcong')}}</div>
                     @endif
+        <div class="account_dashboard">
+            <div class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <!-- Nav tabs -->
+                    <div class="dashboard_tab_button">
+                        <ul role="tablist" class="nav flex-column dashboard-list">
+                            <li><a href="#dashboard" data-toggle="tab" class="nav-link active">Dashboard</a></li>
+                            <li> <a href="#orders" data-toggle="tab" class="nav-link">Orders</a></li>
+                           
+                            <li><a href="#account-details" data-toggle="tab" class="nav-link">Account details</a></li>
+                            <li><a href="{{route('logout')}}" class="nav-link">logout</a></li>
+                        </ul>
+                    </div>    
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <!-- Tab panes -->
+                    <div class="tab-content dashboard_content">
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <h3>Dashboard </h3>
+                            <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
+                        </div>
+                        <div class="tab-pane fade" id="orders">
+                            <h3>Orders</h3>
+                            <div class="coron_table table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Actions</th>	 	 	 	
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>May 10, 2018</td>
+                                            <td><span class="success">Completed</span></td>
+                                            <td>$25.00 for 1 item </td>
+                                            <td><a href="cart.html" class="view">view</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>May 10, 2018</td>
+                                            <td>Processing</td>
+                                            <td>$17.00 for 1 item </td>
+                                            <td><a href="cart.html" class="view">view</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                       
+                        <div class="tab-pane fade" id="account-details">
+                            <h3>Account details </h3>
+                            <div class="login">
+                                <div class="login_form_container">
+                                    <div class="account_login_form">
+                                        
+                    
                     <form action="{{route('edit-profile')}}" method="POST">         
                         @csrf
                         @method('PUT')
@@ -64,12 +119,20 @@
                     </div>
                        @endif
                     </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!--register area end-->
-        </div>
-    </div>
-    <!-- customer login end -->
+        </div>      	
+</section>			
+<!-- End Maincontent  --> 
+</div>
+<!--pos page inner end-->
+</div>
+</div>
 
     </div>
     <!--pos page inner end-->

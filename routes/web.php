@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 ///Frontend
-Route::get('/', 'HomeController@index');
-Route::get('/trang-chu', 'HomeController@index');
+Route::get('/', 'LoginController@index');
+Route::get('/trang-chu', 'HomeController@index')->name('home');
 
 //danh mục sp - home
 Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
