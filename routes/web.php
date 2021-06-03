@@ -34,3 +34,6 @@ Route::get('/danh-muc-san-pham/category_id={id}', 'CategoryController@show_categ
 ///Search product
 //tìm kiếm sản phẩm
 Route::post('/search-product', 'SearchController@searchProduct');
+
+///Show all product
+Route::get('/tat-ca-san-pham', 'ProductController@showAllProduct');

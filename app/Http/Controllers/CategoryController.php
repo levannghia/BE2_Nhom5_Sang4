@@ -12,6 +12,7 @@ class CategoryController extends Controller
         $all_category = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         $all_product_by_category = Product::where('category_id', $id)->get();
         $category_name = Category::where('category_id', $id)->get();
-        return view('pages.show_product_by_category')->with('all_category', $all_category)->with('all_product_by_category', $all_product_by_category)->with('category_name', $category_name);
+        return view('pages.show_product_by_category')->with('all_category', $all_category)->with('all_product_by_category',
+         $all_product_by_category)->with('category_name', $category_name);
     }
 }

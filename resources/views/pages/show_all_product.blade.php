@@ -63,12 +63,12 @@
             <!--new product area start-->
             <div class="new_product_area">
                 <div class="block_title">
-                    <h3>Kết quả tìm kiếm</h3>
+                    <h3>Tất cả sản phẩm</h3>
                 </div>
                 
                 <div class="row">
                 
-                    @foreach ($searchproducts as $product)
+                    @foreach ($all_product as $product)
                     <div class="col-lg-3">
                         <div class="single_product">
                             
@@ -97,7 +97,7 @@
                    
                 </div>           
             </div> 
-            <!--new product area start-->  
+            
         </div>
     </div>  
 </div>

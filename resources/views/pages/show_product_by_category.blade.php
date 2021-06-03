@@ -70,7 +70,6 @@
                 
                 <div class="row">
                 
-                <div class="product_active owl-carousel">
                     @foreach ($all_product_by_category as $product)
                     <div class="col-lg-3">
                         <div class="single_product">
@@ -97,7 +96,6 @@
                         </div>
                     </div>
                     @endforeach 
-                </div> 
                    
                 </div>           
             </div> 
