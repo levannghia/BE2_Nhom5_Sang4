@@ -41,7 +41,7 @@ class HomeController extends Controller
     public function detail_product($product_id) {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         $detail_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.product_id', $product_id)->get();
-        $comments = DB::table('comments')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
+        $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
         $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
         foreach ($detail_product as $value) {
             $category_id = $value ->category_id;

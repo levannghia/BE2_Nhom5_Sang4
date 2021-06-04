@@ -19,7 +19,7 @@ class CreateOrderTable extends Migration
             $table->string('shipping_id');
             $table->string('payment_id');
             $table->float('order_total');
-            $table->float('order_status');
+            $table->integer('order_status');
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('shipping_id')->references('shipping_id')->on('shipping');

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use App\Comment;
 use App\Product;
 use App\Review;
@@ -16,8 +16,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         $products = Product::paginate(3);
-        return view('shop')->with('products',$products);
+        return view('shop')->with('products',$products)->with('category', $cate_product);
+        
     }
 
     /**
@@ -85,16 +87,27 @@ class ProductController extends Controller
     {
         //
     }
-    public function detailProduct($product_id)
-    {
-        $products = Product::find($product_id);
+    public function detail_product($product_id) {
+        $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
+        $detail_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.product_id', $product_id)->get();
         $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
         $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
-        $viewData = [        
-            'reviews' => $reviews,
-            'comments' => $comments,
-            'products' => $products,
-        ];
-        return view('detail_product', $viewData);
+        foreach ($detail_product as $value) {
+            $category_id = $value ->category_id;
+        }
+        $relate_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('categories.category_id', $category_id)->whereNotIn('products.product_id', [$product_id])->limit(6)->get();
+        return view('pages.product.detail_product')->with('category', $cate_product)->with('product_details', $detail_product)->with('relate_product', $relate_product)->with('comments', $comments)->with('reviews', $reviews);
     }
+    // public function detailProduct($product_id)
+    // {
+    //     $products = Product::find($product_id);
+    //     $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
+    //     $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
+    //     $viewData = [        
+    //         'reviews' => $reviews,
+    //         'comments' => $comments,
+    //         'products' => $products,
+    //     ];
+    //     return view('detail_product', $viewData);
+    // }
 }

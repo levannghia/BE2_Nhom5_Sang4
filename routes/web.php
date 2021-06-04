@@ -21,7 +21,7 @@ Route::get('/trang-chu', 'HomeController@index')->name('home');
 Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
 
 //xem chi tiet sp
-Route::get('/chi-tiet-san-pham/id={product_id}', 'HomeController@detail_product');
+Route::get('/chi-tiet-san-pham/id={product_id}', 'ProductController@detail_product');
 
 //them gio hang
 Route::post('/save-cart','CartController@save_cart');
