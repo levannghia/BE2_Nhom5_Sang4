@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 ///Frontend
-Route::get('/', 'HomeController@index');
-Route::get('/trang-chu', 'HomeController@index');
+Route::get('/', 'LoginController@index');
+Route::get('/trang-chu', 'HomeController@index')->name('home');
 
 //danh mục sp - home
 Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
@@ -87,6 +87,7 @@ Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
 ///Product
+Route::resource('/product','ProductController');
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
 //sửa

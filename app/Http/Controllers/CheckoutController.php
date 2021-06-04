@@ -71,6 +71,8 @@ class CheckoutController extends Controller
             Session::put('message', 'Bạn đã chọn phương thức thanh toán bằng thẻ ATM. Cảm ơn bạn đã mua hàng');
         
         }
+        Cart::destroy();
         return Redirect::to('/');
+        
     }
 }
