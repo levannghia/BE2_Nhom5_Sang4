@@ -32,8 +32,11 @@ Route::get('/delete-cart/{rowId}', 'CartController@delete_cart');
 Route::post('/update-cart-qty','CartController@update_cart_qty');
 
 //thanh toán
-
-
+Route::get('/checkout', 'CheckoutController@show_checkout')->middleware('checklogin');
+Route::post('/save-checkout', 'CheckoutController@save_checkout');
+//phương thức thanh toán
+Route::get('/payment', 'CheckoutController@show_payment')->middleware('checklogin');
+Route::post('/order-place', 'CheckoutController@order_place');
 //profile
 Route::get('/profile','ProfileController@index')->name('profile');
 //edit profile

@@ -79,18 +79,15 @@
                                <div class="img_icone">
                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                </div>
-                               <div class="product_action">
-                                   <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
-                               </div>
+                               
                             </div>
                             <div class="product_content">
                                 <span class="product_price">{{ number_format($product->product_price) }} đ</span>
-                                <h3 class="product_title"><a href="single-product.html">{{ $product->product_name }}</a></h3>
+                                <h3 class="product_title"><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}">{{ $product->product_name }}</a></h3>
                             </div>
                             <div class="product_info">
                                 <ul>
-                                    <li><a href="#" title=" Add to Wishlist ">Thêm vào giỏ hàng</a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">Xem chi tiết</a></li>
+                                    <li><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}" data-toggle="modal" data-target="#modal_box" title="Quick view">Xem chi tiết</a></li>
                                 </ul>
                             </div>
                         </div>
