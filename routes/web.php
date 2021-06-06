@@ -24,7 +24,7 @@ Route::get('/404',function(){
 Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
 
 //xem chi tiet sp
-Route::get('/chi-tiet-san-pham/id={product_id}', 'ProductController@detail_product');
+Route::get('/chi-tiet-san-pham/id={product_id}', 'ProductController@detail_product');~
 
 //them gio hang
 Route::post('/save-cart','CartController@save_cart');
@@ -115,10 +115,3 @@ Route::get('/all-order','AdminOrderController@all_order');
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
-
-///Search product
-//tìm kiếm sản phẩm
-Route::post('/search-product', 'SearchController@searchProduct');
-
-///Show all product
-Route::get('/tat-ca-san-pham', 'ProductController@showAllProduct');
