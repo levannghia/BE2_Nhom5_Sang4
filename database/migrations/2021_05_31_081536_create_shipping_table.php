@@ -15,12 +15,14 @@ class CreateShippingTable extends Migration
     {
         Schema::create('shipping', function (Blueprint $table) {
             $table->increments('shipping_id');
+            $table->string('user_id');
             $table->string('shipping_name');
             $table->string('shipping_email');
             $table->string('shipping_address');
             $table->string('shipping_phone');
-            $table->text('shipping_note');
+            $table->longText('shipping_note')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

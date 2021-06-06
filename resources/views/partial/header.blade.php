@@ -33,8 +33,8 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="header_links">
                                 <ul>
-                                    <li><a href="my-account.html" title="My account">My account</a></li>
-                                    <li><a href="cart.html" title="My cart">My cart</a></li>
+                                    <li><a href="{{ route('profile') }}" title="My account">My account</a></li>
+                                    <li><a href="{{asset('/cart')}}" title="My cart">My cart</a></li>
                                     @if (Auth::check())
                                          <li><a href="{{ route('logout') }}" title="Login">Logout</a></li>
 
@@ -54,7 +54,7 @@
                         <!--logo start-->
                         <div class="col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{URL::to('/')}}"><img src="{{asset('img\logo\logo.jpg.png')}}" alt=""></a>
+                                <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('img\logo\logo.png')}}" alt=""></a>
                             </div>
                         </div>
                         <!--logo end-->
@@ -66,9 +66,7 @@
                                         <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </div>
-                                <div class="shopping_cart">
-                                    <a href="#"><i class="fa fa-shopping-cart"></i>2Items - $209.44</i></a>
-                                </div>
+                                
                             </div>
                         </div>
                     </div> 
@@ -81,8 +79,8 @@
                         <div class="main_menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
-                                    <li><a href="{{url('/product')}}">tất cả sản phẩm</a>
+                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
+                                    <li><a href="{{url('product')}}">tất cả sản phẩm</a>
                                         {{-- <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">
                                                 <ul>
@@ -92,7 +90,7 @@
                                         </div>   --}}
                                     </li>
                                     <li><a href="#">tin tức</a></li>
-                                    <li><a href="#">Giỏ hàng</a></li>
+                                    <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
                                     <li><a href="#">Liên hệ</a></li>   
                                 </ul>
                             </nav>
@@ -100,7 +98,7 @@
                         <div class="mobile-menu d-lg-none">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
+                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
                                     <li><a href="shop.html">sản phẩm mới</a>
                                         <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">

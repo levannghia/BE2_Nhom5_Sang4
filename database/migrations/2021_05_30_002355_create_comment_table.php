@@ -21,6 +21,8 @@ class CreateCommentTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->timestamps();
+            $table->foreign('product_id')->references('product_id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

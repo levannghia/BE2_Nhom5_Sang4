@@ -15,12 +15,13 @@ class CreateReviewTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
-            $table->string('order_detail_id')->nullable();
-            $table->integer('user_id')->index()->default(0);
-            $table->integer('rating');
+            $table->string('product_id');
+            $table->string('order_detail_id');
+            $table->string('user_id')->index()->default(0);
+            $table->integer('rating')->default(0);
             $table->longText('comment');
             $table->timestamps();
+            $table->foreign('product_id')->references('product_id')->on('products');
             $table->foreign('order_detail_id')->references('order_detail_id')->on('order_details');
         });
     }

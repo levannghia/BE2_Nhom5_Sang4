@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestPassword;
 use App\Http\Requests\User\EditProfileRequest;
 use App\User;
+use App\Order;
+use App\OrderDetail;
+use App\Shipping;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +17,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('profile');
+        $getOrder = Order::where('user_id',Auth::id())->orderBy('order_id',"DESC")->get();
+        return view('profile')->with('getOrder',$getOrder);
     }
     public function editProfile(EditProfileRequest $request)
     {
@@ -60,5 +65,14 @@ class ProfileController extends Controller
         if ($user->delete()) {
             return redirect()->route('login')->with('global', 'Your account has been deleted!');
         }
+    }
+    public function orderDetail($order_id){
+        $order = Order::find($order_id);
+        $order->order_id = $order_id;
+        $order->shipping_id;
+        $shipping = DB::table('shipping')->where('shipping.shipping_id', $order->shipping_id)->limit(1)->get();
+        //$shipping = Shipping::find($order->shipping_id);
+        $orderDetail = OrderDetail::where('order_id',$order_id)->orderBy('order_detail_id',"DESC")->get();
+        return view('order_detail')->with('orderDetail',$orderDetail)->with('order',$order)->with('shipping',$shipping);
     }
 }

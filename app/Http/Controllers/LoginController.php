@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,7 +18,8 @@ class LoginController extends Controller
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         // $product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->orderby('products.product_id', 'desc')->get();
         $all_product = DB::table('products')->orderby('product_id', 'asc')->limit(4)->get();
-        return view('pages.index')->with('category', $cate_product)->with('all_product', $all_product);
+        $product_view = Product::orderby('product_view','DESC')->paginate(3);
+        return view('pages.index')->with('category', $cate_product)->with('all_product', $all_product)->with('product_view',$product_view);
     }
     public function admin()
     {
@@ -27,43 +29,9 @@ class LoginController extends Controller
     {
         return view('pages.login');
     }
-    public function postSignUp(Request $request)
-    {
-        $request->validate(
-            [
-                'email' => 'required|unique:users,email|',
-                'password' => 'required|min:6',
-                'name' => 'required',
-                'ConfirmPassword' => 'required|same:password',
-            ],
-            [
-                'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
-                'email.unique' => 'Email đã có người sử dụng'
-            ]
-        );
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->address = $request->address;
-        $user->telephone = $request->phone;
-        $user->role = 0;
-        $user->save();
-        return redirect()->route('login')->with('thanhcong', 'Account successfully created');
-    }
-
-    public function postSignIn(Request $request)
-    {
-        $xacThuc = array('email' => $request->email, 'password' => $request->password);
-        if (Auth::attempt($xacThuc)) {
-            return redirect()->route('/trang-chu')->with(['flag' => 'success', 'message' => 'Logged in successfully']);
-        } else {
-            return redirect()->back()->with(['flag' => 'danger', 'message' => 'Login failed']);
-        }
-    }
-    public function Logout()
-    {
+    
+    public function Logout(){
         Auth::logout();
-        return redirect()->back();
+        return redirect()->route('login');
     }
 }

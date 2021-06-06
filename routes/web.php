@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Auth;
 ///Frontend
 Route::get('/', 'LoginController@index');
 Route::get('/trang-chu', 'HomeController@index')->name('home');
+Route::get('/404',function(){
+    return view('404');
+})->name('404');
 
 //danh mục sp - home
 Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@show_category_home');
@@ -32,10 +35,15 @@ Route::get('/delete-cart/{rowId}', 'CartController@delete_cart');
 Route::post('/update-cart-qty','CartController@update_cart_qty');
 
 //thanh toán
-
-
+Route::get('/checkout', 'CheckoutController@show_checkout')->middleware('checklogin');
+Route::post('/save-checkout', 'CheckoutController@save_checkout');
+//phương thức thanh toán
+Route::get('/payment', 'CheckoutController@show_payment')->middleware('checklogin');
+Route::post('/order-place', 'CheckoutController@order_place');
 //profile
-Route::get('/profile','ProfileController@index')->name('profile');
+Route::get('/profile','ProfileController@index')->middleware('checklogin')->name('profile');
+//order detail
+Route::get('/order-detail/{order_id}','ProfileController@orderDetail')->middleware('checklogin');
 //edit profile
 Route::put('/profile/edit','ProfileController@editProfile')->name('edit-profile');
 //change password
@@ -44,9 +52,11 @@ Route::post('/change-password','ProfileController@saveChangePassword');
 //delete account
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
 //test chuc nang phan quyen
-Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
+//Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
 //chuc nang review
-Route::post('/review/id={product_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
+
+Route::post('/review/id={order_detail_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
+Route::get('/review/id={order_detail_id}','ReviewController@getReview')->middleware('checklogin');
 //chuc nang comment
 Route::post('/comment/id={product_id}','CommentController@saveComment')->name('save.comment');
 //SignUp

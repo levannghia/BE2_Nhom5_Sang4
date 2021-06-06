@@ -22,6 +22,7 @@ class CreateOrderDetailTable extends Migration
             $table->string('sale_quantity');
             $table->timestamps();
             $table->foreign('order_id')->references('order_id')->on('orders');
+            $table->foreign('order_detail_id')->references('order_detail_id')->on('reviews');
             $table->foreign('product_id')->references('product_id')->on('products');
         });
     }

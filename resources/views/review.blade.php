@@ -234,6 +234,7 @@
                                 @endforeach
                                 <li>{{ $comments->links() }}</li>
                             @endif
+                        
                             <div class="product_d_table product_review_form">
                                 <form action="{{ asset('/comment/id=' . $pro_detail->product_id) }}" method="POST">
                                     {{ csrf_field() }}
@@ -314,7 +315,90 @@
                                 <li>{{ $reviews->links() }}</li>
                                 {{-- <p>Sản phẩm chưa có lượt đánh giá nào</p> --}}
                             @endif
+                        @if (empty($rr))
+                            <div class="product_review_form" id="danhgia">
+                                <form id="danhgia" action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}" method="POST">
+                                    @csrf
+                                    <h2>Add a review </h2>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="review_comment">Your review </label>
+                                            <div style="display; flex; margin-top:15px">
+                                                @php
+                                                    $listRatingText = [
+                                                        1 => 'Không thích',
+                                                        2 => 'Tạm được',
+                                                        3 => 'Bình thường',
+                                                        4 => 'Rất tốt',
+                                                        5 => 'Tuyệt vời',
+                                                    ];
+                                                @endphp
+                                                <span style="margin: 0 15px" class="list_star">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        <i class="fa fa-star" data-key="{{ $i }}"></i>
+                                                    @endfor
+                                                </span>
+                                                @php
+                                                    $i = 10;
+                                                @endphp
+                                                <span class="list_text"></span>
+                                                <input type="hidden" name="rating" value="{{ $i }}"
+                                                    class="number_rating">
+                                            </div>
+                                            <textarea name="comment" id="review_comment"></textarea>
+                                        </div>
 
+                                    </div>
+                                    <button type="submit" id="btn1">submit</button>
+                                </form>
+                            </div>
+                            {{-- <p>chua co review</p> --}}
+                        @elseif (isset($rr))
+                            
+                             @if ($rr->order_detail_id==$orderDetail->order_detail_id)
+                            <p>San pham da duoc danh gia</p>
+                            @elseif ($review->user_id != Auth::id())
+                                <div class="product_review_form">
+                                    <form id="danhgia" action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}" method="POST">
+                                        @csrf
+                                        <h2>Add a review </h2>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label for="review_comment">Your review </label>
+                                                <div style="display; flex; margin-top:15px">
+                                                    @php
+                                                        $listRatingText = [
+                                                            1 => 'Không thích',
+                                                            2 => 'Tạm được',
+                                                            3 => 'Bình thường',
+                                                            4 => 'Rất tốt',
+                                                            5 => 'Tuyệt vời',
+                                                        ];
+                                                    @endphp
+                                                    <span style="margin: 0 15px" class="list_star">
+                                                        @for ($i = 1; $i <= 5; $i++)
+                                                            <i class="fa fa-star" data-key="{{ $i }}"></i>
+                                                        @endfor
+                                                    </span>
+                                                    @php
+                                                        $i = 10;
+                                                    @endphp
+                                                    <span class="list_text"></span>
+                                                    <input type="hidden" name="rating" value="{{ $i }}"
+                                                        class="number_rating">
+                                                </div>
+                                                <textarea name="comment" id="review_comment"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <button type="submit">submit</button>
+                                    </form>
+                                </div>
+
+                            @endif
+                                
+                       
+                    @endif
                         </div>
                         @endforeach
                     </div>
@@ -381,9 +465,9 @@
             }
         });
 
-        document.getElementById("btn1").onclick = function() {
-            document.getElementById("danhgia").style.display = 'none';
-        };
+        // document.getElementById("btn1").onclick = function() {
+        //     document.getElementById("danhgia").style.display = 'none';
+        // };
 
         $(function() {
             let listStar = $(".list_star .fa");

@@ -19,7 +19,7 @@
             <!--sidebar banner-->
             <div class="sidebar_widget bottom ">
                 <div class="banner_img">
-                    <a href="#"><img src="{{asset('img\banner\banner12.jpg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('img\banner\banner12a.jpg')}}" alt=""></a>
                 </div>
             </div>
             <!--sidebar banner end-->

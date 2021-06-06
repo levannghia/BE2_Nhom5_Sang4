@@ -228,6 +228,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="{{ asset('/quantri/images/2.png') }}">
+                @if (Auth::check())
+                <span class="username">
+					{{Auth::user()->name}}
+				</span>
+                @else
                 <span class="username">
 					@php
 					$name = Session::get('name');
@@ -238,12 +243,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					@endphp
 				
 				</span>
+                @endif
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Cài đặt</a></li>
+                @if (Auth::check())
+                <li><a href="{{ route('logout') }}"><i class="fa fa-key"></i> Đăng Xuất</a></li>
+                @else
                 <li><a href="{{ URL::to('/admin-logout') }}"><i class="fa fa-key"></i> Đăng Xuất</a></li>
+                @endif
             </ul>
         </li>
         <!-- user login dropdown end -->
