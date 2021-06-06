@@ -115,3 +115,10 @@ Route::get('/all-order','AdminOrderController@all_order');
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
+
+///Search product
+//tìm kiếm sản phẩm
+Route::post('/search-product', 'SearchController@searchProduct');
+
+///Show all product
+Route::get('/tat-ca-san-pham', 'ProductController@showAllProduct');

@@ -116,4 +116,10 @@ class ProductController extends Controller
     //     ];
     //     return view('detail_product', $viewData);
     // }
+
+    public function showAllProduct() {
+        $all_category = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
+        $all_product = Product::orderby('product_id', 'asc')->get();
+        return view('pages.show_all_product')->with('all_category', $all_category)->with('all_product', $all_product);
+    }
 }

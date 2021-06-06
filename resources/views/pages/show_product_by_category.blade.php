@@ -1,4 +1,4 @@
-@section('content')
+﻿@section('content')
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">
@@ -9,17 +9,16 @@
             <!--categorie menu start-->
             <div class="sidebar_widget catrgorie mb-35">
                 <h3>Danh mục sản phẩm</h3>
-                @foreach ($category as $cate)
-                <h4 class=""><a href="{{URL::to('/danh-muc-san-pham/cate='.$cate->category_id)}}">{{ $cate->category_name }}</a></h4>
+                @foreach ($all_category as $category)
+                <h4 class=""><a href="{{url('/danh-muc-san-pham/category_id='.$category->category_id)}}">{{ $category->category_name }}</a></h4>
                 @endforeach
-                
             </div>
             <!--categorie menu end-->
 
             <!--sidebar banner-->
             <div class="sidebar_widget bottom ">
                 <div class="banner_img">
-                    <a href="#"><img src="{{asset('img\banner\banner12a.jpg')}}" alt=""></a>
+                    <a href="#"><img src="{{asset('img\banner\banner12.jpg')}}" alt=""></a>
                 </div>
             </div>
             <!--sidebar banner end-->
@@ -64,71 +63,39 @@
             <!--new product area start-->
             <div class="new_product_area">
                 <div class="block_title">
-                    <h3>Sản phẩm mới nhất</h3>
+                    @foreach ($category_name as $name)
+                    <h3>{{ $name->category_name }}</h3>
+                    @endforeach
                 </div>
                 
                 <div class="row">
                 
-                <div class="product_active owl-carousel">
-                    @foreach ($all_product as $product)
+                    @foreach ($all_product_by_category as $product)
                     <div class="col-lg-3">
                         <div class="single_product">
                             
                             <div class="product_thumb">
-                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
+                               <a href="single-product.html"><img src="{{asset('img/product/'.$product->product_image)}}" alt=""></a> 
                                <div class="img_icone">
                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                </div>
-                               
-                            </div>
-                            <div class="product_content">
-                                <span class="product_price">{{ number_format($product->product_price) }} đ</span>
-                                <h3 class="product_title"><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}">{{ $product->product_name }}</a></h3>
-                            </div>
-                            <div class="product_info">
-                                <ul>
-                                    <li><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}" title="Quick view">Xem chi tiết</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach 
-                </div> 
-                   
-                </div>           
-            </div> 
-            <div class="new_product_area">
-                <div class="block_title">
-                    <h3>Sản phẩm nỗi bậc</h3>
-                </div>
-                
-                <div class="row">
-                
-                <div class="product_active owl-carousel">
-                    @foreach ($product_view as $product)
-                    <div class="col-lg-3">
-                        <div class="single_product">
-                            
-                            <div class="product_thumb">
-                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
-                               <div class="img_icone">
-                                   <img src="{{asset('img\cart\span-hot.png')}}" alt="">
+                               <div class="product_action">
+                                   <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
                                </div>
-                               
                             </div>
                             <div class="product_content">
                                 <span class="product_price">{{ number_format($product->product_price) }} đ</span>
-                                <h3 class="product_title"><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}">{{ $product->product_name }}</a></h3>
+                                <h3 class="product_title"><a href="single-product.html">{{ $product->product_name }}</a></h3>
                             </div>
                             <div class="product_info">
                                 <ul>
-                                    <li><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}" title="Quick view">Xem chi tiết</a></li>
+                                    <li><a href="#" title=" Add to Wishlist ">Thêm vào giỏ hàng</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#modal_box" title="Quick view">Xem chi tiết</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     @endforeach 
-                </div> 
                    
                 </div>           
             </div> 
@@ -137,5 +104,10 @@
     </div>  
 </div>
 <!--pos home section end-->
+</div>
+<!--pos page inner end-->
+</div>
+</div>
+<!--pos page end-->
 @endsection
 @include('layouts.master')
