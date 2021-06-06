@@ -79,7 +79,7 @@
                         <div class="main_menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
+                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
                                     <li><a href="{{url('product')}}">tất cả sản phẩm</a>
                                         {{-- <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">

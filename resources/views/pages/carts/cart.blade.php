@@ -19,9 +19,9 @@
     </div>
     <!--breadcrumbs area end-->
     
-    <!--shopping cart area start -->
-    <div class="shopping_cart_area">
-        @if (Cart::count() > 0)
+    <!--shopping cart area start -->                            
+    <div class="shopping_cart_area">                            
+        @if (Cart::count() > 0)                                 
         <form action="{{asset('/update-cart-qty')}}" method="post">
             {{ csrf_field() }}
                 <div class="row">
