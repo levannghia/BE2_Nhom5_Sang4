@@ -1,4 +1,4 @@
-﻿@section('content')
+@section('content')
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">
@@ -63,13 +63,8 @@
 
             <!--new product area start-->
             <div class="new_product_area">
-                <div class="block_title">
-                    <h3>Sản phẩm mới nhất</h3>
-                </div>
-                
                 <div class="row">
-                    <div class="product_active owl-carousel">
-                        @foreach ($all_product as $product)
+                    @foreach ($search_product as $product)
                         <div class="col-lg-3">
                             <div class="single_product">
                                 
@@ -91,45 +86,13 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach 
+                    @endforeach
+                    <div class="pages" style="float: right">
+                        {{$search_product->links()}}
                     </div> 
                 </div>           
             </div> 
-            <div class="new_product_area">
-                <div class="block_title">
-                    <h3>Sản phẩm nỗi bậc</h3>
-                </div>
-                
-                <div class="row">
-                
-                <div class="product_active owl-carousel">
-                    @foreach ($product_view as $product)
-                    <div class="col-lg-3">
-                        <div class="single_product">
-                            
-                            <div class="product_thumb">
-                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
-                               <div class="img_icone">
-                                   <img src="{{asset('img\cart\span-hot.png')}}" alt="">
-                               </div>
-                               
-                            </div>
-                            <div class="product_content">
-                                <span class="product_price">{{ number_format($product->product_price) }} đ</span>
-                                <h3 class="product_title"><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}">{{ $product->product_name }}</a></h3>
-                            </div>
-                            <div class="product_info">
-                                <ul>
-                                    <li><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}" title="Quick view">Xem chi tiết</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach 
-                </div> 
-                   
-                </div>           
-            </div> 
+             
             <!--new product area start-->  
         </div>
     </div>  

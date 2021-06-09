@@ -54,15 +54,16 @@
                         <!--logo start-->
                         <div class="col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('img\logo\logo.png')}}" alt=""></a>
+                                <a href="{{URL::to('/')}}"><img src="{{asset('img\logo\logo.png')}}" alt=""></a>
                             </div>
                         </div>
                         <!--logo end-->
                         <div class="col-lg-9 col-md-9">
                             <div class="header_right_info">
                                 <div class="search_bar">
-                                    <form action="#">
-                                        <input placeholder="Search..." type="text">
+                                    <form action="{{ asset('/search') }}" method="POST">
+                                        @csrf
+                                        <input name="search_keyword" placeholder="Tìm kiếm" type="text">
                                         <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </div>
@@ -80,16 +81,7 @@
                             <nav>
                                 <ul>
                                     <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
-                                    <li><a href="{{url('product')}}">tất cả sản phẩm</a>
-                                        {{-- <div class="mega_menu jewelry">
-                                            <div class="mega_items jewelry">
-                                                <ul>
-                                                    <li><a href="shop-list.html">shop list</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>   --}}
-                                    </li>
-                                    <li><a href="#">tin tức</a></li>
+                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a></li>
                                     <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
                                     <li><a href="#">Liên hệ</a></li>   
                                 </ul>
@@ -98,8 +90,8 @@
                         <div class="mobile-menu d-lg-none">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
-                                    <li><a href="shop.html">sản phẩm mới</a>
+                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
+                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a>
                                         <div class="mega_menu jewelry">
                                             <div class="mega_items jewelry">
                                                 <ul>
@@ -108,7 +100,6 @@
                                             </div>
                                         </div>  
                                     </li>
-                                    <li><a href="#">tin tức</a></li>
                                     <li><a href="#">Giỏ hàng</a></li>
                                     <li><a href="#">Liên hệ</a></li>
                                 </ul>

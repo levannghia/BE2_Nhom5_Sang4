@@ -5,7 +5,9 @@ use DB;
 use App\Comment;
 use App\Product;
 use App\Review;
+use App\Category;
 use Illuminate\Http\Request;
+session_start();
 
 class ProductController extends Controller
 {
@@ -116,4 +118,19 @@ class ProductController extends Controller
     //     ];
     //     return view('detail_product', $viewData);
     // }
+
+    public function show_all_product() {
+        $all_product = DB::table('products')->orderby('product_id', 'asc')->paginate(20);
+        $product_view = Product::orderby('product_view','DESC');
+        return view('pages.show_all_product')->with('all_product', $all_product)->with('product_view',$product_view);
+    }
+
+    public function search(Request $request)
+    {
+        $keywords = $request->search_keyword;
+        $cate_product = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
+
+        $search_product = Product::where('product_name', 'like', '%'.$keywords.'%')->paginate(10);
+        return view('pages.search.search')->with('category', $cate_product)->with('search_product', $search_product);
+    }
 }

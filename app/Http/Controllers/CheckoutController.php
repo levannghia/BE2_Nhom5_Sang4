@@ -26,7 +26,7 @@ class CheckoutController extends Controller
         $data = array();
         $data['shipping_name']= $request->shipping_name;
         $data['shipping_phone']= $request->shipping_phone;
-        $data['user_id']= Auth::id();
+        
         $data['shipping_email']= $request->shipping_email;
         $data['shipping_address']= $request->shipping_address;
         $data['shipping_note']= $request->shipping_note;
