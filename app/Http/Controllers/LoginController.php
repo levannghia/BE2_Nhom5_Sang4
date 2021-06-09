@@ -33,11 +33,15 @@ class LoginController extends Controller
     public function postSignIn(Request $request)
     {
         $xacThuc = array('email'=>$request->email,'password'=>$request->password);
-        if(Auth::attempt($xacThuc)){
-            return redirect()->route('home')->with(['flag'=>'success','message'=>'Logged in successfully']);
+        $role = array('role' => 1);
+        if(Auth::attempt($xacThuc) && Auth::user()->role == 1){
+            return redirect()->route('dashboards');
+        }
+        elseif(Auth::attempt($xacThuc) && Auth::user()->role == 2){
+            return redirect()->route('home');
         }
         else{
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Login failed']);
+            return redirect()->back()->with('field', 'Login failed. Incorrect account or password');
         }
     }
 

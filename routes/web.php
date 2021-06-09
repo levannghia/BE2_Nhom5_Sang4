@@ -72,7 +72,8 @@ Auth::routes(['verify' => true]);
 //Search
 Route::post('/search', 'ProductController@search');
 //All Product
-Route::get('/show-all-product','ProductController@show_all_product');
+Route::resource('/show-all-product','ProductController');
+//Route::get('/show-all-product','ProductController@show_all_product');
 
 
 
@@ -102,7 +103,6 @@ Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
 //Product
-Route::resource('/product','ProductController');
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
 //sửa
