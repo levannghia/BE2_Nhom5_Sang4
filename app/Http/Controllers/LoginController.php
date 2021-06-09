@@ -30,6 +30,21 @@ class LoginController extends Controller
         return view('pages.login');
     }
     
+    public function postSignIn(Request $request)
+    {
+        $xacThuc = array('email'=>$request->email,'password'=>$request->password);
+        $role = array('role' => 1);
+        if(Auth::attempt($xacThuc) && Auth::user()->role == 1){
+            return redirect()->route('dashboards');
+        }
+        elseif(Auth::attempt($xacThuc) && Auth::user()->role == 2){
+            return redirect()->route('home');
+        }
+        else{
+            return redirect()->back()->with('field', 'Login failed. Incorrect account or password');
+        }
+    }
+
     public function Logout(){
         Auth::logout();
         return redirect()->route('home');

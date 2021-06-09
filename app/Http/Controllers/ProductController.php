@@ -16,12 +16,36 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $products = Product::paginate(3);
         
-        return view('shop')->with('products',$products)->with('category', $cate_product);
+        $products = Product::paginate(9);
+        if($request->orderby){
+            $orderby = $request->orderby;
+            switch ($orderby){
+                case 'desc':
+                    $products = Product::orderby('product_id','DESC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'price_max':
+                    $products = Product::orderby('product_price','ASC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'price_min':
+                    $products = Product::orderby('product_price','DESC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'rating_min':
+                    $products = Product::orderby('product_rating','DESC')->paginate(6)->appends(request()->query());
+                     break;
+                case 'rating_max':
+                    $products = Product::orderby('product_rating','ASC')->paginate(6)->appends(request()->query());
+                    break;
+                default:
+                    $products = Product::orderby('product_name','ASC')->paginate(6)->appends(request()->query());
+                    break;
+
+            }
+        }
+        return view('pages.show_all_product')->with('products',$products)->with('category', $cate_product);
         
     }
 
@@ -119,11 +143,11 @@ class ProductController extends Controller
     //     return view('detail_product', $viewData);
     // }
 
-    public function show_all_product() {
-        $all_product = DB::table('products')->orderby('product_id', 'asc')->paginate(20);
-        $product_view = Product::orderby('product_view','DESC');
-        return view('pages.show_all_product')->with('all_product', $all_product)->with('product_view',$product_view);
-    }
+    // public function show_all_product() {
+    //     $all_product = DB::table('products')->orderby('product_id', 'asc')->paginate(20);
+    //     $product_view = Product::orderby('product_view','DESC');
+    //     return view('pages.show_all_product')->with('all_product', $all_product)->with('product_view',$product_view);
+    // }
 
     public function search(Request $request)
     {

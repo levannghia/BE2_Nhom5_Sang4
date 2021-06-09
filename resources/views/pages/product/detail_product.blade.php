@@ -312,7 +312,8 @@
                                     </div>
                                 @endforeach
                                 <li>{{ $reviews->links() }}</li>
-                                {{-- <p>Sản phẩm chưa có lượt đánh giá nào</p> --}}
+                            {{-- @elseif (!isset($reviews))
+                                <p>Sản phẩm chưa có lượt đánh giá nào</p> --}}
                             @endif
 
                         </div>

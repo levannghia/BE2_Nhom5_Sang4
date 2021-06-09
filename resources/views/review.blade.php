@@ -356,7 +356,7 @@
                         @elseif (isset($rr))
                             
                              @if ($rr->order_detail_id==$orderDetail->order_detail_id)
-                            <p>San pham da duoc danh gia</p>
+                            <p style="color: goldenrod">Bạn đã đánh giá sản phẩm này</p>
                             @elseif ($review->user_id != Auth::id())
                                 <div class="product_review_form">
                                     <form id="danhgia" action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}" method="POST">

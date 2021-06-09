@@ -37,7 +37,6 @@
                                     <li><a href="{{asset('/cart')}}" title="My cart">My cart</a></li>
                                     @if (Auth::check())
                                          <li><a href="{{ route('logout') }}" title="Login">Logout</a></li>
-
                                      @else
                                          <li><a href="{{ url('login') }}" title="Login">Login</a></li>
                                      @endif
