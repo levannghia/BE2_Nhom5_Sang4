@@ -63,7 +63,7 @@ Route::post('/comment/id={product_id}','CommentController@saveComment')->name('s
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
 Route::get('/login','LoginController@getLogin');
-Route::post('/login','LoginController@postSignIn')->name('login');
+Route::post('/signin','LoginController@postSignIn')->name('signin');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
 //verifycation email
@@ -73,6 +73,7 @@ Auth::routes(['verify' => true]);
 //Admin
 Route::get('/admin','AdminController@admin_login');
 Route::get('/dashboard','AdminController@show_dashboard');
+Route::get('/dashboards','AdminController@show_dashboard')->name('dashboards')->middleware('permission.checker:admin');
 Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
 Route::get('/admin-logout','AdminController@logout'); //logout
 

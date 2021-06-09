@@ -30,6 +30,17 @@ class LoginController extends Controller
         return view('pages.login');
     }
     
+    public function postSignIn(Request $request)
+    {
+        $xacThuc = array('email'=>$request->email,'password'=>$request->password);
+        if(Auth::attempt($xacThuc)){
+            return redirect()->route('home')->with(['flag'=>'success','message'=>'Logged in successfully']);
+        }
+        else{
+            return redirect()->back()->with(['flag'=>'danger','message'=>'Login failed']);
+        }
+    }
+
     public function Logout(){
         Auth::logout();
         return redirect()->route('login');
