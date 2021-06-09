@@ -28,22 +28,21 @@
                     <th style="width:30px;"></th>
                 </tr>
                 </thead>
-                {{-- <tbody>
-                @foreach ($orders as $order)
-                <tr>
-                    <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->order_total }}</td>
-                    <td>{{ $order->order_status }}</td>
-                    <td>
-                    <a  href="{{URL::to('/view-order/id='.$order->order_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o"></i>
-                        <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')" href="{{URL::to('/delete-transaction/id='.$order->transaction_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-                
+                <tbody>
+                    @foreach ($orderById as $order_detail)
+                    <tr>
+                    
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>{{ $order_detail->name }}</td>
+                        <td>{{ $order_detail->address }}</td>
+                        <td>{{ $order_detail->email }}</td>
+                        <td>{{ $order_detail->telephone }}</td>
+                        
+                        
+                        
+                    </tr>
+                    @endforeach
                 </tbody>
-                {{ $orders->links() }} --}}
             </table>
         </div>
     </div>
@@ -76,22 +75,19 @@
                     <th style="width:30px;"></th>
                 </tr>
                 </thead>
-                {{-- <tbody>
-                @foreach ($orders as $order)
+                <tbody>
                 <tr>
+                    @foreach ($orderById as $order_detail)
                     <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->order_total }}</td>
-                    <td>{{ $order->order_status }}</td>
-                    <td>
-                    <a  href="{{URL::to('/view-order/id='.$order->order_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o"></i>
-                        <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')" href="{{URL::to('/delete-transaction/id='.$order->transaction_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-trash"></i></a>
-                    </td>
+                    
+                    <td>{{ $order_detail->name }}</td>
+                    <td>{{ $order_detail->shipping_address }}</td>
+                    <td>{{ $order_detail->shipping_phone }}</td>
+                    
+                    
                 </tr>
                 @endforeach
-                
                 </tbody>
-                {{ $orders->links() }} --}}
             </table>
         </div>
     </div>
@@ -120,27 +116,21 @@
                     </th>
                     <th>Tên sản phẩm</th>
                     <th>Số lượng</th>
-                    <th>Tổng giá tiền</th>
-                    <th>Tình trạng đơn hàng</th>
+                    <th>Giá</th>
                     <th style="width:30px;"></th>
                 </tr>
                 </thead>
-                {{-- <tbody>
-                @foreach ($orders as $order)
-                <tr>
-                    <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->order_total }}</td>
-                    <td>{{ $order->order_status }}</td>
-                    <td>
-                    <a  href="{{URL::to('/view-order/id='.$order->order_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o"></i>
-                        <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')" href="{{URL::to('/delete-transaction/id='.$order->transaction_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-trash"></i></a>
-                    </td>
-                </tr>
-                @endforeach
-                
+                <tbody>
+                    @foreach ($orderDetail as $order_detail_product)
+                    <tr>
+                        
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>{{ $order_detail_product->product_name }}</td>
+                        <td>{{ $order_detail_product->sale_quantity }}</td>
+                        <td>{{ $order_detail_product->product_price }}</td>
+                    </tr>
+                    @endforeach
                 </tbody>
-                {{ $orders->links() }} --}}
             </table>
         </div>
     </div>

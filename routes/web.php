@@ -117,11 +117,12 @@ Route::post('/update-product/id={product_id}','AdminProductController@update_pro
 
 //Order
 Route::get('/all-order','AdminOrderController@all_order');
-Route::get('/view-order/{orderId}','AdminOrderController@view_order');
+Route::get('/view-detail-order/id={orderId}','AdminOrderController@view_order');
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
 
-
+//Review 
+Route::get('/all-review','AdminReviewController@all_review');
 
 

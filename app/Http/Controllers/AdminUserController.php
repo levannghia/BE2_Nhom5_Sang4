@@ -23,7 +23,7 @@ class AdminUserController extends Controller
 
     public function all_user() {
         $this->AuthLogin();
-        $user = User::all();
+        $user = DB::table('users')->paginate(20);
         $all_user = view('admin.user.all_user', ['user' => $user]);
         return view('admin_layout', ['admin.user.all_user' => $all_user]);
         

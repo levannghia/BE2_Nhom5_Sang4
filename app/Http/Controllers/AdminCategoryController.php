@@ -32,7 +32,7 @@ class AdminCategoryController extends Controller
     //liệt kê danh mục
     public function all_category_product() {
         $this->AuthLogin();
-        $category = Category::all();
+        $category = DB::table('categories')->paginate(20);
         $all_category = view('admin.category.all_category_product', ['category' => $category]);
         return view('admin_layout', ['admin.category.all_category_product' => $all_category]);
     }

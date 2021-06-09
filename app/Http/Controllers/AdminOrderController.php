@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Category;
 use App\Product;
 use App\Order;
+use App\OrderDetail;
 session_start();
 class AdminOrderController extends Controller
 {
@@ -35,6 +36,14 @@ class AdminOrderController extends Controller
     //xem đơn hàng
 
     public function view_order($orderId) {
-        return view('admin.order.view_order');
+        $this->AuthLogin();
+        
+        $orderById = Order::join('users', 'orders.user_id', '=', 'users.id')
+        ->join('shipping', 'orders.shipping_id', '=', 'shipping.shipping_id')
+        ->join('order_details', 'orders.order_id', '=', 'order_details.order_id')
+        ->select('users.*', 'shipping.*', 'orders.*', 'order_details.*')->where('orders.order_id', $orderId)->limit(1)->get();
+        $orderDetail = OrderDetail::where('order_id',$orderId)->orderBy('order_detail_id',"DESC")->get();
+        $order_detail_by_id = view('admin.order.view_order', ['orderById' => $orderById])->with('orderDetail', $orderDetail);
+        return view('admin_layout', ['admin.order.view_order'=> $order_detail_by_id]);
     }
 }

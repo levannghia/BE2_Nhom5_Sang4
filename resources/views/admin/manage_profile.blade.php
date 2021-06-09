@@ -23,12 +23,6 @@
                             <label for="exampleInputEmail1">Họ Tên</label>
                             <input type="text" name="user_name" value="{{ $data->name }}" class="form-control" id="exampleInputEmail1">
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
-                            <br>
-                            <img src="{{asset('upload/product/'.$product->product_image)}}" height="150" width="150" alt="">
-                        </div> --}}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="text" name="user_email" value="{{ $data->email }}" class="form-control" id="exampleInputEmail1" >

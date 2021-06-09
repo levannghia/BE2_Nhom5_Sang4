@@ -32,8 +32,8 @@ class AdminProductController extends Controller
     //liệt kê sp
     public function all_product() {
         $this->AuthLogin();
-        $product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->orderby('products.product_id', 'desc')->get();
-        $all_product = view('admin.product.all_product', ['product' => $product]);
+        $products = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->orderby('products.product_id', 'desc')->paginate(20);
+        $all_product = view('admin.product.all_product', ['products' => $products]);
         return view('admin_layout', ['admin.product.all_product' => $all_product]);
     }
 

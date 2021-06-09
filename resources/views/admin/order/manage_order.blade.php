@@ -35,8 +35,8 @@
               <td>{{ $order->order_total }}</td>
               <td>{{ $order->order_status }}</td>
               <td>
-                <a  href="{{URL::to('/view-order/id='.$order->order_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o"></i>
-                  <a onclick="return confirm('Bạn có chắc muốn xóa đơn hàng này không?')" href="{{URL::to('/delete-transaction/id='.$order->transaction_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-trash"></i></a>
+                <a  href="{{URL::to('/view-detail-order/id='.$order->order_id)}}" class="active styling-edit" ui-toggle-class=""><i class="fa fa-pencil-square-o"></i>
+                  
               </td>
             </tr>
             @endforeach
