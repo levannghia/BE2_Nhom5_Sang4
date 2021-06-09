@@ -69,6 +69,13 @@ Route::get('/logout','LoginController@Logout')->name('logout');
 //verifycation email
 Auth::routes(['verify' => true]);
 
+//Search
+Route::post('/search', 'ProductController@search');
+//All Product
+Route::get('/show-all-product','ProductController@show_all_product');
+
+
+
 ///Backend
 //Admin
 Route::get('/admin','AdminController@admin_login');
@@ -94,7 +101,7 @@ Route::post('/update-category-product/id={category_id}','AdminCategoryController
 Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_category_product');
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
-///Product
+//Product
 Route::resource('/product','ProductController');
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
@@ -109,10 +116,13 @@ Route::post('/save-product','AdminProductController@save_product');
 //xử lý func sửa
 Route::post('/update-product/id={product_id}','AdminProductController@update_product');
 
-
 //Order
 Route::get('/all-order','AdminOrderController@all_order');
-
+Route::get('/view-order/{orderId}','AdminOrderController@view_order');
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
+
+
+
+

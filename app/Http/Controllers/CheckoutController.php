@@ -26,7 +26,7 @@ class CheckoutController extends Controller
         $data = array();
         $data['shipping_name']= $request->shipping_name;
         $data['shipping_phone']= $request->shipping_phone;
-        $data['user_id']= Auth::id();
+        
         $data['shipping_email']= $request->shipping_email;
         $data['shipping_address']= $request->shipping_address;
         $data['shipping_note']= $request->shipping_note;
@@ -46,7 +46,7 @@ class CheckoutController extends Controller
         $data_payment['payment_method']= $request->payment_option;
         $data_payment['payment_status']= 'Đang chờ xử lý';
         $payment_id = DB::table('payment')->insertGetId($data_payment);
-        
+                                                        
         //thêm giỏ hàng
         $order_data = array();
         $order_data['user_id']= Session::get('id');

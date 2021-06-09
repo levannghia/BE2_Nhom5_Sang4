@@ -9,6 +9,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use App\Category;
 use App\Product;
+use App\Order;
 session_start();
 class AdminOrderController extends Controller
 {
@@ -26,8 +27,14 @@ class AdminOrderController extends Controller
     //liệt kê đơn hàng
     public function all_order() {
         $this->AuthLogin();
-        $order = DB::table('transactions')->join('users', 'transactions.user_id', '=', 'users.id')->select('transactions.*', 'users.name')->orderby('transactions.transaction_id', 'desc')->get();
-        $all_order = view('admin.order.manage_order', ['order' => $order]);
+        $orders = Order::join('users', 'orders.user_id', '=', 'users.id')->select('orders.*', 'users.name')->orderby('orders.order_id', 'desc')->paginate(20);
+        $all_order = view('admin.order.manage_order', ['orders' => $orders]);
         return view('admin_layout', ['admin.order.manage_order' => $all_order]);
+    }
+
+    //xem đơn hàng
+
+    public function view_order($orderId) {
+        return view('admin.order.view_order');
     }
 }
