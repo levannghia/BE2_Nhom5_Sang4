@@ -75,6 +75,11 @@ Route::post('/search', 'ProductController@search');
 Route::resource('/show-all-product','ProductController');
 //Route::get('/show-all-product','ProductController@show_all_product');
 
+//Liên hệ
+Route::get('/lien-he','ContactController@contact')->name('contact');
+Route::post('/goi-loi-nhan', 'ContactController@sendMailContactForm')->name('contact.sendMailContactForm');
+
+
 
 
 ///Backend

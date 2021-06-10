@@ -51,6 +51,15 @@ class AdminProductController extends Controller
     //xử lý thêm sp
     public function save_product(Request $request) {
         $this->AuthLogin();
+        
+		$this->validate($request, [
+			'product_name' => 'required',
+			'product_image'=>'required',
+            'product_description'=>'required',
+            'product_content'=>'required',
+            'product_price'=>'required',
+            ]
+		);
         $data = array();
         $data['product_name']= $request->product_name;
         $data['product_description']= $request->product_desc;

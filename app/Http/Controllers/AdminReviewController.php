@@ -25,8 +25,7 @@ class AdminReviewController extends Controller
         }
     }
 
-    public function all_review()
-    {
+    public function all_review(){
         $this->AuthLogin();
         $reviews = Review::join('users', 'reviews.user_id', '=', 'users.id')
         ->join('products', 'reviews.product_id', '=', 'products.product_id')

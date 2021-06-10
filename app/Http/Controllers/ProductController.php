@@ -130,25 +130,7 @@ class ProductController extends Controller
         $product->save();
         return view('pages.product.detail_product')->with('category', $cate_product)->with('product_details', $detail_product)->with('relate_product', $relate_product)->with('comments', $comments)->with('reviews', $reviews);
     }
-    // public function detailProduct($product_id)
-    // {
-    //     $products = Product::find($product_id);
-    //     $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
-    //     $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
-    //     $viewData = [        
-    //         'reviews' => $reviews,
-    //         'comments' => $comments,
-    //         'products' => $products,
-    //     ];
-    //     return view('detail_product', $viewData);
-    // }
-
-    // public function show_all_product() {
-    //     $all_product = DB::table('products')->orderby('product_id', 'asc')->paginate(20);
-    //     $product_view = Product::orderby('product_view','DESC');
-    //     return view('pages.show_all_product')->with('all_product', $all_product)->with('product_view',$product_view);
-    // }
-
+    
     public function search(Request $request)
     {
         $keywords = $request->search_keyword;

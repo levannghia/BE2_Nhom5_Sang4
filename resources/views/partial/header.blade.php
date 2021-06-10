@@ -1,4 +1,3 @@
- 
 <!--pos page start-->
 <div class="pos_page">
     <div class="container">
@@ -82,7 +81,7 @@
                                     <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
                                     <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a></li>
                                     <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
-                                    <li><a href="#">Liên hệ</a></li>   
+                                    <li><a href="{{asset('/lien-he')}}">Liên hệ</a></li>   
                                 </ul>
                             </nav>
                         </div>
@@ -90,17 +89,9 @@
                             <nav>
                                 <ul>
                                     <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
-                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a>
-                                        <div class="mega_menu jewelry">
-                                            <div class="mega_items jewelry">
-                                                <ul>
-                                                    <li><a href="shop-list.html">shop list</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li><a href="#">Giỏ hàng</a></li>
-                                    <li><a href="#">Liên hệ</a></li>
+                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a></li>
+                                    <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
+                                    <li><a href="{{asset('/lien-he')}}">Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>

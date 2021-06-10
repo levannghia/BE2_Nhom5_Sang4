@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                            <input type="file" name="product_image[]" class="form-control" id="exampleInputEmail1" multiple>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
