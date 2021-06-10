@@ -73,11 +73,12 @@
                 
                 <div class="product_active owl-carousel">
                     @foreach ($category_by_id as $procateid)
+                    <?php $photos = explode(',',$procateid->product_image);?>
                     <div class="col-lg-3">
                         <div class="single_product">
                             
                             <div class="product_thumb">
-                               <a href="{{asset('/chi-tiet-san-pham/id='.$procateid->product_id)}}"><img src="{{asset('upload/product/'.$procateid->product_image)}}" alt=""></a> 
+                               <a href="{{asset('/chi-tiet-san-pham/id='.$procateid->product_id)}}"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a> 
                                <div class="img_icone">
                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -15,7 +16,7 @@ class AdminCategoryController extends Controller
     //start function Admin page
     public function AuthLogin() {
         $admin_id = Session::get('id');
-        if($admin_id) {
+        if($admin_id || Auth::id()) {
             return Redirect::to('dashboard');
         }
         else {

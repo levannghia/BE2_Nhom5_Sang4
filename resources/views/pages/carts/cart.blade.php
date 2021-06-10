@@ -43,9 +43,10 @@
                                         </tr>
                                     </thead>
                                     @foreach($content as $cart_cont)
+                                    <?php $photos = explode(',',$cart_cont->options->image);?>
                                     <tbody>
                                         <tr> 
-                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$cart_cont->options->image)}}" alt=""></a></td>
+                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a></td>
                                             <td class="product_name"><a href="#">{{$cart_cont->name}}</a></td>
                                             <td class="product-price">{{number_format($cart_cont->price)}} VNĐ</td>
                                             <td class="product_quantity">
@@ -132,9 +133,10 @@
                                         </tr>
                                     </thead>
                                     @foreach($content as $cart_cont)
+                                    <?php $photos = explode(',',$cart_cont->options->image);?>
                                     <tbody>
                                         <tr> 
-                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$cart_cont->options->image)}}" alt=""></a></td>
+                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a></td>
                                             <td class="product_name"><a href="#">{{$cart_cont->name}}</a></td>
                                             <td class="product-price">{{number_format($cart_cont->price)}} VNĐ</td>
                                             <td class="product_quantity">

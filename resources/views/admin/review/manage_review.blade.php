@@ -25,8 +25,9 @@
           </thead>
           <tbody>
             @foreach ($reviews as $review)
+            <?php $photos = explode(',',$review->product_image);?>
             <tr>
-              <td><img src="upload/product/{{ $review->product_image }}" height="100" width="100"></td>
+              <td><img src="upload/product/{{ $photos[0]}}" height="100" width="100"></td>
               <td>{{ $review->product_name }}</td>
               <td>{{ $review->name }}</td>
               <td>{{ $review->rating }}/5</td>

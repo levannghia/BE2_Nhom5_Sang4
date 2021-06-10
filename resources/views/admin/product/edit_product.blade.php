@@ -7,6 +7,13 @@
                     Cập nhật sản phẩm
                 </header>
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $err)
+                                {{ $err }}
+                            @endforeach
+                        </div>
+                    @endif
                     @php
                     $message = Session::get('message');
                     if ($message) {
@@ -15,6 +22,7 @@
                     }
                     @endphp
                     @foreach ($product as $product) 
+                    <?php $photos = explode(',',$product->product_image);?>
                     <div class="position-center">
                         <form role="form" action="{{URL::to('/update-product/id='.$product->product_id)}}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -25,9 +33,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                            <input type="file" name="product_image[]" class="form-control" id="exampleInputEmail1" multiple>
                             <br>
-                            <img src="{{asset('upload/product/'.$product->product_image)}}" height="150" width="150" alt="">
+                            @foreach ($photos as $photo)
+                            <img src="{{asset('upload/product/'.$photo)}}" height="150" width="150" alt="">
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>

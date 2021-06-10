@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $guarded = [];
     protected $primaryKey = 'product_id';
 
     public function category(){

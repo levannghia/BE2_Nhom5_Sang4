@@ -70,11 +70,12 @@
                 <div class="row">
                     <div class="product_active owl-carousel">
                         @foreach ($all_product as $product)
+                        <?php $photos = explode(',',$product->product_image);?>
                         <div class="col-lg-3">
                             <div class="single_product">
                                 
                                 <div class="product_thumb">
-                                <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
+                                <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a> 
                                 <div class="img_icone">
                                     <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                 </div>
@@ -104,11 +105,12 @@
                 
                 <div class="product_active owl-carousel">
                     @foreach ($product_view as $product)
+                    <?php $photos = explode(',',$product->product_image);?>
                     <div class="col-lg-3">
                         <div class="single_product">
                             
                             <div class="product_thumb">
-                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$product->product_image)}}" alt=""></a> 
+                               <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a> 
                                <div class="img_icone">
                                    <img src="{{asset('img\cart\span-hot.png')}}" alt="">
                                </div>
