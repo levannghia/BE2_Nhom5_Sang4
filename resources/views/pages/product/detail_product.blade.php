@@ -75,7 +75,7 @@
             <div class="alert alert-success">{{ Session::get('thanhcong') }}</div>
         @endif
         @foreach ($product_details as $pro_detail)
-
+        <?php $photos = explode(',',$pro_detail->product_image);?>
 
             <div class="row">
                 <div class="col-lg-5 col-md-6">
@@ -85,59 +85,59 @@
                                 <li>
                                     <a class="active" data-toggle="tab" href="#p_tab1" role="tab" aria-controls="p_tab1"
                                         aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                            src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#p_tab2" role="tab" aria-controls="p_tab2"
                                         aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                            src="{{ asset('upload/product/' . $photos[1]) }}" alt=""></a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#p_tab3" role="tab" aria-controls="p_tab3"
                                         aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                            src="{{ asset('upload/product/' . $photos[2]) }}" alt=""></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content produc_tab_c">
                             <div class="tab-pane fade show active" id="p_tab1" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[0]) }}"
                                             alt=""></a>
                                     <div class="img_icone">
                                         <img src="assset\img\cart\span-new.png" alt="">
                                     </div>
                                     <div class="view_img">
                                         <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}"><i
+                                            href="{{ asset('upload/product/' . $photos[0]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="p_tab2" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[1]) }}"
                                             alt=""></a>
                                     <div class="img_icone">
                                         <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
                                     </div>
                                     <div class="view_img">
                                         <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}"><i
+                                            href="{{ asset('upload/product/' . $photos[1]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="p_tab3" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[2]) }}"
                                             alt=""></a>
                                     <div class="img_icone">
                                         <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
                                     </div>
                                     <div class="view_img">
                                         <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}">
+                                            href="{{ asset('upload/product/' . $photos[2]) }}">
                                             <i class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
@@ -165,7 +165,7 @@
                             <p>{{ $pro_detail->product_description }}</p>
                         </div>
                         <div class="content_price mb-15">
-                            <span class="product_price">{{ number_format($pro_detail->product_price) }}VNĐ</span>
+                            <span class="product_price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
                             {{-- <span class="old-price">{{ number_format($pro_detail->product_price) }}VNĐ</span> --}}
                         </div>
                         <div class="box_quantity mb-20">
@@ -296,15 +296,15 @@
                                         </div>
                                         <div class="product_demo">
                                             @if ($ra == 1)
-                                                <strong>Không thích</strong>
+                                                <strong style="color: #222222">Không thích</strong>
                                             @elseif ($ra == 2)
-                                                <strong>Tạm được</strong>
+                                                <strong style="color: #00CC00">Tạm được</strong>
                                             @elseif ($ra == 3)
-                                                <strong>Bình thường</strong>
+                                                <strong style="color: #0033FF">Bình thường</strong>
                                             @elseif ($ra == 4)
-                                                <strong>Rất tốt</strong>
+                                                <strong style="color: #FFCC00">Rất tốt</strong>
                                             @else
-                                                <strong>Tuyệt vời</strong>
+                                                <strong style="color: #CC0000">Tuyệt vời</strong>
                                             @endif
 
                                             <p>{{ $review->comment }}</p>
@@ -337,13 +337,14 @@
         <div class="row">
             <div class="single_p_active owl-carousel">
                 @foreach ($relate_product as $relate_pro)
+                <?php $photos = explode(',',$relate_pro->product_image);?>
                     <div class="col-lg-3">
 
                         <div class="single_product">
 
                             <div class="product_thumb">
                                 <a href="{{ asset('/chi-tiet-san-pham/id=' . $relate_pro->product_id) }}"><img
-                                        src="{{ asset('upload/product/' . $relate_pro->product_image) }}" alt=""></a>
+                                        src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
                                 <div class="img_icone">
                                     <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
                                 </div>

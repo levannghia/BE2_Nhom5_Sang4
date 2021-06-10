@@ -33,9 +33,10 @@
           </thead>
           <tbody>
             @foreach ($products as $product)
+            <?php $photos = explode(',',$product->product_image);?>
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-              <td><a href="{{URL::to('/edit-product/id='.$product->product_id)}}"><img src="upload/product/{{ $product->product_image }}" height="100" width="100"></a></td>
+              <td><a href="{{URL::to('/edit-product/id='.$product->product_id)}}"><img src="upload/product/{{ $photos[0] }}" height="100" width="100"></a></td>
               <td>{{ $product->product_name }}</td>
               <td>{{ $product->product_price }}</td>
               <td><span class="text-ellipsis">{{ $product->product_description }}</span></td>

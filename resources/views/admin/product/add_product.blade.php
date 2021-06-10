@@ -1,21 +1,29 @@
 @extends('admin_layout')
 @section('admin_content')
-<div class="row">
-    <div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
                     Thêm sản phẩm
                 </header>
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $err)
+                                {{ $err }}
+                            @endforeach
+                        </div>
+                    @endif
                     @php
-                    $message = Session::get('message');
-                    if ($message) {
-                        echo '<p class="text-alert">'.$message.'</p>';
-                        Session::put('message',null);
-                    }
+                        $message = Session::get('message');
+                        if ($message) {
+                            echo '<p class="text-alert">' . $message . '</p>';
+                            Session::put('message', null);
+                        }
                     @endphp
                     <div class="position-center">
-                        <form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ URL::to('/save-product') }}" method="post"
+                            enctype="multipart/form-data">
                             {{ csrf_field() }}
                             
                         <div class="form-group">
@@ -55,5 +63,5 @@
                 </div>
             </section>
 
-    </div>     
-@endsection
+        </div>
+    @endsection

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Category;
 use App\Product;
@@ -17,7 +18,7 @@ class AdminReviewController extends Controller
     //start function Admin page
     public function AuthLogin() {
         $admin_id = Session::get('id');
-        if($admin_id) {
+        if($admin_id || Auth::id()) {
             return Redirect::to('dashboard');
         }
         else {

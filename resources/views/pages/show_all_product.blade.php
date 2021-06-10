@@ -91,11 +91,11 @@
                             <div class="tab-pane fade show active" id="large" role="tabpanel">
                                 <div class="row">
                                     @foreach ($products as $item)
-                                        
+                                    <?php $photos = explode(',',$item->product_image);?>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="single_product">
                                             <div class="product_thumb">
-                                               <a href="{{url('/chi-tiet-san-pham/id='.$item->product_id)}}"><img src="{{ asset('upload/product/' . $item->product_image)}}" alt=""></a> 
+                                               <a href="{{url('/chi-tiet-san-pham/id='.$item->product_id)}}"><img src="{{ asset('upload/product/' . $photos[0])}}" alt=""></a> 
                                                <div class="img_icone">
                                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
                                                </div>
@@ -115,12 +115,13 @@
                                 </div>  
                             </div>
                             <div class="tab-pane fade" id="list" role="tabpanel">
-                                @foreach ($products as $item)                             
+                                @foreach ($products as $item)
+                                <?php $photos = explode(',',$item->product_image);?>                          
                                 <div class="product_list_item mb-35">
                                     <div class="row align-items-center">
                                         <div class="col-lg-4 col-md-6 col-sm-6">
                                             <div class="product_thumb">
-                                               <a href="{{url('/chi-tiet-san-pham/id='.$item->product_id)}}"><img src="{{ asset('upload/product/' . $item->product_image) }}" alt=""></a> 
+                                               <a href="{{url('/chi-tiet-san-pham/id='.$item->product_id)}}"><img src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a> 
                                                <div class="hot_img">
                                                    <img src="{{asset('img\cart\span-hot.png')}}" alt="">
                                                </div>
