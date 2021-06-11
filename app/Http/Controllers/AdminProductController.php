@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Session;
+use Carbon\Carbon;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
@@ -58,13 +59,13 @@ class AdminProductController extends Controller
     public function save_product(Request $request)
     {
         $this->AuthLogin();
-        
+
         $request->validate(
             [
                 'product_name' => 'required',
-                'product_description'=>'required',
-                'product_content'=>'required',
-                'product_price'=>'required',
+                'product_desc' => 'required',
+                'product_content' => 'required',
+                'product_price' => 'required',
                 'product_image' => 'required',
                 'product_image.*' => 'mimes:jpg,png,gif|max:8000',
             ]
@@ -75,6 +76,8 @@ class AdminProductController extends Controller
         $data['product_content'] = $request->product_content;
         $data['product_price'] = $request->product_price;
         $data['category_id'] = $request->product_cate;
+        $data['created_at'] = Carbon::now();
+        $data['updated_at'] = Carbon::now();
 
         $get_image = $request->file('product_image');
 
@@ -120,9 +123,10 @@ class AdminProductController extends Controller
         $data['product_content'] = $request->product_content;
         $data['product_price'] = $request->product_price;
         $data['category_id'] = $request->product_cate;
+        $data['updated_at'] = Carbon::now();
         $get_image = $request->file('product_image');
         if ($request->hasFile('product_image')) {
-             // $get_fileName = $get_image->getClientOriginalName();
+            // $get_fileName = $get_image->getClientOriginalName();
             // $fileName = current(explode('.', $get_fileName));
             // $fileExtension = $get_image->getClientOriginalExtension();
             // $new_image = $fileName . '-' . time() . '.' . $fileExtension;
@@ -131,9 +135,8 @@ class AdminProductController extends Controller
                 $get_fileName = time() . '-' . $item->getClientOriginalName();
                 $item->move('upload/product', $get_fileName);
                 $images[] = $get_fileName;
-                
             }
-           
+
             $data['product_image'] = implode(",", $images);
             DB::table('products')->where('product_id', $product_id)->update($data);
             Session::put('message', 'Sản phẩm đã được cập nhật');

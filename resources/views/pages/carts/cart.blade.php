@@ -2,6 +2,7 @@
     Giỏ hàng
 @endsection
 @section('content')
+
        <!--breadcrumbs area start-->
        <div class="breadcrumbs_area">
         <div class="row">

@@ -1,3 +1,6 @@
+@section('title')
+    Liên hệ
+@endsection
 @section('content')
 <div class="breadcrumbs_area">
     <div class="row">

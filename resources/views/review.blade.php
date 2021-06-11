@@ -2,6 +2,10 @@
     Chi tiết sản phẩm
 @endsection
 @section('content')
+@php
+    use Carbon\Carbon;
+    $now = Carbon::now();          
+@endphp
     <style>
         .list_star i:hover {
             cursor: pointer;
@@ -103,9 +107,7 @@
                             <div class="tab-pane fade show active" id="p_tab1" role="tabpanel">
                                 <div class="modal_img">
                                     <a href="#"><img src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="assset\img\cart\span-new.png" alt="">
-                                    </div>
+                                    
                                     <div class="view_img">
                                         <a class="large_view" href="{{ asset('upload/product/' . $photos[0]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
@@ -115,9 +117,7 @@
                             <div class="tab-pane fade" id="p_tab2" role="tabpanel">
                                 <div class="modal_img">
                                     <a href="#"><img src="{{ asset('upload/product/' . $photos[1]) }}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
-                                    </div>
+                                    
                                     <div class="view_img">
                                         <a class="large_view" href="{{ asset('upload/product/' . $photos[1]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
@@ -127,9 +127,7 @@
                             <div class="tab-pane fade" id="p_tab3" role="tabpanel">
                                 <div class="modal_img">
                                     <a href="#"><img src="{{ asset('upload/product/' . $photos[2]) }}" alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
-                                    </div>
+                                   
                                     <div class="view_img">
                                         <a class="large_view" href="{{ asset('upload/product/' . $photos[2]) }}">
                                             <i class="fa fa-search-plus"></i></a>
@@ -160,8 +158,12 @@
                             <p>{{ $pro_detail->product_description }}</p>
                         </div>
                         <div class="content_price mb-15">
-                            <span class="product_price">{{ number_format($pro_detail->product_price) }}VNĐ</span>
-                            {{-- <span class="old-price">{{ number_format($pro_detail->product_price) }}VNĐ</span> --}}
+                            @if ($now->diffInDays($pro_detail->created_at) >= 5)
+                            <span class="product_price">{{ number_format($pro_detail->product_price - ($pro_detail->product_price * 30/100)) }} VNĐ</span>
+                            <span class="old-price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
+                            @else
+                            <span class="product_price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
+                            @endif
                         </div>
                         <div class="box_quantity mb-20">
                             <form action="{{ asset('/save-cart') }}" method="post">

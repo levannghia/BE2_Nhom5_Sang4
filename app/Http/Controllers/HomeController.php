@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function index() {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $all_product = DB::table('products')->orderby('product_id', 'asc')->limit(4)->get();
+        $all_product = DB::table('products')->orderby('product_id', 'DESC')->limit(4)->get();
         $product_view = Product::orderby('product_view','DESC')->paginate(3);
         return view('pages.index')->with('category', $cate_product)->with('all_product', $all_product)->with('product_view',$product_view);
     }

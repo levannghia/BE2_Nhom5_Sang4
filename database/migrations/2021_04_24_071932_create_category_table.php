@@ -18,7 +18,6 @@ class CreateCategoryTable extends Migration
             $table->string('category_name');
             $table->longText('category_description');
             $table->string('category_status');
-            $table->timestamps();
         });
     }
 
