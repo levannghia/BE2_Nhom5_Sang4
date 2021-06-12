@@ -19,9 +19,9 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{ route('home') }}">home</a></li>
+                        <li><a href="{{ route('home') }}">Trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
-                        <li>All product</li>
+                        <li>tất cả sản phẩm</li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +48,19 @@
                 <!--sidebar banner-->
                 <div class="sidebar_widget bottom ">
                     <div class="banner_img">
+                        <a href="#"><img src="{{ asset('img\banner\giao-hang.jpg') }}" alt=""></a>
+                    </div>
+                </div>
+                <br>
+                <div class="sidebar_widget bottom ">
+                    <div class="banner_img">
                         <a href="#"><img src="{{ asset('img\banner\banner12a.jpg') }}" alt=""></a>
+                    </div>
+                </div>
+                <br>
+                <div class="sidebar_widget bottom ">
+                    <div class="banner_img">
+                        <a href="#"><img src="{{ asset('img\banner\tetdoanngo.jpg') }}" alt=""></a>
                     </div>
                 </div>
                 <!--sidebar banner end-->
@@ -56,8 +68,29 @@
             </div>
             <div class="col-lg-9 col-md-12">
                 <!--banner slider start-->
-                <div class="banner_slider mb-35">
-                    <img src="{{ asset('\img\banner\rau4k.jpg') }}" alt="">
+                <div class="banner_slider slider_1">
+                    <div class="slider_active owl-carousel">
+                        <div class="single_slider" style="background-image: url({{ asset('img/slider/slide_56.jpg') }})">
+                            <div class="slider_content">
+                                <div class="slider_content_inner">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_slider" style="background-image: url({{ asset('img/slider/covid.jpg') }})">
+                            <div class="slider_content">
+                                <div class="slider_content_inner">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_slider" style="background-image: url({{ asset('img/slider/rau4k.jpg') }})">
+                            <div class="slider_content">
+                                <div class="slider_content_inner">
+                                    <h1>Rau sạch 4K</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--banner slider start-->
 
@@ -80,7 +113,7 @@
                     <div class="select_option">
                         <form id="form_short" method="GET">
                             {{-- @csrf --}}
-                            <label>Sort By</label>
+                            <label>Sắp xếp theo</label>
                             <select name="orderby" id="short" class="short">
                                 <option selected="" value="1">mặc định</option>
                                 <option value="price_max">Giá tăng dần</option>

@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{asset('/')}}">home</a></li>
+                        <li><a href="{{asset('/')}}">trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
                         <li>Giỏ hàng</li>
                     </ul>

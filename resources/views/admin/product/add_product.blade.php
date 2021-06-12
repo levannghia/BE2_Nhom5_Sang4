@@ -47,6 +47,10 @@
                             <textarea style="resize:none" rows="5" name="product_content" class="form-control" id="exampleInputPassword1" placeholder="Tóm tắt sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Số lượng sản phẩm</label>
+                            <input type="text" name="product_qty" class="form-control" id="exampleInputEmail1" placeholder="Số lượng sản phẩm">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                             <select name="product_cate" class="form-control input-sm m-bot15">
                                 @foreach ($cate_product as $cate)

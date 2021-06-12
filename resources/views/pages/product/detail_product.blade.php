@@ -56,7 +56,7 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{ asset('/') }}">home</a></li>
+                        <li><a href="{{ asset('/') }}">trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
                         <li>Chi tiết sản phẩm</li>
                     </ul>
@@ -169,7 +169,7 @@
                             
                             @if ($now->diffInDays($pro_detail->created_at) >= $n)
                             
-                            <span class="product_price">{{ number_format($pro_detail->product_price - ($pro_detail->product_price * 30/100)) }} VNĐ</span>
+                            <span class="product_price">{{ number_format($pro_detail->product_price - ($pro_detail->product_price * 50/100)) }} VNĐ</span>
                             <span class="old-price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
                             @else
                             <span class="product_price">{{ number_format($pro_detail->product_price) }} VNĐ</span>

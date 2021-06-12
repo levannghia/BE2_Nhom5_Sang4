@@ -14,14 +14,14 @@
                                     @if (Auth::check())
                                     <div class="btn-group">
                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          Hello: {{ Auth::user()->name }}
+                                          Xin chào: {{ Auth::user()->name }}
                                        </button>
                                        <div class="dropdown-menu">
-                                         <a class="dropdown-item" href="{{ route('profile') }}">My profile</a>
-                                         <a class="dropdown-item" href="{{ route('changepassword') }}">Change password</a>
+                                         <a class="dropdown-item" href="{{ route('profile') }}">Tài khoản của bạn</a>
+                                         <a class="dropdown-item" href="{{ route('changepassword') }}">Thay đổi mật khẩu</a>
                                        <form action="{{ route('delete-account') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this account?')">
                                            @csrf
-                                           <button type="submit" name="deleteAccount" class="btn btn-danger">Delete the account</button>
+                                           <button type="submit" name="deleteAccount" class="btn btn-danger">Xóa tài khoản</button>
                                        </form>
                                        </div>
                                      </div>
@@ -32,12 +32,12 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="header_links">
                                 <ul>
-                                    <li><a href="{{ route('profile') }}" title="My account">My account</a></li>
-                                    <li><a href="{{asset('/cart')}}" title="My cart">My cart</a></li>
+                                    <li><a href="{{ route('profile') }}" title="My account">Tài khoản của bạn</a></li>
+                                    <li><a href="{{asset('/cart')}}" title="My cart">Giỏ hàng</a></li>
                                     @if (Auth::check())
-                                         <li><a href="{{ route('logout') }}" title="Login">Logout</a></li>
+                                         <li><a href="{{ route('logout') }}" title="Login">Đăng xuất</a></li>
                                      @else
-                                         <li><a href="{{ url('login') }}" title="Login">Login</a></li>
+                                         <li><a href="{{ url('login') }}" title="Login">Đăng nhập</a></li>
                                      @endif
                                 </ul>
                             </div>   

@@ -75,6 +75,7 @@ class AdminProductController extends Controller
         $data['product_description'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['product_price'] = $request->product_price;
+        $data['product_quantity'] = $request->product_qty;
         $data['category_id'] = $request->product_cate;
         $data['created_at'] = Carbon::now();
         $data['updated_at'] = Carbon::now();
@@ -122,6 +123,7 @@ class AdminProductController extends Controller
         $data['product_description'] = $request->product_desc;
         $data['product_content'] = $request->product_content;
         $data['product_price'] = $request->product_price;
+        $data['product_quantity'] = $request->product_qty;
         $data['category_id'] = $request->product_cate;
         $data['updated_at'] = Carbon::now();
         $get_image = $request->file('product_image');

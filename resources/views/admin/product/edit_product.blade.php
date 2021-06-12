@@ -52,6 +52,10 @@
                             <textarea style="resize:none" rows="5" name="product_content" class="form-control" id="exampleInputPassword1">{{ $product->product_content }}</textarea>
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">số lượng sản phẩm</label>
+                            <input type="text" name="product_qty" value="{{ $product->product_quantity }}" class="form-control" id="exampleInputEmail1">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                             <select name="product_cate" class="form-control input-sm m-bot15">
                                 @foreach ($cate_product as $cate)
