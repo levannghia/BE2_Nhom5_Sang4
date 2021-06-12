@@ -6,6 +6,7 @@ use App\Comment;
 use App\Product;
 use App\Review;
 use App\Category;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 session_start();
 
@@ -114,7 +115,19 @@ class ProductController extends Controller
     {
         //
     }
-    public function detail_product($product_id) {
+    public function detail_product($product_id, Request $request) {
+        $product = Product::where('product_id',$product_id)->first();
+        $view = $request->session()->has('view');
+        if($view == false){
+            $product->product_view = $product->product_view + 1;
+            $request->session()->put('view', $product->product_id); 
+            $product->save();
+        }
+        else{
+            if($request->session()->get('view') != $product->product_id){
+                $request->session()->forget('view');
+            }
+        }
 
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         $detail_product = DB::table('products')->where('products.product_id', $product_id)->get();
@@ -124,10 +137,9 @@ class ProductController extends Controller
             $category_id = $value ->category_id;
         }
         $relate_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('categories.category_id', $category_id)->whereNotIn('products.product_id', [$product_id])->limit(6)->get();
+       
         
-        $product = Product::where('product_id',$product_id)->first();
-        $product->product_view = $product->product_view + 1;
-        $product->save();
+        //$product->save();
         return view('pages.product.detail_product')->with('category', $cate_product)->with('product_details', $detail_product)->with('relate_product', $relate_product)->with('comments', $comments)->with('reviews', $reviews);
     }
     
