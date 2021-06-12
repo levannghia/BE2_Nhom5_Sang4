@@ -51,8 +51,7 @@ Route::get('/change-password','ProfileController@getChangePassword')->name('chan
 Route::post('/change-password','ProfileController@saveChangePassword');
 //delete account
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
-//test chuc nang phan quyen
-//Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
+
 //chuc nang review
 
 Route::post('/review/id={order_detail_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
@@ -63,16 +62,30 @@ Route::post('/comment/id={product_id}','CommentController@saveComment')->name('s
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
 //login
 Route::get('/login','LoginController@getLogin');
-Route::post('/login','LoginController@postSignIn')->name('login');
+Route::post('/signin','LoginController@postSignIn')->name('signin');
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
 //verifycation email
 Auth::routes(['verify' => true]);
 
+//Search
+Route::post('/search', 'ProductController@search');
+//All Product
+Route::resource('/show-all-product','ProductController');
+//Route::get('/show-all-product','ProductController@show_all_product');
+
+//Liên hệ
+Route::get('/lien-he','ContactController@contact')->name('contact');
+Route::post('/goi-loi-nhan', 'ContactController@sendMailContactForm')->name('contact.sendMailContactForm');
+
+
+
+
 ///Backend
 //Admin
 Route::get('/admin','AdminController@admin_login');
 Route::get('/dashboard','AdminController@show_dashboard');
+Route::get('/dashboards','AdminController@show_dashboard')->name('dashboards')->middleware('permission.checker:admin');
 Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
 Route::get('/admin-logout','AdminController@logout'); //logout
 
@@ -93,8 +106,7 @@ Route::post('/update-category-product/id={category_id}','AdminCategoryController
 Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_category_product');
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
-///Product
-Route::resource('/product','ProductController');
+//Product
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
 //sửa
@@ -108,10 +120,14 @@ Route::post('/save-product','AdminProductController@save_product');
 //xử lý func sửa
 Route::post('/update-product/id={product_id}','AdminProductController@update_product');
 
-
 //Order
 Route::get('/all-order','AdminOrderController@all_order');
-
+Route::get('/view-detail-order/id={orderId}','AdminOrderController@view_order');
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
+
+//Review 
+Route::get('/all-review','AdminReviewController@all_review');
+
+
