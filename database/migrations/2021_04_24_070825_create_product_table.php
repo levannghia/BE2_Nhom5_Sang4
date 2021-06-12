@@ -20,9 +20,9 @@ class CreateProductTable extends Migration
             $table->longText('product_content');
             $table->integer('product_price');
             $table->integer('product_rating')->default(0);
-            $table->integer('product_quantity')->default(0);
             $table->longText('product_image');
             $table->integer('product_view')->default(0);
+            $table->integer('product_quantity')->default(0);
             $table->string('category_id');
             $table->integer('product_total_comment')->default(0)->comment('tổng số comment');
             $table->integer('product_total_review')->default(0)->comment('tổng số đánh giá');

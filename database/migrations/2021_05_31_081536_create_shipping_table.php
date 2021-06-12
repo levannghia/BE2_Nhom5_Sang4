@@ -21,7 +21,6 @@ class CreateShippingTable extends Migration
             $table->string('shipping_phone');
             $table->longText('shipping_note')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
