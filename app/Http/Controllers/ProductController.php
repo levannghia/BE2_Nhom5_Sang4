@@ -5,7 +5,10 @@ use DB;
 use App\Comment;
 use App\Product;
 use App\Review;
+use App\Category;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
+session_start();
 
 class ProductController extends Controller
 {
@@ -14,12 +17,36 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $products = Product::paginate(3);
         
-        return view('shop')->with('products',$products)->with('category', $cate_product);
+        $products = Product::paginate(9);
+        if($request->orderby){
+            $orderby = $request->orderby;
+            switch ($orderby){
+                case 'desc':
+                    $products = Product::orderby('product_id','DESC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'price_max':
+                    $products = Product::orderby('product_price','ASC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'price_min':
+                    $products = Product::orderby('product_price','DESC')->paginate(6)->appends(request()->query());
+                    break;
+                case 'rating_min':
+                    $products = Product::orderby('product_rating','DESC')->paginate(6)->appends(request()->query());
+                     break;
+                case 'rating_max':
+                    $products = Product::orderby('product_rating','ASC')->paginate(6)->appends(request()->query());
+                    break;
+                default:
+                    $products = Product::orderby('product_name','ASC')->paginate(6)->appends(request()->query());
+                    break;
+
+            }
+        }
+        return view('pages.show_all_product')->with('products',$products)->with('category', $cate_product);
         
     }
 
@@ -88,38 +115,40 @@ class ProductController extends Controller
     {
         //
     }
-    public function detail_product($product_id) {
+    public function detail_product($product_id, Request $request) {
+        $product = Product::where('product_id',$product_id)->first();
+        $view = $request->session()->has('view');
+        if($view == false){
+            $product->product_view = $product->product_view + 1;
+            $request->session()->put('view', $product->product_id); 
+            $product->save();
+        }
+        else{
+            if($request->session()->get('view') != $product->product_id){
+                $request->session()->forget('view');
+            }
+        }
 
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $detail_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.product_id', $product_id)->get();
+        $detail_product = DB::table('products')->where('products.product_id', $product_id)->get();
         $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
         $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
         foreach ($detail_product as $value) {
             $category_id = $value ->category_id;
         }
         $relate_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('categories.category_id', $category_id)->whereNotIn('products.product_id', [$product_id])->limit(6)->get();
+       
         
-        $product = Product::where('product_id',$product_id)->first();
-        $product->product_view = $product->product_view + 1;
-        $product->save();
+        //$product->save();
         return view('pages.product.detail_product')->with('category', $cate_product)->with('product_details', $detail_product)->with('relate_product', $relate_product)->with('comments', $comments)->with('reviews', $reviews);
     }
-    // public function detailProduct($product_id)
-    // {
-    //     $products = Product::find($product_id);
-    //     $comments = Comment::where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
-    //     $reviews = Review::with('user:id,name')->where('product_id',$product_id)->orderBy('created_at',"DESC")->paginate(4);
-    //     $viewData = [        
-    //         'reviews' => $reviews,
-    //         'comments' => $comments,
-    //         'products' => $products,
-    //     ];
-    //     return view('detail_product', $viewData);
-    // }
+    
+    public function search(Request $request)
+    {
+        $keywords = $request->search_keyword;
+        $cate_product = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
 
-    public function showAllProduct() {
-        $all_category = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $all_product = Product::orderby('product_id', 'asc')->get();
-        return view('pages.show_all_product')->with('all_category', $all_category)->with('all_product', $all_product);
+        $search_product = Product::where('product_name', 'like', '%'.$keywords.'%')->paginate(10);
+        return view('pages.search.search')->with('category', $cate_product)->with('search_product', $search_product);
     }
 }

@@ -2,6 +2,10 @@
     Chi tiết sản phẩm
 @endsection
 @section('content')
+@php
+    use Carbon\Carbon;
+    $now = Carbon::now();          
+@endphp
     <style>
         .list_star i:hover {
             cursor: pointer;
@@ -71,11 +75,13 @@
                 @endforeach
             </div>
         @endif
-        @if (Session::has('thanhcong'))
+        @if (Session::has('thatbai'))
+        <div class="alert alert-danger">{{Session::get('thatbai')}}</div>
+        @elseif (Session::has('thanhcong'))
             <div class="alert alert-success">{{ Session::get('thanhcong') }}</div>
         @endif
         @foreach ($product_details as $pro_detail)
-
+            <?php $photos = explode(',', $pro_detail->product_image); ?>
 
             <div class="row">
                 <div class="col-lg-5 col-md-6">
@@ -84,60 +90,48 @@
                             <ul class="nav" role="tablist">
                                 <li>
                                     <a class="active" data-toggle="tab" href="#p_tab1" role="tab" aria-controls="p_tab1"
-                                        aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                        aria-selected="false"><img src="{{ asset('upload/product/' . $photos[0]) }}"
+                                            alt=""></a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#p_tab2" role="tab" aria-controls="p_tab2"
-                                        aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                        aria-selected="false"><img src="{{ asset('upload/product/' . $photos[1]) }}"
+                                            alt=""></a>
                                 </li>
                                 <li>
                                     <a data-toggle="tab" href="#p_tab3" role="tab" aria-controls="p_tab3"
-                                        aria-selected="false"><img
-                                            src="{{ asset('upload/product/' . $pro_detail->product_image) }}" alt=""></a>
+                                        aria-selected="false"><img src="{{ asset('upload/product/' . $photos[2]) }}"
+                                            alt=""></a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content produc_tab_c">
                             <div class="tab-pane fade show active" id="p_tab1" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
-                                            alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="assset\img\cart\span-new.png" alt="">
-                                    </div>
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
+                                    
                                     <div class="view_img">
-                                        <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}"><i
+                                        <a class="large_view" href="{{ asset('upload/product/' . $photos[0]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="p_tab2" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
-                                            alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
-                                    </div>
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[1]) }}" alt=""></a>
+                                    
                                     <div class="view_img">
-                                        <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}"><i
+                                        <a class="large_view" href="{{ asset('upload/product/' . $photos[1]) }}"><i
                                                 class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="p_tab3" role="tabpanel">
                                 <div class="modal_img">
-                                    <a href="#"><img src="{{ asset('upload/product/' . $pro_detail->product_image) }}"
-                                            alt=""></a>
-                                    <div class="img_icone">
-                                        <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
-                                    </div>
+                                    <a href="#"><img src="{{ asset('upload/product/' . $photos[2]) }}" alt=""></a>
+                                   
                                     <div class="view_img">
-                                        <a class="large_view"
-                                            href="{{ asset('upload/product/' . $pro_detail->product_image) }}">
+                                        <a class="large_view" href="{{ asset('upload/product/' . $photos[2]) }}">
                                             <i class="fa fa-search-plus"></i></a>
                                     </div>
                                 </div>
@@ -158,15 +152,20 @@
                                                     style="color: #999;"></i></a></li>
                                     @endfor
                                 @endif
-                                <li><i class="fa fa-eye" aria-hidden="true"> View: {{ $pro_detail->product_view }}</i></li>
+                                <li><i class="fa fa-eye" aria-hidden="true"> View: {{ $pro_detail->product_view }}</i>
+                                </li>
                             </ul>
                         </div>
                         <div class="product_desc">
                             <p>{{ $pro_detail->product_description }}</p>
                         </div>
                         <div class="content_price mb-15">
-                            <span class="product_price">{{ number_format($pro_detail->product_price) }}VNĐ</span>
-                            {{-- <span class="old-price">{{ number_format($pro_detail->product_price) }}VNĐ</span> --}}
+                            @if ($now->diffInDays($pro_detail->created_at) >= 5)
+                            <span class="product_price">{{ number_format($pro_detail->product_price - ($pro_detail->product_price * 30/100)) }} VNĐ</span>
+                            <span class="old-price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
+                            @else
+                            <span class="product_price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
+                            @endif
                         </div>
                         <div class="box_quantity mb-20">
                             <form action="{{ asset('/save-cart') }}" method="post">
@@ -181,7 +180,11 @@
 
                         <div class="product_stock mb-20">
                             <label>Tình trạng</label>
+                            @if ($pro_detail->product_quantity>0)
                             <span> Còn hàng </span>
+                            @else
+                            <span> Hết hàng </span>
+                            @endif
                         </div>
 
                     </div>
@@ -234,7 +237,7 @@
                                 @endforeach
                                 <li>{{ $comments->links() }}</li>
                             @endif
-                        
+
                             <div class="product_d_table product_review_form">
                                 <form action="{{ asset('/comment/id=' . $pro_detail->product_id) }}" method="POST">
                                     {{ csrf_field() }}
@@ -297,15 +300,15 @@
                                         </div>
                                         <div class="product_demo">
                                             @if ($ra == 1)
-                                                <strong>Không thích</strong>
+                                                <strong style="color: #222222">Không thích</strong>
                                             @elseif ($ra == 2)
-                                                <strong>Tạm được</strong>
+                                                <strong style="color: #00CC00">Tạm được</strong>
                                             @elseif ($ra == 3)
-                                                <strong>Bình thường</strong>
+                                                <strong style="color: #0033FF">Bình thường</strong>
                                             @elseif ($ra == 4)
-                                                <strong>Rất tốt</strong>
+                                                <strong style="color: #FFCC00">Rất tốt</strong>
                                             @else
-                                                <strong>Tuyệt vời</strong>
+                                                <strong style="color: #CC0000">Tuyệt vời</strong>
                                             @endif
 
                                             <p>{{ $review->comment }}</p>
@@ -315,51 +318,11 @@
                                 <li>{{ $reviews->links() }}</li>
                                 {{-- <p>Sản phẩm chưa có lượt đánh giá nào</p> --}}
                             @endif
-                        @if (empty($rr))
-                            <div class="product_review_form" id="danhgia">
-                                <form id="danhgia" action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}" method="POST">
-                                    @csrf
-                                    <h2>Add a review </h2>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <label for="review_comment">Your review </label>
-                                            <div style="display; flex; margin-top:15px">
-                                                @php
-                                                    $listRatingText = [
-                                                        1 => 'Không thích',
-                                                        2 => 'Tạm được',
-                                                        3 => 'Bình thường',
-                                                        4 => 'Rất tốt',
-                                                        5 => 'Tuyệt vời',
-                                                    ];
-                                                @endphp
-                                                <span style="margin: 0 15px" class="list_star">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <i class="fa fa-star" data-key="{{ $i }}"></i>
-                                                    @endfor
-                                                </span>
-                                                @php
-                                                    $i = 10;
-                                                @endphp
-                                                <span class="list_text"></span>
-                                                <input type="hidden" name="rating" value="{{ $i }}"
-                                                    class="number_rating">
-                                            </div>
-                                            <textarea name="comment" id="review_comment"></textarea>
-                                        </div>
-
-                                    </div>
-                                    <button type="submit" id="btn1">submit</button>
-                                </form>
-                            </div>
-                            {{-- <p>chua co review</p> --}}
-                        @elseif (isset($rr))
-                            
-                             @if ($rr->order_detail_id==$orderDetail->order_detail_id)
-                            <p>San pham da duoc danh gia</p>
-                            @elseif ($review->user_id != Auth::id())
-                                <div class="product_review_form">
-                                    <form id="danhgia" action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}" method="POST">
+                            @if (empty($rr))
+                                <div class="product_review_form" id="danhgia">
+                                    <form id="danhgia"
+                                        action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}"
+                                        method="POST">
                                         @csrf
                                         <h2>Add a review </h2>
                                         <div class="row">
@@ -391,14 +354,58 @@
                                             </div>
 
                                         </div>
-                                        <button type="submit">submit</button>
+                                        <button type="submit" id="btn1">submit</button>
                                     </form>
                                 </div>
+                                {{-- <p>chua co review</p> --}}
+                            @elseif (isset($rr))
+
+                                @if ($rr->order_detail_id == $orderDetail->order_detail_id)
+                                    <p style="color: goldenrod">Bạn đã đánh giá sản phẩm này</p>
+                                @elseif ($review->user_id != Auth::id())
+                                    <div class="product_review_form">
+                                        <form id="danhgia"
+                                            action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}"
+                                            method="POST">
+                                            @csrf
+                                            <h2>Add a review </h2>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label for="review_comment">Your review </label>
+                                                    <div style="display; flex; margin-top:15px">
+                                                        @php
+                                                            $listRatingText = [
+                                                                1 => 'Không thích',
+                                                                2 => 'Tạm được',
+                                                                3 => 'Bình thường',
+                                                                4 => 'Rất tốt',
+                                                                5 => 'Tuyệt vời',
+                                                            ];
+                                                        @endphp
+                                                        <span style="margin: 0 15px" class="list_star">
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                <i class="fa fa-star" data-key="{{ $i }}"></i>
+                                                            @endfor
+                                                        </span>
+                                                        @php
+                                                            $i = 10;
+                                                        @endphp
+                                                        <span class="list_text"></span>
+                                                        <input type="hidden" name="rating" value="{{ $i }}"
+                                                            class="number_rating">
+                                                    </div>
+                                                    <textarea name="comment" id="review_comment"></textarea>
+                                                </div>
+
+                                            </div>
+                                            <button type="submit">submit</button>
+                                        </form>
+                                    </div>
+
+                                @endif
+
 
                             @endif
-                                
-                       
-                    @endif
                         </div>
                         @endforeach
                     </div>
@@ -420,13 +427,14 @@
         <div class="row">
             <div class="single_p_active owl-carousel">
                 @foreach ($relate_product as $relate_pro)
+                    <?php $photos = explode(',', $relate_pro->product_image); ?>
                     <div class="col-lg-3">
 
                         <div class="single_product">
 
                             <div class="product_thumb">
                                 <a href="{{ asset('/chi-tiet-san-pham/id=' . $relate_pro->product_id) }}"><img
-                                        src="{{ asset('upload/product/' . $relate_pro->product_image) }}" alt=""></a>
+                                        src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
                                 <div class="img_icone">
                                     <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
                                 </div>

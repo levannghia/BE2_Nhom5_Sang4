@@ -1,4 +1,3 @@
- 
 <!--pos page start-->
 <div class="pos_page">
     <div class="container">
@@ -15,14 +14,14 @@
                                     @if (Auth::check())
                                     <div class="btn-group">
                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                          Hello: {{ Auth::user()->name }}
+                                          Xin chào: {{ Auth::user()->name }}
                                        </button>
                                        <div class="dropdown-menu">
-                                         <a class="dropdown-item" href="{{ route('profile') }}">My profile</a>
-                                         <a class="dropdown-item" href="{{ route('changepassword') }}">Change password</a>
+                                         <a class="dropdown-item" href="{{ route('profile') }}">Tài khoản của bạn</a>
+                                         <a class="dropdown-item" href="{{ route('changepassword') }}">Thay đổi mật khẩu</a>
                                        <form action="{{ route('delete-account') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this account?')">
                                            @csrf
-                                           <button type="submit" name="deleteAccount" class="btn btn-danger">Delete the account</button>
+                                           <button type="submit" name="deleteAccount" class="btn btn-danger">Xóa tài khoản</button>
                                        </form>
                                        </div>
                                      </div>
@@ -33,13 +32,12 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="header_links">
                                 <ul>
-                                    <li><a href="{{ route('profile') }}" title="My account">My account</a></li>
-                                    <li><a href="{{asset('/cart')}}" title="My cart">My cart</a></li>
+                                    <li><a href="{{ route('profile') }}" title="My account">Tài khoản của bạn</a></li>
+                                    <li><a href="{{asset('/cart')}}" title="My cart">Giỏ hàng</a></li>
                                     @if (Auth::check())
-                                         <li><a href="{{ route('logout') }}" title="Login">Logout</a></li>
-
+                                         <li><a href="{{ route('logout') }}" title="Login">Đăng xuất</a></li>
                                      @else
-                                         <li><a href="{{ url('login') }}" title="Login">Login</a></li>
+                                         <li><a href="{{ url('login') }}" title="Login">Đăng nhập</a></li>
                                      @endif
                                 </ul>
                             </div>   
@@ -54,16 +52,22 @@
                         <!--logo start-->
                         <div class="col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="{{URL::to('/trang-chu')}}"><img src="{{asset('img\logo\logo.png')}}" alt=""></a>
+                                <a href="{{URL::to('/')}}"><img src="{{asset('img\logo\logo.png')}}" alt=""></a>
                             </div>
                         </div>
                         <!--logo end-->
                         <div class="col-lg-9 col-md-9">
                             <div class="header_right_info">
                                 <div class="search_bar">
+<<<<<<< HEAD
                                     <form action="/search-product" method="POST">
                                     {{csrf_field()}}
                                         <input placeholder="Search..." type="text" name="keyword">
+=======
+                                    <form action="{{ asset('/search') }}" method="POST">
+                                        @csrf
+                                        <input name="search_keyword" placeholder="Tìm kiếm" type="text">
+>>>>>>> ThanhPhat2
                                         <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
                                 </div>
@@ -81,37 +85,19 @@
                             <nav>
                                 <ul>
                                     <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
-                                    <li><a href="{{url('product')}}">tất cả sản phẩm</a>
-                                        {{-- <div class="mega_menu jewelry">
-                                            <div class="mega_items jewelry">
-                                                <ul>
-                                                    <li><a href="shop-list.html">shop list</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>   --}}
-                                    </li>
-                                    <li><a href="#">tin tức</a></li>
+                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a></li>
                                     <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
-                                    <li><a href="#">Liên hệ</a></li>   
+                                    <li><a href="{{asset('/lien-he')}}">Liên hệ</a></li>   
                                 </ul>
                             </nav>
                         </div>
                         <div class="mobile-menu d-lg-none">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="{{URL::to('/trang-chu')}}">trang chủ</a></li>
-                                    <li><a href="shop.html">sản phẩm mới</a>
-                                        <div class="mega_menu jewelry">
-                                            <div class="mega_items jewelry">
-                                                <ul>
-                                                    <li><a href="shop-list.html">shop list</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>  
-                                    </li>
-                                    <li><a href="#">tin tức</a></li>
-                                    <li><a href="#">Giỏ hàng</a></li>
-                                    <li><a href="#">Liên hệ</a></li>
+                                    <li class="active"><a href="{{URL::to('/')}}">trang chủ</a></li>
+                                    <li><a href="{{asset('/show-all-product')}}">tất cả sản phẩm</a></li>
+                                    <li><a href="{{asset('/cart')}}">Giỏ hàng</a></li>
+                                    <li><a href="{{asset('/lien-he')}}">Liên hệ</a></li>
                                 </ul>
                             </nav>
                         </div>

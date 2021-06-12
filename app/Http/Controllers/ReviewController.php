@@ -17,7 +17,7 @@ class ReviewController extends Controller
     public function getReview($order_detail_id) {
         $orderDetail = OrderDetail::find($order_detail_id);
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $detail_product = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.product_id', $orderDetail->product_id)->get();
+        $detail_product = DB::table('products')->where('products.product_id', $orderDetail->product_id)->get();
         $comments = Comment::where('product_id',$orderDetail->product_id)->orderBy('created_at',"DESC")->paginate(4);
         $reviews = Review::with('user:id,name')->where('product_id',$orderDetail->product_id)->orderBy('created_at',"DESC")->paginate(4);
         foreach ($detail_product as $value) {

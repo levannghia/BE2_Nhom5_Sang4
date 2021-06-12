@@ -2,13 +2,14 @@
     Giỏ hàng
 @endsection
 @section('content')
+
        <!--breadcrumbs area start-->
        <div class="breadcrumbs_area">
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{asset('/')}}">home</a></li>
+                        <li><a href="{{asset('/')}}">trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
                         <li>Giỏ hàng</li>
                     </ul>
@@ -43,9 +44,10 @@
                                         </tr>
                                     </thead>
                                     @foreach($content as $cart_cont)
+                                    <?php $photos = explode(',',$cart_cont->options->image);?>
                                     <tbody>
                                         <tr> 
-                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$cart_cont->options->image)}}" alt=""></a></td>
+                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a></td>
                                             <td class="product_name"><a href="#">{{$cart_cont->name}}</a></td>
                                             <td class="product-price">{{number_format($cart_cont->price)}} VNĐ</td>
                                             <td class="product_quantity">
@@ -132,9 +134,10 @@
                                         </tr>
                                     </thead>
                                     @foreach($content as $cart_cont)
+                                    <?php $photos = explode(',',$cart_cont->options->image);?>
                                     <tbody>
                                         <tr> 
-                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$cart_cont->options->image)}}" alt=""></a></td>
+                                            <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a></td>
                                             <td class="product_name"><a href="#">{{$cart_cont->name}}</a></td>
                                             <td class="product-price">{{number_format($cart_cont->price)}} VNĐ</td>
                                             <td class="product_quantity">

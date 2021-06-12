@@ -7,9 +7,11 @@ use DB;
 use Carbon\Carbon;
 use Session;
 use App\Http\Requests;
+use App\OrderDetail;
 use Illuminate\Support\Facades\Redirect;
 use App\Shipping;
 use App\Payment;
+use App\Product;
 use Cart;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,13 +63,20 @@ class CheckoutController extends Controller
         $content = Cart::content();
         foreach($content as $item) {
             $order_detail = array();
+            $ps = array();
             $order_detail['order_id']= $order_id;
             $order_detail['product_id']= $item->id;
             $order_detail['product_name']= $item->name;
             $order_detail['product_price']= $item->price;
             $order_detail['sale_quantity']= $item->qty;
             $order_detail_id = DB::table('order_details')->insert($order_detail);
+            //Trừ số lượng sản phẩm đã mua
+            $prd = Product::find($item->id);
+            $ps['product_quantity'] = $prd->product_quantity - $item->qty;
+            $products = DB::table('products')->where('product_id',$item->id)->update($ps);
         }
+        //echo dd($order_detail_id);
+        
         if($data_payment['payment_method'] == 1) {
             Session::put('message', 'Bạn đã chọn phương thức thanh toán khi nhận hàng. Cảm ơn bạn đã mua hàng');
             

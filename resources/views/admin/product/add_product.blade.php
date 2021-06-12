@@ -1,21 +1,29 @@
 @extends('admin_layout')
 @section('admin_content')
-<div class="row">
-    <div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
                     Thêm sản phẩm
                 </header>
                 <div class="panel-body">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $err)
+                                {{ $err }}
+                            @endforeach
+                        </div>
+                    @endif
                     @php
-                    $message = Session::get('message');
-                    if ($message) {
-                        echo '<p class="text-alert">'.$message.'</p>';
-                        Session::put('message',null);
-                    }
+                        $message = Session::get('message');
+                        if ($message) {
+                            echo '<p class="text-alert">' . $message . '</p>';
+                            Session::put('message', null);
+                        }
                     @endphp
                     <div class="position-center">
-                        <form role="form" action="{{URL::to('/save-product')}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ URL::to('/save-product') }}" method="post"
+                            enctype="multipart/form-data">
                             {{ csrf_field() }}
                             
                         <div class="form-group">
@@ -24,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                            <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                            <input type="file" name="product_image[]" class="form-control" id="exampleInputEmail1" multiple>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
@@ -37,6 +45,10 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tóm tắt sản phẩm</label>
                             <textarea style="resize:none" rows="5" name="product_content" class="form-control" id="exampleInputPassword1" placeholder="Tóm tắt sản phẩm"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Số lượng sản phẩm</label>
+                            <input type="text" name="product_qty" class="form-control" id="exampleInputEmail1" placeholder="Số lượng sản phẩm">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Danh mục sản phẩm</label>
@@ -55,5 +67,5 @@
                 </div>
             </section>
 
-    </div>     
-@endsection
+        </div>
+    @endsection

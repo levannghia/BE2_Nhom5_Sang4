@@ -1,29 +1,28 @@
 <!--footer area start-->
+<br>
+<div></div>
 <div class="footer_area">
     <div class="footer_top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="footer_widget">
                         <h3>About us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Với hơn 30 năm kinh nghiệm trong lĩnh vực thực phẩm, chúng tôi tự tin sẽ làm hài lòng khách hàng - Farm Store</p>
                         <div class="footer_widget_contect">
-                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>  19 Interpro Road Madison, AL 35758, USA</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>Địa chỉ: 53 Võ Văn Ngân - Phường Linh Chiểu - Quận Thủ Đức - Thành phố Hồ Chí Minh</p>
 
                             <p><i class="fa fa-mobile" aria-hidden="true"></i> (012) 234 432 3568</p>
-                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact@plazathemes.com </a>
+                            <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i> thanhphat147@gmail.com </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer_widget">
-                        <h3>My Account</h3>
+                        <h3>Tài khoản của bạn</h3>
                         <ul>
-                            <li><a href="#">Your Account</a></li>
-                            <li><a href="#">My orders</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">My addresses</a></li>
-                            <li><a href="#">Login</a></li>
+                            <li><a href="{{ route('profile') }}">Xem thông tin</a></li>
+                            <li><a href="{{ url('login') }}">Đăng nhập ngay</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,23 +30,8 @@
                     <div class="footer_widget">
                         <h3>Informations</h3>
                         <ul>
-                            <li><a href="#">Specials</a></li>
-                            <li><a href="#">Our store(s)!</a></li>
-                            <li><a href="#">My credit slips</a></li>
-                            <li><a href="#">Terms and conditions</a></li>
-                            <li><a href="#">About us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer_widget">
-                        <h3>extras</h3>
-                        <ul>
-                            <li><a href="#"> Brands</a></li>
-                            <li><a href="#"> Gift Vouchers </a></li>
-                            <li><a href="#"> Affiliates </a></li>
-                            <li><a href="#"> Specials </a></li>
-                            <li><a href="#"> Privacy policy </a></li>
+                            <li><a href="{{asset('/show-all-product')}}">Our store(s)!</a></li>
+                            <li><a href="{{asset('/lien-he')}}">About us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -60,11 +44,10 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
                         <ul>
-                            <li><a href="#"> about us </a></li>
-                            <li><a href="#">  Customer Service  </a></li>
-                            <li><a href="#">  Privacy Policy  </a></li>
+                            <li><a href="{{asset('/lien-he')}}"> about us </a></li>
+                            
                         </ul>
-                        <p>Copyright &copy; 2018 <a href="#">Pos Coron</a>. All rights reserved. </p>
+                        <p>Copyright &copy; 2018 <a href="#">Farm store</a>. All rights reserved. </p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

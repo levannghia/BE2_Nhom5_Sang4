@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -15,7 +16,7 @@ class AdminCategoryController extends Controller
     //start function Admin page
     public function AuthLogin() {
         $admin_id = Session::get('id');
-        if($admin_id) {
+        if($admin_id || Auth::id()) {
             return Redirect::to('dashboard');
         }
         else {
@@ -32,7 +33,7 @@ class AdminCategoryController extends Controller
     //liệt kê danh mục
     public function all_category_product() {
         $this->AuthLogin();
-        $category = Category::all();
+        $category = DB::table('categories')->paginate(20);
         $all_category = view('admin.category.all_category_product', ['category' => $category]);
         return view('admin_layout', ['admin.category.all_category_product' => $all_category]);
     }

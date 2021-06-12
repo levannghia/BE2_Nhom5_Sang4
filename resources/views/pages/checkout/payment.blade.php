@@ -79,7 +79,7 @@
                             <div class="row">
                                 <div class="payment_method" style="margin-left: 20px">
                                     <div class="panel-default">
-                                        <input id="payment" name="payment_option" type="radio" data-target="createp_account" value="1">
+                                        <input id="payment" name="payment_option" type="radio" data-target="createp_account" value="1" checked="checked">
                                         <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh toán khi nhận hàng (COD)</label>
 
                                         {{-- <div id="method" class="collapse one" data-parent="#accordion">
@@ -118,7 +118,11 @@
                         <div class="row">
                             <div class="payment_method" style="margin-left: 20px">
                                 <div class="panel-default">
+<<<<<<< HEAD
                                     <input id="payment" name="payment_option" type="radio" data-target="createp_account" value="1" checked="checked">
+=======
+                                    <input id="payment" name="payment_option" type="radio"  value="1" checked="checked">
+>>>>>>> ThanhPhat2
                                     <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh toán khi nhận hàng (COD)</label>
 
                                     {{-- <div id="method" class="collapse one" data-parent="#accordion">
@@ -128,7 +132,7 @@
                                     </div> --}}
                                 </div> 
                                 <div class="panel-default">
-                                    <input id="payment_defult" name="payment_option" type="radio" data-target="createp_account" value="2">
+                                    <input id="payment_defult" name="payment_option" type="radio" value="2" >
                                     <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Trả bằng thẻ ATM 
                                     <img src="{{asset('img\visha\papyel1.png')}}" alt=""></label>
 
