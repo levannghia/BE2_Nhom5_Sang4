@@ -365,7 +365,7 @@
                             </div>
                             <div class="product_content">
                                 @if ($now->diffInDays($relate_pro->created_at) >= $n)
-                                <span class="product_price">{{ number_format($relate_pro->product_price - ($relate_pro->product_price *30/100)) }}</span>
+                                <span class="product_price">{{ number_format($relate_pro->product_price - ($relate_pro->product_price *50/100)) }}</span>
                                 @else
                                 <span class="product_price">{{ number_format($relate_pro->product_price) }} VNĐ</span>
                                 @endif
