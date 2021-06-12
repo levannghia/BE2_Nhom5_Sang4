@@ -35,4 +35,5 @@ class AdminReviewController extends Controller
         $review_by_id = view('admin.review.manage_review', ['reviews' => $reviews]);
         return view('admin_layout', ['admin.review.manage_review'=> $review_by_id]);
     }
+    
 }

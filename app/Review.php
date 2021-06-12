@@ -22,4 +22,5 @@ class Review extends Model
     public function OrderDetail() {
         return $this->belongsTo('App\OrderDetail', 'order_detail_id', 'order_detail_id');
     }
+    
 }

@@ -23,6 +23,7 @@ class CommentController extends Controller
                 'comment.required' => 'Bạn chưa điền vào trường nhận xét.',
             ]
         );
+        
 
         $comment = new Comment();
         $comment->product_id = $product_id;

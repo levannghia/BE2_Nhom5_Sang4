@@ -23,6 +23,7 @@ class CheckoutController extends Controller
         return view('pages.checkout.checkout');
     }
 
+    
     public function save_checkout(Request $request) {
 
         $data = array();

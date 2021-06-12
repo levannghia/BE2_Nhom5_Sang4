@@ -8,4 +8,5 @@ class Order extends Model
 {
     public $timestamps = true;
     protected $primaryKey = 'order_id';
+    
 }

@@ -18,6 +18,7 @@ class ContactController extends Controller
     {
         return view('pages.contact.contact');
     }
+    
 
     public function sendMailContactForm(Request $request)
     {

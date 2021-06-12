@@ -28,4 +28,5 @@ class CheckLogin
         }
         return redirect()->route('login');
     }
+    
 }

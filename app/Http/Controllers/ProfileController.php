@@ -22,6 +22,7 @@ class ProfileController extends Controller
     }
     public function editProfile(EditProfileRequest $request)
     {
+        
         $this->validate($request, 
         [
             'phone' => 'digits:10|numeric'

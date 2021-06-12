@@ -17,4 +17,5 @@ class OrderDetail extends Model
     public function Review() {
         return $this->hasOne('App\Review', 'order_detail_id', 'order_detail_id');
     }
+    
 }

@@ -21,6 +21,7 @@ class ProductController extends Controller
     {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         
+        
         $products = Product::paginate(9);
         if($request->orderby){
             $orderby = $request->orderby;

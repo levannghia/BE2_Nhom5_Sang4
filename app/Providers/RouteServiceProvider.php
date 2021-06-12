@@ -48,6 +48,7 @@ class RouteServiceProvider extends ServiceProvider
 
         //
     }
+    
 
     /**
      * Define the "web" routes for the application.

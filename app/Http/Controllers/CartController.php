@@ -54,6 +54,7 @@ class CartController extends Controller
         
     }
 
+    
 
     public function delete_cart($rowId) {
         Cart::update($rowId, 0);
