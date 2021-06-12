@@ -105,4 +105,5 @@ class AdminCategoryController extends Controller
         $cate_name = DB::table('categories')->where('category_id', $category_id)->get();
         return view('pages.category.show_category')->with('category', $cate_product)->with('category_by_id', $category_by_id)->with('cate_name', $cate_name);
     }
+    
 }

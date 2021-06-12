@@ -53,6 +53,7 @@ class AdminProductController extends Controller
         return view('admin_layout', ['admin.product.edit_product' => $edit_product]);
     }
 
+    
 
     ///Các hàm xử lý
     //xử lý thêm sp

@@ -27,7 +27,7 @@ Route::get('/danh-muc-san-pham/cate={category_id}', 'AdminCategoryController@sho
 Route::get('/chi-tiet-san-pham/id={product_id}', 'ProductController@detail_product');~
 
 //them gio hang
-Route::post('/save-cart','CartController@save_cart');
+// Route::post('/save-cart','CartController@save_cart');
 Route::get('/cart', 'CartController@show_cart');
 //Xóa giỏ hàng
 Route::get('/delete-cart/{rowId}', 'CartController@delete_cart');

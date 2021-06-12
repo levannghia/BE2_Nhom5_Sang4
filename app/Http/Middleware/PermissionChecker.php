@@ -22,4 +22,5 @@ class PermissionChecker
         }
         return redirect()->route('404');
     }
+    
 }

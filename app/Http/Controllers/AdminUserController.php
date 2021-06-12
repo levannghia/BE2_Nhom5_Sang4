@@ -37,4 +37,5 @@ class AdminUserController extends Controller
         Session::put('message', 'Đã xóa tài khoản');
         return Redirect::to('all-user');
     }
+    
 }

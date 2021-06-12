@@ -25,6 +25,7 @@ class LoginController extends Controller
     {
         return view('admin');
     }
+    
     public function getLogin()
     {
         return view('pages.login');

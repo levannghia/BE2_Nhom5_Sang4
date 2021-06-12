@@ -28,5 +28,6 @@ class EditProfileRequest extends FormRequest
             'address' => 'required',
             'phone' => 'required',
         ];
+        
     }
 }

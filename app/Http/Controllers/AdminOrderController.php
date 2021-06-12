@@ -47,4 +47,5 @@ class AdminOrderController extends Controller
         $order_detail_by_id = view('admin.order.view_order', ['orderById' => $orderById])->with('orderDetail', $orderDetail);
         return view('admin_layout', ['admin.order.view_order'=> $order_detail_by_id]);
     }
+    
 }

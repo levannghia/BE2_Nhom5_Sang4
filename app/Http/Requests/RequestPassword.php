@@ -38,5 +38,6 @@ class RequestPassword extends FormRequest
             'confirmpassword.required'=>'please enter the confirm password field',
             'confirmpassword.same'=>'Confirmation password is not correct',
         ];
+        
     }
 }
