@@ -76,7 +76,9 @@
                 @endforeach
             </div>
         @endif
-        @if (Session::has('thanhcong'))
+        @if (Session::has('thatbai'))
+        <div class="alert alert-danger">{{Session::get('thatbai')}}</div>
+        @elseif (Session::has('thanhcong'))
             <div class="alert alert-success">{{ Session::get('thanhcong') }}</div>
         @endif
         @foreach ($product_details as $pro_detail)
@@ -188,7 +190,12 @@
 
                         <div class="product_stock mb-20">
                             <label>Tình trạng</label>
+                            @if ($pro_detail->product_quantity>0)
                             <span> Còn hàng </span>
+                            @else
+                            <span> Hết hàng </span>
+                            @endif
+                            
                         </div>
 
                     </div>

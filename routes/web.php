@@ -51,8 +51,7 @@ Route::get('/change-password','ProfileController@getChangePassword')->name('chan
 Route::post('/change-password','ProfileController@saveChangePassword');
 //delete account
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
-//test chuc nang phan quyen
-//Route::get('/admin', 'LoginController@admin')->middleware('permission.checker:admin');
+
 //chuc nang review
 
 Route::post('/review/id={order_detail_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');

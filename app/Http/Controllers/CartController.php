@@ -29,20 +29,29 @@ class CartController extends Controller
         $product_detail = DB::table('products')->where('product_id', $productid)->first();
 
         
-        $data['id']= $product_detail->product_id;
-        $data['qty']= $product_qty;
-        $data['name']= $product_detail->product_name;
-        if($now->diffInDays($product_detail->created_at) >= 5){
-            $data['price']= $product_detail->product_price - ($product_detail->product_price*30/100);
+        
+        if($data['qty']= $product_qty > $product_detail->product_quantity){
+            //echo dd('San pham lon qua ko dk');
+            return redirect()->back()->with('thatbai','Số lượng bạn cần mua lớn hơn số lượng sản phẩm còn lại trong kho');
         }
         else{
-            $data['price']= $product_detail->product_price;
+            $data['id']= $product_detail->product_id;
+            $data['qty']= $product_qty;
+            $data['name']= $product_detail->product_name;
+            if($now->diffInDays($product_detail->created_at) >= 5){
+                $data['price']= $product_detail->product_price - ($product_detail->product_price*30/100);
+            }
+            else{
+                $data['price']= $product_detail->product_price;
+            }
+            $data['weight']= $product_detail->product_price;
+            $data['options']['image']= $product_detail->product_image;
+            Cart::add($data);
+            return Redirect::to('/cart');
         }
-        $data['weight']= $product_detail->product_price;
-        $data['options']['image']= $product_detail->product_image;
-        Cart::add($data);
+        
         // Cart::add('293ad', 'Product 1', 1, 9.99, 550);
-        return Redirect::to('/cart');
+        
     }
 
 

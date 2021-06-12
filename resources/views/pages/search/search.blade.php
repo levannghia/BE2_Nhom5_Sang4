@@ -1,4 +1,12 @@
+@section('title')
+    Tìm kiếm
+@endsection
 @section('content')
+@php
+use Carbon\Carbon;
+$now = Carbon::now();
+$n = 5;
+@endphp
 <!--pos home section-->
 <div class=" pos_home_section">
     <div class="row pos_home">
@@ -72,12 +80,24 @@
                                 <div class="product_thumb">
                                 <a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a> 
                                 <div class="img_icone">
-                                    <img src="{{asset('img\cart\span-new.png')}}" alt="">
+                                    @if ($now->diffInDays($product->created_at) >= $n)
+                                    <img src="{{ asset('\img\cart\sale-30.png') }}" alt="">
+                                @elseif ($product->product_rating >= 4)
+                                    <img src="{{ asset('\img\cart\span-hot.png') }}" alt="">
+                                @elseif ($now->diffInDays($product->created_at) < $n) <img
+                                        src="{{ asset('\img\cart\span-new.png') }}" alt="">
+                                @endif
                                 </div>
                                 
                                 </div>
                                 <div class="product_content">
-                                    <span class="product_price">{{ number_format($product->product_price) }} đ</span>
+                                    @if ($now->diffInDays($product->created_at) >= $n)
+                                    <span
+                                        class="product_price">{{ number_format($product->product_price - ($product->product_price * 30) / 100) }} VNĐ</span>
+                                    @else
+                                    <span class="product_price">{{ number_format($product->product_price) }} VNĐ</span>
+                                    @endif
+                                    
                                     <h3 class="product_title"><a href="{{asset('/chi-tiet-san-pham/id='.$product->product_id)}}">{{ $product->product_name }}</a></h3>
                                 </div>
                                 <div class="product_info">
