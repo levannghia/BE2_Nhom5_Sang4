@@ -180,7 +180,7 @@
                         <div class="box_quantity mb-20">
                             <form action="{{ asset('/save-cart') }}" method="post">
                                 {{ csrf_field() }}
-                                <label>quantity</label>
+                                <label>Số lượng</label>
                                 <input name="qty" min="0" max="100" value="1" type="number">
                                 <input name="productid_hidden" value="{{ $pro_detail->product_id }}" type="hidden">
                                 <button type="submit"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
