@@ -84,16 +84,6 @@ class AdminProductController extends Controller
         $get_image = $request->file('product_image');
 
         if ($request->hasFile('product_image')) {
-            // $get_fileName = $get_image->getClientOriginalName();
-            // $fileName = current(explode('.',$get_fileName));
-            // $fileExtension=$get_image->getClientOriginalExtension();
-            // $new_image = $fileName.'-'.time().'.'.$fileExtension;
-            // $get_image->move('upload/product', $new_image);
-            // $data['product_image'] = $new_image;
-            // DB::table('products')->insert($data);
-            // Session::put('message', 'Thêm sản phẩm thành công');
-            // return Redirect::to('add-product');
-
             foreach ($get_image as $item) {
                 $get_fileName = time() . '-' . $item->getClientOriginalName();
                 $item->move('upload/product', $get_fileName);
@@ -109,6 +99,7 @@ class AdminProductController extends Controller
         Session::put('message', 'Thêm sản phẩm thành công');
         return Redirect::to('add-product');
     }
+
 
     //xử lý chức năng sửa
     public function update_product(Request $request, $product_id)
@@ -129,11 +120,6 @@ class AdminProductController extends Controller
         $data['updated_at'] = Carbon::now();
         $get_image = $request->file('product_image');
         if ($request->hasFile('product_image')) {
-            // $get_fileName = $get_image->getClientOriginalName();
-            // $fileName = current(explode('.', $get_fileName));
-            // $fileExtension = $get_image->getClientOriginalExtension();
-            // $new_image = $fileName . '-' . time() . '.' . $fileExtension;
-            // $get_image->move('upload/product', $new_image);
             foreach ($get_image as $item) {
                 $get_fileName = time() . '-' . $item->getClientOriginalName();
                 $item->move('upload/product', $get_fileName);

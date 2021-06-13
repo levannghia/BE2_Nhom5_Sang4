@@ -31,7 +31,6 @@ class CartController extends Controller
         
         
         if($data['qty']= $product_qty > $product_detail->product_quantity){
-            //echo dd('San pham lon qua ko dk');
             return redirect()->back()->with('thatbai','Số lượng bạn cần mua lớn hơn số lượng sản phẩm còn lại trong kho');
         }
         else{
