@@ -21,7 +21,10 @@
     <!--breadcrumbs area end-->
     
     <!--shopping cart area start -->                            
-    <div class="shopping_cart_area">                            
+    <div class="shopping_cart_area">
+        @if (Session::has('thatbai'))
+        <div class="alert alert-danger">{{Session::get('thatbai')}}</div>
+        @endif                         
         @if (Cart::count() > 0)                                 
         <form action="{{asset('/update-cart-qty')}}" method="post">
             {{ csrf_field() }}
@@ -54,6 +57,7 @@
                                             <td class="product_quantity">
                                                 <form action="{{asset('/update-cart-qty')}}" method="post">
                                                     {{ csrf_field() }}
+                                                    <input type="hidden" value="{{$cart_cont->id}}" name="product_id">
                                                     <input type="hidden" value="{{$cart_cont->rowId}}" name="cart_rowId">
                                                     <input name="cart_qty" min="0" max="100" value="{{$cart_cont->qty}}" type="number">
                                                     <input type="submit" name="update_qty" class="btn btn-medium" value="update" >
@@ -144,6 +148,7 @@
                                             <td class="product_quantity">
                                                 <form action="{{asset('/update-cart-qty')}}" method="post">
                                                     {{ csrf_field() }}
+                                                    <input type="hidden" value="{{$cart_cont->id}}" name="product_id">
                                                     <input type="hidden" value="{{$cart_cont->rowId}}" name="cart_rowId">
                                                     <input name="cart_qty" min="0" max="100" value="{{$cart_cont->qty}}" type="number">
                                                     <input type="submit" name="update_qty" class="btn btn-medium" value="update" >

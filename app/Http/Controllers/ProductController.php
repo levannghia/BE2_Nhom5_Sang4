@@ -22,27 +22,27 @@ class ProductController extends Controller
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
         
         
-        $products = Product::paginate(9);
+        $products = Product::paginate(12);
         if($request->orderby){
             $orderby = $request->orderby;
             switch ($orderby){
                 case 'desc':
-                    $products = Product::orderby('product_id','DESC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_id','DESC')->paginate(12)->appends(request()->query());
                     break;
                 case 'price_max':
-                    $products = Product::orderby('product_price','ASC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_price','ASC')->paginate(12)->appends(request()->query());
                     break;
                 case 'price_min':
-                    $products = Product::orderby('product_price','DESC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_price','DESC')->paginate(12)->appends(request()->query());
                     break;
                 case 'rating_min':
-                    $products = Product::orderby('product_rating','DESC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_rating','DESC')->paginate(12)->appends(request()->query());
                      break;
                 case 'rating_max':
-                    $products = Product::orderby('product_rating','ASC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_rating','ASC')->paginate(12)->appends(request()->query());
                     break;
                 default:
-                    $products = Product::orderby('product_name','ASC')->paginate(6)->appends(request()->query());
+                    $products = Product::orderby('product_name','ASC')->paginate(12)->appends(request()->query());
                     break;
 
             }

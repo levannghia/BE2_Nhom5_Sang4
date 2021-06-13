@@ -61,9 +61,19 @@ class CartController extends Controller
     }
 
     public function update_cart_qty(Request $request) {
+        $product_id = $request->product_id;
+        $product_detail = DB::table('products')->where('product_id', $product_id)->first();
         $rowId = $request->cart_rowId;
         $qty = $request->cart_qty;
-        Cart::update($rowId, $qty);
-        return Redirect::to('/cart');
+
+        if($qty > $product_detail->product_quantity)
+        {
+            return redirect()->back()->with('thatbai','Số lượng bạn cần mua lớn hơn số lượng sản phẩm còn lại trong kho');
+        }
+        else{
+            Cart::update($rowId, $qty);
+            return Redirect::to('/cart');
+        }      
+        
     }
 }

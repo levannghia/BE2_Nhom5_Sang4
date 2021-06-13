@@ -82,52 +82,62 @@
                         @endforeach
                     </div>
 
-                    <div class="row">
-
-                        <div class="product_active owl-carousel">
-                            @foreach ($category_by_id as $procateid)
-                                <?php $photos = explode(',', $procateid->product_image); ?>
-                                <div class="col-lg-3">
-                                    <div class="single_product">
-
-                                        <div class="product_thumb">
-                                            <a href="{{ asset('/chi-tiet-san-pham/id=' . $procateid->product_id) }}"><img
-                                                    src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
-                                            <div class="img_icone">
-                                                @if ($now->diffInDays($procateid->created_at) >= $n)
-                                                    <img src="{{ asset('\img\cart\sale-30.png') }}" alt="">
-                                                @elseif ($procateid->product_rating >= 4)
-                                                    <img src="{{ asset('\img\cart\span-hot.png') }}" alt="">
-                                                @elseif ($now->diffInDays($procateid->created_at) < $n) <img
-                                                        src="{{ asset('\img\cart\span-new.png') }}" alt="">
-                                                @endif
+                    <div class="shop_tab_product">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="large" role="tabpanel">
+                                <div class="row">
+                                    @foreach ($category_by_id as $item)
+                                        <?php $photos = explode(',', $item->product_image); ?>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="single_product">
+                                                <div class="product_thumb">
+                                                    <a href="{{ url('/chi-tiet-san-pham/id=' . $item->product_id) }}"><img
+                                                            src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
+                                                    <div class="img_icone">
+                                                        @if ($now->diffInDays($item->created_at) >= $n)
+                                                            <img src="{{ asset('\img\cart\sale-30.png') }}" alt="">
+                                                        @elseif ($item->product_rating >= 4)
+                                                            <img src="{{ asset('\img\cart\span-hot.png') }}" alt="">
+                                                        @elseif ($now->diffInDays($item->created_at) < $n) <img
+                                                                src="{{ asset('\img\cart\span-new.png') }}" alt="">
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                                <div class="product_content">
+                                                    @if ($now->diffInDays($item->created_at) >= $n)
+                                                        <span
+                                                            class="product_price">{{ number_format($item->product_price - ($item->product_price * 30) / 100) }}
+                                                            VNĐ</span>
+                                                    @else
+                                                        <span class="product_price">{{ number_format($item->product_price) }}
+                                                            VNĐ</span>
+                                                    @endif
+    
+                                                    <h3 class="product_title"><a
+                                                            href="{{ url('/chi-tiet-san-pham/id=' . $item->product_id) }}">{{ $item->product_name }}</a>
+                                                    </h3>
+                                                </div>
+                                                <div class="product_info">
+                                                    <ul>
+                                                        <li><a href="{{ url('/chi-tiet-san-pham/id=' . $item->product_id) }}"
+                                                                title="Quick view">View Detail</a></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="product_content">
-                                            @if ($now->diffInDays($procateid->created_at) >= $n)
-                                                <span
-                                                    class="product_price">{{ number_format($procateid->product_price - ($procateid->product_price * 30) / 100) }}
-                                                    VNĐ</span>
-                                            @else
-                                                <span
-                                                    class="product_price">{{ number_format($procateid->product_price) }}
-                                                    VNĐ</span>
-                                            @endif
-                                            <h3 class="product_title"><a
-                                                    href="{{ asset('/chi-tiet-san-pham/id=' . $procateid->product_id) }}">{{ $procateid->product_name }}</a></h3>
-                                        </div>
-                                        <div class="product_info">
-                                            <ul>
-                                                
-                                                <li><a href="{{ asset('/chi-tiet-san-pham/id=' . $procateid->product_id) }}"
-                                                        title="Quick view">Xem chi tiết</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                            @endforeach
+                            </div>
+    
                         </div>
-
+                    </div>
+                    <div class="pagination_style">
+                        <div class="page_number">
+                            <span>Pages: </span>
+                            <ul>
+                                <li>{{ $category_by_id->links() }}</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <!--new product area start-->

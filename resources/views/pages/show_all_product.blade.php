@@ -167,7 +167,7 @@
                                             <div class="product_info">
                                                 <ul>
                                                     <li><a href="{{ url('/chi-tiet-san-pham/id=' . $item->product_id) }}"
-                                                            title="Quick view">View Detail</a></li>
+                                                            title="Quick view">Xem chi tiết</a></li>
                                                 </ul>
                                             </div>
                                         </div>

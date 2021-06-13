@@ -74,6 +74,6 @@ class ProfileController extends Controller
         $shipping = DB::table('shipping')->where('shipping.shipping_id', $order->shipping_id)->limit(1)->get();
         //$shipping = Shipping::find($order->shipping_id);
         $orderDetail = OrderDetail::where('order_id',$order_id)->orderBy('order_detail_id',"DESC")->get();
-        return view('order_detail')->with('orderDetail',$orderDetail)->with('order',$order)->with('shipping',$shipping);
+        return view('pages.checkout.order_detail')->with('orderDetail',$orderDetail)->with('order',$order)->with('shipping',$shipping);
     }
 }

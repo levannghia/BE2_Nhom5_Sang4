@@ -101,7 +101,7 @@ class AdminCategoryController extends Controller
     //start function Home page
     public function show_category_home($category_id) {
         $cate_product = DB::table('categories')->where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
-        $category_by_id = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.category_id', $category_id)->get();
+        $category_by_id = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->where('products.category_id', $category_id)->paginate(6);
         $cate_name = DB::table('categories')->where('category_id', $category_id)->get();
         return view('pages.category.show_category')->with('category', $cate_product)->with('category_by_id', $category_by_id)->with('cate_name', $cate_name);
     }
