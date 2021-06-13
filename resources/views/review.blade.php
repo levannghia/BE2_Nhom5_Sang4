@@ -4,7 +4,8 @@
 @section('content')
 @php
     use Carbon\Carbon;
-    $now = Carbon::now();          
+    $now = Carbon::now(); 
+    $n = 5;         
 @endphp
     <style>
         .list_star i:hover {
@@ -160,7 +161,7 @@
                             <p>{{ $pro_detail->product_description }}</p>
                         </div>
                         <div class="content_price mb-15">
-                            @if ($now->diffInDays($pro_detail->created_at) >= 5)
+                            @if ($now->diffInDays($pro_detail->created_at) >= $n)
                             <span class="product_price">{{ number_format($pro_detail->product_price - ($pro_detail->product_price * 30/100)) }} VNĐ</span>
                             <span class="old-price">{{ number_format($pro_detail->product_price) }} VNĐ</span>
                             @else
@@ -427,7 +428,7 @@
         <div class="row">
             <div class="single_p_active owl-carousel">
                 @foreach ($relate_product as $relate_pro)
-                    <?php $photos = explode(',', $relate_pro->product_image); ?>
+                <?php $photos = explode(',',$relate_pro->product_image);?>
                     <div class="col-lg-3">
 
                         <div class="single_product">
@@ -436,14 +437,23 @@
                                 <a href="{{ asset('/chi-tiet-san-pham/id=' . $relate_pro->product_id) }}"><img
                                         src="{{ asset('upload/product/' . $photos[0]) }}" alt=""></a>
                                 <div class="img_icone">
+                                    @if ($now->diffInDays($relate_pro->created_at) >= $n)
+                                    <img src="{{ asset('\img\cart\sale-30.png') }}" alt="">
+                                    @elseif ($relate_pro->product_rating >= 4)
+                                    <img src="{{ asset('\img\cart\span-hot.png') }}" alt="">
+                                    @elseif ($now->diffInDays($relate_pro->created_at) < $n)
                                     <img src="{{ asset('\img\cart\span-new.png') }}" alt="">
+                                    @endif            
                                 </div>
-                                <div class="product_action">
-                                    <a href="#"> <i class="fa fa-shopping-cart"></i> Thêm vào giỏ</a>
-                                </div>
+                            
                             </div>
                             <div class="product_content">
-                                <span class="product_price">{{ number_format($relate_pro->product_price) }}</span>
+                                @if ($now->diffInDays($relate_pro->created_at) >= $n)
+                                <span class="product_price">{{ number_format($relate_pro->product_price - ($relate_pro->product_price *50/100)) }}</span>
+                                @else
+                                <span class="product_price">{{ number_format($relate_pro->product_price) }} VNĐ</span>
+                                @endif
+                                
                                 <h3 class="product_title"><a
                                         href="{{ asset('/chi-tiet-san-pham/id=' . $relate_pro->product_id) }}">{{ $relate_pro->product_name }}</a>
                                 </h3>
