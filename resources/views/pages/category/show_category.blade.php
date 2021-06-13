@@ -114,12 +114,12 @@
                                                     VNĐ</span>
                                             @endif
                                             <h3 class="product_title"><a
-                                                    href="single-product.html">{{ $procateid->product_name }}</a></h3>
+                                                    href="{{ asset('/chi-tiet-san-pham/id=' . $procateid->product_id) }}">{{ $procateid->product_name }}</a></h3>
                                         </div>
                                         <div class="product_info">
                                             <ul>
-                                                <li><a href="#" title=" Add to Wishlist ">Thêm vào giỏ hàng</a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#modal_box"
+                                                
+                                                <li><a href="{{ asset('/chi-tiet-san-pham/id=' . $procateid->product_id) }}"
                                                         title="Quick view">Xem chi tiết</a></li>
                                             </ul>
                                         </div>

@@ -48,6 +48,7 @@
                                     <tbody>
                                         <tr> 
                                             <td class="product_thumb"><a href="#"><img src="{{asset('upload/product/'.$photos[0])}}" alt=""></a></td>
+                                            
                                             <td class="product_name"><a href="#">{{$cart_cont->name}}</a></td>
                                             <td class="product-price">{{number_format($cart_cont->price)}} VNĐ</td>
                                             <td class="product_quantity">
