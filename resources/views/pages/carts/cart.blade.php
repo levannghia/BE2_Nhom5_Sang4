@@ -107,8 +107,11 @@
                                        <p class="cart_amount">{{Cart::subtotal()}} VNĐ</p>
                                    </div>
                                    <div class="checkout_btn">
-                                       
-                                       <a href="{{asset('/checkout')}}">Thanh toán</a>
+                                    <a href="{{asset('/checkout')}}">Thanh toán</a>
+                                </div>
+                                <br>
+                                   <div class="checkout_btn">
+                                       <a href="{{asset('/')}}">Tiếp tục mua hàng</a>
                                    </div>
                                 </div>
                             </div>
