@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="footer_widget">
-                        <h3>About us</h3>
+                        <h3>Thông tin liên hệ</h3>
                         <p>Với hơn 30 năm kinh nghiệm trong lĩnh vực thực phẩm, chúng tôi tự tin sẽ làm hài lòng khách hàng - Farm Store</p>
                         <div class="footer_widget_contect">
                             <p><i class="fa fa-map-marker" aria-hidden="true"></i>Địa chỉ: 53 Võ Văn Ngân - Phường Linh Chiểu - Quận Thủ Đức - Thành phố Hồ Chí Minh</p>
@@ -28,10 +28,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer_widget">
-                        <h3>Informations</h3>
+                        <h3>Thông tin</h3>
                         <ul>
-                            <li><a href="{{asset('/show-all-product')}}">Our store(s)!</a></li>
-                            <li><a href="{{asset('/lien-he')}}">About us</a></li>
+                            <li><a href="{{asset('/show-all-product')}}">Tất cả sản phẩm!</a></li>
+                            <li><a href="{{asset('/lien-he')}}">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="copyright_area">
                         <ul>
-                            <li><a href="{{asset('/lien-he')}}"> about us </a></li>
+                            <li><a href="{{asset('/lien-he')}}"> liên hệ </a></li>
                             
                         </ul>
                         <p>Copyright &copy; 2018 <a href="#">Farm store</a>. All rights reserved. </p>

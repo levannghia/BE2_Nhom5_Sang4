@@ -38,7 +38,8 @@ class AdminProductController extends Controller
     public function all_product()
     {
         $this->AuthLogin();
-        $products = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')->orderby('products.product_id', 'desc')->paginate(20);
+        $products = DB::table('products')->join('categories', 'products.category_id', '=', 'categories.category_id')
+        ->orderby('products.product_id', 'desc')->paginate(20);
         $all_product = view('admin.product.all_product', ['products' => $products]);
         return view('admin_layout', ['admin.product.all_product' => $all_product]);
     }

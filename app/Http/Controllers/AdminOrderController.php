@@ -29,13 +29,14 @@ class AdminOrderController extends Controller
     //liệt kê đơn hàng
     public function all_order() {
         $this->AuthLogin();
-        $orders = Order::join('users', 'orders.user_id', '=', 'users.id')->select('orders.*', 'users.name')->orderby('orders.order_id', 'desc')->paginate(20);
+        $orders = Order::join('users', 'orders.user_id', '=', 'users.id')->select('orders.*', 'users.name')
+        ->orderby('orders.order_id', 'desc')->paginate(20);
         $all_order = view('admin.order.manage_order', ['orders' => $orders]);
         return view('admin_layout', ['admin.order.manage_order' => $all_order]);
     }
 
+    
     //xem đơn hàng
-
     public function view_order($orderId) {
         $this->AuthLogin();
         

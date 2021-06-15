@@ -9,9 +9,9 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{route('home')}}">home</a></li>
+                        <li><a href="{{route('home')}}">trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
-                        <li>Change password</li>
+                        <li>Đổi mật khẩu</li>
                     </ul>
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <!--register area start-->
             <div class="col-lg-5 col-md-5">
                 <div class="account_form register">
-                    <h2>Change Password</h2>
+                    <h2>Đổi mật khẩu</h2>
                     @if (count($errors)>0)
                         <div class="alert alert-danger">
                             @foreach ($errors->all() as $err)
@@ -50,23 +50,23 @@
                     </p>
                     @endif
                     <p>
-                        <label>Old password <span>*</span></label>
+                        <label>Mật khẩu cũ <span>*</span></label>
                         <input type="password" name="oldpassword" value="{{ old('oldpassword') }}" placeholder="********">
                        
                     </p>
                     
                     <p>
-                        <label>New password<span>*</span></label>
+                        <label>Mật khẩu mới<span>*</span></label>
                         <input type="password" name="newpassword" value="{{ old('newpassword') }}" >
                        
                     </p>
                     <p>
-                        <label>Confirm password <span>*</span></label>
+                        <label>Nhập lại mật khẩu mới <span>*</span></label>
                         <input type="password" name="confirmpassword" >
                         
                     </p>
                     <div class="login_submit">
-                        <button type="submit">Change password</button>
+                        <button type="submit">Xác nhận</button>
                     </div>
                        
                     </form>

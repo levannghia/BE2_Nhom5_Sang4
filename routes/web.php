@@ -37,42 +37,52 @@ Route::post('/update-cart-qty','CartController@update_cart_qty');
 //thanh toán
 Route::get('/checkout', 'CheckoutController@show_checkout')->middleware('checklogin');
 Route::post('/save-checkout', 'CheckoutController@save_checkout');
+
 //phương thức thanh toán
 Route::get('/payment', 'CheckoutController@show_payment')->middleware('checklogin');
 Route::post('/order-place', 'CheckoutController@order_place');
+
 //profile
 Route::get('/profile','ProfileController@index')->middleware('checklogin')->name('profile');
+
 //order detail
 Route::get('/order-detail/{order_id}','ProfileController@orderDetail')->middleware('checklogin');
+
 //edit profile
 Route::put('/profile/edit','ProfileController@editProfile')->name('edit-profile');
+
 //change password
 Route::get('/change-password','ProfileController@getChangePassword')->name('changepassword');
 Route::post('/change-password','ProfileController@saveChangePassword');
+
 //delete account
 Route::post('/delete-account','ProfileController@postDestroy')->name('delete-account');
 
 //chuc nang review
-
 Route::post('/review/id={order_detail_id}','ReviewController@saveReview')->middleware('checklogin')->name('save.review');
 Route::get('/review/id={order_detail_id}','ReviewController@getReview')->middleware('checklogin');
+
 //chuc nang comment
 Route::post('/comment/id={product_id}','CommentController@saveComment')->name('save.comment');
+
 //SignUp
 Route::post('/sign-up','LoginController@postSignUp')->name('signup');
+
 //login
 Route::get('/login','LoginController@getLogin');
 Route::post('/signin','LoginController@postSignIn')->name('signin');
+
 //logout
 Route::get('/logout','LoginController@Logout')->name('logout');
+
 //verifycation email
 Auth::routes(['verify' => true]);
 
 //Search
 Route::post('/search', 'ProductController@search');
+
 //All Product
 Route::resource('/show-all-product','ProductController');
-//Route::get('/show-all-product','ProductController@show_all_product');
 
 //Liên hệ
 Route::get('/lien-he','ContactController@contact')->name('contact');
@@ -80,10 +90,9 @@ Route::post('/goi-loi-nhan', 'ContactController@sendMailContactForm')->name('con
 
 
 
-
 ///Backend
 //Admin
-Route::get('/admin','AdminController@admin_login');
+Route::get('/admin','AdminController@admin_login')->name('admin.login');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/dashboards','AdminController@show_dashboard')->name('dashboards')->middleware('permission.checker:admin');
 Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
@@ -92,40 +101,51 @@ Route::get('/admin-logout','AdminController@logout'); //logout
 //Category product
 //thêm
 Route::get('/add-category-product','AdminCategoryController@add_category_product');
+
 //sửa
 Route::get('/edit-category/id={category_id}', 'AdminCategoryController@edit_category_product');
+
 //xóa
 Route::get('/delete-category/id={category_id}', 'AdminCategoryController@delete_category_product');
+
 //hiển thị
 Route::get('/all-category-product','AdminCategoryController@all_category_product');
+
 //xử lý func thêm
 Route::post('/save-category-product','AdminCategoryController@save_category_product');
+
 //xử lý func sửa
 Route::post('/update-category-product/id={category_id}','AdminCategoryController@update_category_product');
-
 Route::get('/active-category/id={category_id}', 'AdminCategoryController@active_category_product');
 Route::get('/unactive-category/id={category_id}', 'AdminCategoryController@unactive_category_product');
 
 //Product
 //thêm
 Route::get('/add-product','AdminProductController@add_product');
+
 //sửa
 Route::get('/edit-product/id={product_id}', 'AdminProductController@edit_product');
+
 //xóa
 Route::get('/delete-product/id={product_id}', 'AdminProductController@delete_product');
+
 //hiển thị
 Route::get('/all-product','AdminProductController@all_product');
+
 //xử lý func thêm
 Route::post('/save-product','AdminProductController@save_product');
+
 //xử lý func sửa
 Route::post('/update-product/id={product_id}','AdminProductController@update_product');
 
 //Order
 Route::get('/all-order','AdminOrderController@all_order');
 Route::get('/view-detail-order/id={orderId}','AdminOrderController@view_order');
+
 //User
 Route::get('/all-user','AdminUserController@all_user');
 Route::get('/delete-user/id={user_id}', 'AdminUserController@delete_user');
+
 
 //Review 
 Route::get('/all-review','AdminReviewController@all_review');

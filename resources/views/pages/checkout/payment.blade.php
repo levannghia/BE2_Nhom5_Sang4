@@ -40,8 +40,8 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Product</th>
-                                        <th>Total</th>
+                                        <th>Sản phẩm</th>
+                                        <th>Tổng giá</th>
                                     </tr>
                                 </thead>
                                 @foreach($content as $cart_cont)
