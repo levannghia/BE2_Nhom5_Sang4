@@ -11,7 +11,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="switcher">
                                 <ul>
-                                    @if (Auth::check())
+                                    @if (Auth::check() && Auth::user()->email_verified_at != NULL)
                                     <div class="btn-group">
                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                           Xin chào: {{ Auth::user()->name }}
@@ -34,7 +34,7 @@
                                 <ul>
                                     <li><a href="{{ route('profile') }}" title="My account">Tài khoản của bạn</a></li>
                                     <li><a href="{{asset('/cart')}}" title="My cart">Giỏ hàng</a></li>
-                                    @if (Auth::check())
+                                    @if (Auth::check() && Auth::user()->email_verified_at != NULL)
                                          <li><a href="{{ route('logout') }}" title="Login">Đăng xuất</a></li>
                                      @else
                                          <li><a href="{{ url('login') }}" title="Login">Đăng nhập</a></li>

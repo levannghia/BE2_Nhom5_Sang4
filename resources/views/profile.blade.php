@@ -99,7 +99,7 @@
                                         <form action="{{ route('edit-profile') }}" method="POST">
                                             @csrf
                                             @method('PUT')
-                                            @if (Auth::check())
+                                            @if (Auth::check() && Auth::user()->email_verified_at != NULL)
                                                 <p>
                                                     <label>Email address <span>*</span></label>
                                                 <h4>{{ Auth::user()->email }}</h4>

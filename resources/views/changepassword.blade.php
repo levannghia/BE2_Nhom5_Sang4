@@ -40,10 +40,15 @@
                     <form action="{{url('change-password')}}" method="POST">         
                         @csrf
                         
-                       @if (Auth::check())
+                       @if (Auth::check() && Auth::user()->email_verified_at != NULL)
                     <p>
                         <h4><i class="fa fa-user"></i> {{ Auth::user()->name }}</h4>
                     </p>
+                    @else
+                    <p>
+                        <h4><i class="fa fa-user"></i></h4>
+                    </p>
+                    @endif
                     <p>
                         <label>Old password <span>*</span></label>
                         <input type="password" name="oldpassword" value="{{ old('oldpassword') }}" placeholder="********">
@@ -63,7 +68,7 @@
                     <div class="login_submit">
                         <button type="submit">Change password</button>
                     </div>
-                       @endif
+                       
                     </form>
                 </div>
             </div>
