@@ -1,5 +1,5 @@
 ﻿@section('title')
-    Profile
+    Thông tin cá nhân
 @endsection
 @section('content')
 
@@ -78,7 +78,7 @@
                                                         value="{{ Auth::user()->telephone }}">
                                                 </p>
                                                 <div class="login_submit">
-                                                    <button type="submit">Update</button>
+                                                    <button type="submit">Cập nhật</button>
                                                 </div>
                                             @endif
                                         </form>

@@ -19,7 +19,7 @@
                                        <div class="dropdown-menu">
                                          <a class="dropdown-item" href="{{ route('profile') }}">Tài khoản của bạn</a>
                                          <a class="dropdown-item" href="{{ route('changepassword') }}">Thay đổi mật khẩu</a>
-                                       <form action="{{ route('delete-account') }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this account?')">
+                                       <form action="{{ route('delete-account') }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa tài khoản này ?')">
                                            @csrf
                                            <button type="submit" name="deleteAccount" class="btn btn-danger">Xóa tài khoản</button>
                                        </form>

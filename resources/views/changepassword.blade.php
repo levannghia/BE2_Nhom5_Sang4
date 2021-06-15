@@ -1,5 +1,5 @@
 ﻿@section('title')
-    Change Password
+    Đổi mật khẩu
 @endsection
 @section('content')
 
