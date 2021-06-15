@@ -76,7 +76,7 @@ class AdminCategoryController extends Controller
         return Redirect::to('add-category-product');
     }
 
-    //xử lý chức năng sửa
+    //xử lý chức năng sửa danh mục
     public function update_category_product(Request $request, $category_id) {
         $this->AuthLogin();
         $data = array();
@@ -88,7 +88,7 @@ class AdminCategoryController extends Controller
         return Redirect::to('all-category-product');
     }
 
-    //xử lý chức năng sửa
+    //xử lý chức năng xóa danh mục
     public function delete_category_product($category_id) {
         $this->AuthLogin();
         DB::table('categories')->where('category_id', $category_id)->delete();

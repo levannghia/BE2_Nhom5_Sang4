@@ -37,9 +37,9 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Product</th>
-                                                    <th>Total</th>
-                                                    <th>Review</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Tổng giá tiền</th>
+                                                    <th>Đánh giá</th>
                                                 </tr>
                                             </thead>
                                             @foreach ($orderDetail as $cart_cont)
@@ -100,7 +100,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="order-notes">
-                                                <label for="order_note">Order Notes</label>
+                                                <label for="order_note">Ghi chú</label>
                                                 <p>{{ $item->shipping_note }}</p>
                                             </div>
                                         </div>

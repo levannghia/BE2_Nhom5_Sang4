@@ -37,8 +37,8 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Product</th>
-                                                    <th>Total</th>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Tổng giá tiền</th>
                                                 </tr>
                                             </thead>
                                             @foreach($content as $cart_cont)
@@ -96,7 +96,7 @@
                                         
                                         <div class="col-12">
                                             <div class="order-notes">
-                                                    <label for="order_note">Order Notes</label>
+                                                    <label for="order_note">Ghi chú</label>
                                                 <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery." name="shipping_note"></textarea>
                                             </div>    
                                         </div>

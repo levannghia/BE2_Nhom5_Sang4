@@ -5,9 +5,9 @@
                         <div class="col-12">
                             <div class="breadcrumb_content">
                                 <ul>
-                                    <li><a href="index.html">home</a></li>
+                                    <li><a href="{{url('/')}}">trang chủ</a></li>
                                     <li><i class="fa fa-angle-right"></i></li>
-                                    <li>login</li>
+                                    <li>đăng nhập</li>
                                 </ul>
 
                             </div>
@@ -25,7 +25,7 @@
                                     @if (Session::has('flag'))
                                         <div class="alert alert-{{ Session::get('flag') }}">{{ Session::get('message') }}</div>
                                     @endif
-                                    <h2>login</h2>
+                                    <h2>đăng nhập</h2>
                                     <form action="{{ route('login') }}" method="post">
                                         @csrf
                                         <p>   
@@ -33,16 +33,16 @@
                                             <input type="email" name="email">
                                             </p>
                                             <p>   
-                                            <label>Passwords <span>*</span></label>
+                                            <label>Mật khẩu <span>*</span></label>
                                             <input type="password" name="password">
                                             </p>   
                                         <div class="login_submit">
-                                            <button type="submit">login</button>
+                                            <button type="submit">đăng nhập</button>
                                             <label for="remember">
                                                 <input id="remember" type="checkbox">
-                                                Remember me
+                                                ghi nhớ
                                             </label>
-                                            <a href="#">Lost your password?</a>
+                                            <a href="#">Quên mật khẩu?</a>
                                         </div>
                                     </form>
                                     </div>    
@@ -62,36 +62,36 @@
                                     @if(Session::has('thanhcong'))
                                         <div class="alert alert-success">{{ Session::get('thanhcong') }}</div>
                                         @endif
-                                    <h2>Register</h2>
+                                    <h2>đăng ký</h2>
                                     <form action="{{ route('signup') }}" method="post">
                                         @csrf
                                         <p>   
-                                            <label>User name <span>*</span></label>
+                                            <label>Tên người dùng <span>*</span></label>
                                             <input type="text" name="name">
                                             </p>
                                             <p>   
-                                            <label>Email address  <span>*</span></label>
+                                            <label> Email  <span>*</span></label>
                                             <input type="email" name="email">
                                             </p>
                                             
                                             <p>   
-                                            <label>Address  <span>*</span></label>
+                                            <label>Địa chỉ  <span>*</span></label>
                                             <input type="text" name="address">
                                             </p>
                                             <p>   
-                                            <label>Telephone <span>*</span></label>
+                                            <label>Điện thoại <span>*</span></label>
                                             <input type="text" name="phone">
                                             </p>
                                             <p>   
-                                            <label>Passwords <span>*</span></label>
+                                            <label>Mật khẩu <span>*</span></label>
                                             <input type="password" pattern="[a-zA-Z0-9!@#$%^&*]{6,}" required="" name="password">
                                             </p>
                                             <p>   
-                                            <label>Confirm password <span>*</span></label>
+                                            <label>Xác nhận mật khẩu <span>*</span></label>
                                             <input type="password" name="ConfirmPassword">
                                             </p>
                                         <div class="login_submit">
-                                            <button type="submit">Register</button>
+                                            <button type="submit">Đăng ký</button>
                                         </div>
                                     </form>
                                 </div>    

@@ -24,15 +24,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="log-w3">
 <div class="w3layouts-main">
 	<h2>Đăng Nhập</h2>
-
-	@php
-	$message = Session::get('message');
-	if ($message) {
-		echo '<p class="text-alert">'.$message.'</p>';
-		Session::put('message',null);
-	}
-	@endphp
-
 		<form action="{{ URL::to('admin-dashboard') }}" method="post">
 			{{ csrf_field() }}
 			<input type="text" class="ggg" name="email" placeholder="Điền email" required="">

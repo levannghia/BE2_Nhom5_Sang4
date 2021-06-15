@@ -42,9 +42,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="top-nav clearfix">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
-        <li>
-            <input type="text" class="form-control search" placeholder=" Search">
-        </li>
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -135,7 +132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="{{URL::to('/all-review')}}">
                         <i class="fa fa-book"></i>
-                        <span>Bình luận</span>
+                        <span>Đánh giá</span>
                     </a>
                 </li>
             </ul>            </div>
@@ -163,7 +160,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('/quantri/js/scripts.js')}}"></script>
 <script src="{{asset('/quantri/js/jquery.slimscroll.js')}}"></script>
 <script src="{{asset('/quantri/js/jquery.nicescroll.js')}}"></script>
-<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 <script src="{{asset('/quantri/js/jquery.scrollTo.js')}}"></script>
 <!-- morris JavaScript -->	
 <script>

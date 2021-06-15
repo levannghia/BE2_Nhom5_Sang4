@@ -26,6 +26,7 @@
               <th>Giá</th>
               <th>Mô tả</th>
               <th>Tóm tắt</th>
+              <th>Số lượng</th>
               <th>Danh mục</th>
               <th>Đánh giá</th>
               <th style="width:30px;"></th>
@@ -41,6 +42,7 @@
               <td>{{ $product->product_price }}</td>
               <td><span class="text-ellipsis">{{ $product->product_description }}</span></td>
               <td><span class="text-ellipsis">{{ $product->product_content }}</span></td>
+              <td>{{ $product->product_quantity }}</td>
               <td>{{ $product->category_name }}</td>
               <td>{{ $product->product_rating }}/5</td>
               <td>

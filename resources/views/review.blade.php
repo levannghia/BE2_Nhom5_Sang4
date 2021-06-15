@@ -56,7 +56,7 @@
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="{{ asset('/') }}">home</a></li>
+                        <li><a href="{{ asset('/') }}">trang chủ</a></li>
                         <li><i class="fa fa-angle-right"></i></li>
                         <li>Chi tiết sản phẩm</li>
                     </ul>
@@ -153,7 +153,7 @@
                                                     style="color: #999;"></i></a></li>
                                     @endfor
                                 @endif
-                                <li><i class="fa fa-eye" aria-hidden="true"> View: {{ $pro_detail->product_view }}</i>
+                                <li><i class="fa fa-eye" aria-hidden="true"> Lượt xem: {{ $pro_detail->product_view }}</i>
                                 </li>
                             </ul>
                         </div>
@@ -171,7 +171,7 @@
                         <div class="box_quantity mb-20">
                             <form action="{{ asset('/save-cart') }}" method="post">
                                 {{ csrf_field() }}
-                                <label>quantity</label>
+                                <label>số lượng</label>
                                 <input name="qty" min="0" max="100" value="1" type="number">
                                 <input name="productid_hidden" value="{{ $pro_detail->product_id }}" type="hidden">
                                 <button type="submit"><i class="fa fa-shopping-cart"></i> thêm vào giỏ</button>
@@ -242,15 +242,15 @@
                             <div class="product_d_table product_review_form">
                                 <form action="{{ asset('/comment/id=' . $pro_detail->product_id) }}" method="POST">
                                     {{ csrf_field() }}
-                                    <h2>Add a comment </h2>
+                                    <h2>Bình luận</h2>
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="review_comment">Your comment </label>
+                                            <label for="review_comment">Để lại bình luận của bạn</label>
                                             <textarea name="comment" id="review_comment"></textarea>
                                         </div>
                                         @if (Auth::check())
                                             <div class="col-lg-6 col-md-6">
-                                                <label for="author">Name</label>
+                                                <label for="author">Họ Tên</label>
                                                 <input id="author" name="name" type="text"
                                                     value="{{ Auth::user()->name }}">
 
@@ -262,7 +262,7 @@
                                             </div>
                                         @else
                                             <div class="col-lg-6 col-md-6">
-                                                <label for="author">Name</label>
+                                                <label for="author">Họ Tên</label>
                                                 <input id="author" name="name" type="text">
 
                                             </div>
@@ -272,7 +272,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <button type="submit">submit</button>
+                                    <button type="submit">đăng</button>
                                 </form>
                             </div>
 
@@ -325,10 +325,10 @@
                                         action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}"
                                         method="POST">
                                         @csrf
-                                        <h2>Add a review </h2>
+                                        <h2>Đánh giá </h2>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="review_comment">Your review </label>
+                                                <label for="review_comment">Thêm đánh giá </label>
                                                 <div style="display; flex; margin-top:15px">
                                                     @php
                                                         $listRatingText = [
@@ -355,7 +355,7 @@
                                             </div>
 
                                         </div>
-                                        <button type="submit" id="btn1">submit</button>
+                                        <button type="submit" id="btn1">đăng</button>
                                     </form>
                                 </div>
                                 {{-- <p>chua co review</p> --}}
@@ -369,10 +369,10 @@
                                             action="{{ asset('/review/id=' . $orderDetail->order_detail_id) }}"
                                             method="POST">
                                             @csrf
-                                            <h2>Add a review </h2>
+                                            <h2>Đánh giá</h2>
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <label for="review_comment">Your review </label>
+                                                    <label for="review_comment">Thêm đánh giá</label>
                                                     <div style="display; flex; margin-top:15px">
                                                         @php
                                                             $listRatingText = [
@@ -399,7 +399,7 @@
                                                 </div>
 
                                             </div>
-                                            <button type="submit">submit</button>
+                                            <button type="submit">đăng</button>
                                         </form>
                                     </div>
 
@@ -461,8 +461,7 @@
                             <div class="product_info">
                                 <ul>
                                     <li><a href="{{ asset('/chi-tiet-san-pham/id=' . $relate_pro->product_id) }}"
-                                            title="Quick view">Xem
-                                            chi tiết</a></li>
+                                            title="Quick view">Xem chi tiết</a></li>
                                 </ul>
                             </div>
 

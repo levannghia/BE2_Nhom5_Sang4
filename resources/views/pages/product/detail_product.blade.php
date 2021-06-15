@@ -159,7 +159,7 @@
                                                     style="color: #999;"></i></a></li>
                                     @endfor
                                 @endif
-                                <li><i class="fa fa-eye" aria-hidden="true"> View: {{ $pro_detail->product_view }}</i></li>
+                                <li><i class="fa fa-eye" aria-hidden="true"> Lượt xem: {{ $pro_detail->product_view }}</i></li>
                             </ul>
                         </div>
                         <div class="product_desc">
@@ -254,12 +254,12 @@
                                     <h2>Add a comment </h2>
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="review_comment">Your comment </label>
+                                            <label for="review_comment">Để lại bình luận của bạn về sản phẩm này </label>
                                             <textarea name="comment" id="review_comment"></textarea>
                                         </div>
                                         @if (Auth::check())
                                             <div class="col-lg-6 col-md-6">
-                                                <label for="author">Name</label>
+                                                <label for="author">Họ tên</label>
                                                 <input id="author" name="name" type="text"
                                                     value="{{ Auth::user()->name }}">
 
@@ -271,7 +271,7 @@
                                             </div>
                                         @else
                                             <div class="col-lg-6 col-md-6">
-                                                <label for="author">Name</label>
+                                                <label for="author">Họ tên</label>
                                                 <input id="author" name="name" type="text">
 
                                             </div>
@@ -281,7 +281,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <button type="submit">submit</button>
+                                    <button type="submit">đăng</button>
                                 </form>
                             </div>
 

@@ -45,7 +45,7 @@ class AdminController extends Controller
             return Redirect::to('dashboard');
         }
         else {
-            Session::put('message', 'Email hoặc mật khẩu bị sai, làm ơn nhập lại');
+            Session::put('message1', 'Email hoặc mật khẩu bị sai, làm ơn nhập lại');
             return Redirect::to('admin');
         }
         
@@ -55,7 +55,7 @@ class AdminController extends Controller
         $this->AuthLogin();
         Session::put('name',null);
         Session::put('id',null);
-        return Redirect::to('admin');
+        return redirect()->route('admin.login');
     }
     
 }

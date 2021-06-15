@@ -120,7 +120,7 @@
                                                 <div class="product_info">
                                                     <ul>
                                                         <li><a href="{{ url('/chi-tiet-san-pham/id=' . $item->product_id) }}"
-                                                                title="Quick view">View Detail</a></li>
+                                                                title="Quick view">Xem chi tiết</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                     </div>
                     <div class="pagination_style">
                         <div class="page_number">
-                            <span>Pages: </span>
+                            <span>Trang: </span>
                             <ul>
                                 <li>{{ $category_by_id->links() }}</li>
                             </ul>
