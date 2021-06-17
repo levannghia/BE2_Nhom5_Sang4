@@ -28,7 +28,7 @@
                             
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input type="text" name="product_name" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm">
+                            <input type="text" name="product_name" class="form-control" placeholder="Tên sản phẩm" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
@@ -36,15 +36,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
-                            <input type="text" name="product_price" class="form-control" id="exampleInputEmail1" placeholder="Tên sản phẩm">
+                            <input type="text" name="product_price" class="form-control" placeholder="Giá sản phẩm">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                            <textarea style="resize:none" rows="5" name="product_desc" class="form-control" id="exampleInputPassword1" placeholder="Mô tả sản phẩm"></textarea>
+                            <textarea style="resize:none" rows="5" name="product_desc" class="form-control" id="editor" placeholder="Mô tả sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Tóm tắt sản phẩm</label>
-                            <textarea style="resize:none" rows="5" name="product_content" class="form-control" id="exampleInputPassword1" placeholder="Tóm tắt sản phẩm"></textarea>
+                            <textarea style="resize:none" rows="5" name="product_content" class="form-control" id="editor1" placeholder="Tóm tắt sản phẩm"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Số lượng sản phẩm</label>
