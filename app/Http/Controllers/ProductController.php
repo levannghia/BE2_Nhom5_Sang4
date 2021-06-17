@@ -149,7 +149,7 @@ class ProductController extends Controller
         $keywords = $request->search_keyword;
         $cate_product = Category::where('category_status', 'Hiện')->orderby('category_id', 'desc')->get();
 
-        $search_product = Product::where('product_name', 'like', '%'.$keywords.'%')->paginate(10);
+        $search_product = Product::where('product_name', 'like', '%'.$keywords.'%')->paginate(12);
         return view('pages.search.search')->with('category', $cate_product)->with('search_product', $search_product);
     }
 }

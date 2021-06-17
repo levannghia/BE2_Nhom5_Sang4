@@ -114,12 +114,12 @@ $n = 5;
                             </div>
                         </div>
                     @endforeach
-                    <div class="pages" style="float: right">
-                        {{$search_product->links()}}
-                    </div> 
-                </div>           
+                   
+                </div>            
             </div> 
-             
+            {{-- <div class="pages" style="float: right">
+                {{$search_product->links()}}
+            </div> --}}
             <!--new product area start-->  
         </div>
     </div>  
