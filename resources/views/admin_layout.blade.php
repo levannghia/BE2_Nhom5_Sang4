@@ -160,7 +160,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('/quantri/js/scripts.js')}}"></script>
 <script src="{{asset('/quantri/js/jquery.slimscroll.js')}}"></script>
 <script src="{{asset('/quantri/js/jquery.nicescroll.js')}}"></script>
+<script src="{{asset('/quantri/ckeditor5/ckeditor.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.2-dev/js/formValidation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.2-dev/css/formValidation.min.css"></script>
 <script src="{{asset('/quantri/js/jquery.scrollTo.js')}}"></script>
+<script type="text/javascript">
+    $.validate({
+
+    });
+</script>
+<script >
+    ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+    ClassicEditor
+    .create( document.querySelector( '#editor1' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+    ClassicEditor
+    .create( document.querySelector( '#editor2' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+    ClassicEditor
+    .create( document.querySelector( '#editor3' ) )
+    .then( editor => {
+        console.log( editor );
+    } )
+    .catch( error => {
+        console.error( error );
+    } );
+</script>
 <!-- morris JavaScript -->	
 <script>
 	$(document).ready(function() {

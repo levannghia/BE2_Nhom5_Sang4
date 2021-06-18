@@ -21,11 +21,11 @@
                             
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên danh mục</label>
-                            <input type="text" name="category_name" value="{{ $cate->category_name }}" class="form-control" id="exampleInputEmail1" >
+                            <input type="text" name="category_name" value="{{ $cate->category_name }}" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Mô tả danh mục</label>
-                            <textarea style="resize:none" rows="5" name="category_desc" class="form-control" id="exampleInputPassword1">{{ $cate->category_description }}
+                            <textarea style="resize:none" rows="5" name="category_desc" class="form-control" id="editor">{{ $cate->category_description }}
                             </textarea>
                         </div>
                         

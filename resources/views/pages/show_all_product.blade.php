@@ -153,7 +153,7 @@
                                             <div class="product_content">
                                                 @if ($now->diffInDays($item->created_at) >= $n)
                                                     <span
-                                                        class="product_price">{{ number_format($item->product_price - ($item->product_price * 30) / 100) }}
+                                                        class="product_price">{{ number_format($item->product_price - ($item->product_price * 30/100)) }}
                                                         VNĐ</span>
                                                 @else
                                                     <span class="product_price">{{ number_format($item->product_price) }}
