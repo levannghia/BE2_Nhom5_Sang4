@@ -25,7 +25,7 @@ class AdminController extends Controller
 
 
     public function admin_login() {
-        return view('admin_login');
+        return view('');
     }
 
     public function show_dashboard() {
@@ -51,11 +51,9 @@ class AdminController extends Controller
         
     }
 
-    public function logout() {
-        $this->AuthLogin();
-        Session::put('name',null);
-        Session::put('id',null);
-        return redirect()->route('admin.login');
+    public function Logout(){
+        Auth::logout();
+        return redirect()->route('home');
     }
     
 }

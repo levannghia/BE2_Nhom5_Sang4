@@ -34,7 +34,7 @@
             <tr>
               <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
               <td>{{ $cate->category_name }}</td>
-              <td><span class="text-ellipsis">{{ $cate->category_description }}</span></td>
+              <td><span class="text-ellipsis">{!! $cate->category_description  !!}</span></td>
               <td><span class="text-ellipsis">
                     @if($cate->category_status == 'Hiện' )
                       <a href="{{URL::to('/unactive-category/id='.$cate->category_id)}}"><span class="fa-thumbs-styling fa fa-thumbs-up"></span></a>

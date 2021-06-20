@@ -40,8 +40,8 @@
               <td><a href="{{URL::to('/edit-product/id='.$product->product_id)}}"><img src="upload/product/{{ $photos[0] }}" height="100" width="100"></a></td>
               <td>{{ $product->product_name }}</td>
               <td>{{ $product->product_price }}</td>
-              <td><span class="text-ellipsis">{{ $product->product_description }}</span></td>
-              <td><span class="text-ellipsis">{{ $product->product_content }}</span></td>
+              <td><span class="text-ellipsis">{!! $product->product_description !!}</span></td>
+              <td><span class="text-ellipsis">{!! $product->product_content !!}</span></td>
               <td>{{ $product->product_quantity }}</td>
               <td>{{ $product->category_name }}</td>
               <td>{{ $product->product_rating }}/5</td>

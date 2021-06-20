@@ -92,7 +92,7 @@ Route::post('/goi-loi-nhan', 'ContactController@sendMailContactForm')->name('con
 
 ///Backend
 //Admin
-Route::get('/admin','AdminController@admin_login')->name('admin.login');
+// Route::get('/admin','AdminController@admin_login')->name('admin.login');
 Route::get('/dashboard','AdminController@show_dashboard');
 Route::get('/dashboards','AdminController@show_dashboard')->name('dashboards')->middleware('permission.checker:admin');
 Route::post('/admin-dashboard','AdminController@dashboard'); //check login admin
