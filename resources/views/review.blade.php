@@ -158,7 +158,7 @@
                             </ul>
                         </div>
                         <div class="product_desc">
-                            <p>{{ $pro_detail->product_description }}</p>
+                            <p>{!! $pro_detail->product_description !!}</p>
                         </div>
                         <div class="content_price mb-15">
                             @if ($now->diffInDays($pro_detail->created_at) >= $n)
@@ -219,7 +219,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="info" role="tabpanel">
                             <div class="product_info_content">
-                                <p>{{ $pro_detail->product_content }}</p>
+                                <p>{!! $pro_detail->product_content !!}</p>
                             </div>
                         </div>
 
